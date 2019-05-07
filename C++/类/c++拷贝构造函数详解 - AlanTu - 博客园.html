@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://www.cnblogs.com/alantu2018/p/8459250.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="never">
+    <title>c++拷贝构造函数详解 - AlanTu - 博客园</title>
+<meta property="og:description" content="一、什么是拷贝构造函数 首先对于普通类型的对象来说，它们之间的复制是很简单的，例如： int a=100; int b=a; 而类对象与普通对象不同，类对象内部结构一般较为复杂，存在各种成员变量。 下">
+    <link type="text/css" rel="stylesheet" href="./c++拷贝构造函数详解 - AlanTu - 博客园_files/blog-common.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./c++拷贝构造函数详解 - AlanTu - 博客园_files/bundle-AnotherEon001-mobile.css">
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/alantu2018/rss">
+    <link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/alantu2018/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/alantu2018/wlwmanifest.xml">
+    <script src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/osd.js.下载"></script><script src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/pubads_impl_rendering_2019043001.js.下载"></script><script async="" src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/analytics.js.下载"></script><script type="text/javascript" src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/encoder.js.下载"></script><script src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+    <script>var currentBlogId=411978;var currentBlogApp='alantu2018',cb_enable_mathjax=false;var isLogined=false;</script>
+    <script src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/blog-common.js.下载" type="text/javascript"></script>
+<link rel="preload" href="./c++拷贝构造函数详解 - AlanTu - 博客园_files/f(4).txt" as="script"><script type="text/javascript" src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/f(4).txt"></script><script src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/pubads_impl_2019043001.js.下载" async=""></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-33/html/container.html"></head>
+<body>
+<a name="top"></a>
+
+
+<div id="wrapper">
+<div id="header">
+
+<div id="top">
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/alantu2018/">AlanTu</a></h1>
+<div id="subtitle"></div>
+</div>
+<div id="sub"><div id="blog_stats">
+<div class="BlogStats">随笔 - 953, 文章 - 0, 评论 - 9, 引用 - 0</div>
+</div></div>
+
+
+
+</div>
+<div id="main_container">
+<div id="main_content">
+<div id="content">
+	
+        <div id="post_detail">
+	<div class="post">
+		<h2>
+			<a id="cb_post_title_url" href="https://www.cnblogs.com/alantu2018/p/8459250.html">c++拷贝构造函数详解</a>
+		</h2>
+		<div class="postbody">
+		<div id="cnblogs_post_body" class="blogpost-body"><div class="Blog_wz1"><strong>一、什么是拷贝构造函数<br></strong><br>&nbsp; &nbsp; &nbsp;&nbsp;首先对于普通类型的对象来说，它们之间的复制是很简单的，例如：
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">int a=<span style="color: #800080;">100<span style="color: #000000;">;
+<span style="color: #0000ff;">int b=a;</span></span></span></span></pre>
+</div>
+<div id="codeText" class="codeText">&nbsp;</div>
+&nbsp;&nbsp;而类对象与普通对象不同，类对象内部结构一般较为复杂，存在各种成员变量。<br>&nbsp;&nbsp;下面看一个类对象拷贝的简单例子。<br>&nbsp; &nbsp;<br>
+<div id="codeText" class="codeText">
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>#include&lt;iostream&gt;
+<span style="color: #0000ff;">using <span style="color: #0000ff;">namespace<span style="color: #000000;"> std;
+<span style="color: #0000ff;">class<span style="color: #000000;"> CExample
+{
+<span style="color: #0000ff;">private<span style="color: #000000;">:
+    <span style="color: #0000ff;">int<span style="color: #000000;"> a;
+<span style="color: #0000ff;">public<span style="color: #000000;">:
+    <span style="color: #008000;">//<span style="color: #008000;">构造函数
+    CExample(<span style="color: #0000ff;">int<span style="color: #000000;"> b)
+    {
+        a=<span style="color: #000000;">b;
+        printf(<span style="color: #800000;">"<span style="color: #800000;">constructor is called\n<span style="color: #800000;">"<span style="color: #000000;">);
+    }
+    <span style="color: #008000;">//<span style="color: #008000;">拷贝构造函数
+    CExample(<span style="color: #0000ff;">const CExample &amp;<span style="color: #000000;"> c)
+    {
+        a=<span style="color: #000000;">c.a;
+        printf(<span style="color: #800000;">"<span style="color: #800000;">copy constructor is called\n<span style="color: #800000;">"<span style="color: #000000;">);
+    }
+    <span style="color: #008000;">//<span style="color: #008000;">析构函数
+    ~<span style="color: #000000;">CExample()
+    {
+        cout&lt;&lt;<span style="color: #800000;">"<span style="color: #800000;">destructor is called\n<span style="color: #800000;">"<span style="color: #000000;">;
+    }
+    <span style="color: #0000ff;">void<span style="color: #000000;"> Show()
+    {
+        cout&lt;&lt;a&lt;&lt;<span style="color: #000000;">endl;
+    }
+};
+<span style="color: #0000ff;">int<span style="color: #000000;"> main()
+{
+    CExample A(<span style="color: #800080;">100<span style="color: #000000;">);
+    CExample B=<span style="color: #000000;">A;
+    B.Show(); 
+    <span style="color: #0000ff;">return <span style="color: #800080;">0<span style="color: #000000;">;
+}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+&nbsp; &nbsp;运行程序，屏幕输出100。从以上代码的运行结果可以看出，系统为对象 B 分配了内存并完成了与对象 A 的复制过程。就类对象而言，相同类型的类对象是通过拷贝构造函数来完成整个复制过程的。<br>&nbsp;&nbsp;<img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/28977986_1383649786S4Hp.jpg" alt="" width="278" height="118"><br><br>&nbsp;CExample(const CExample&amp; C)　就是我们自定义的拷贝构造函数。可见，拷贝构造函数是一种<strong>特殊的</strong><strong>构造函数</strong>，函数的名称必须和类名称一致，它必须的一个参数是本类型的一个<strong>引用变量</strong>。<br><br><strong>二、拷贝构造函数的调用时机</strong><br>&nbsp; &nbsp;&nbsp;<strong><strong><strong>1. 当函数的参数为类的对象时<br>&nbsp;&nbsp;</strong></strong></strong>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #000000;">  
+#include&lt;iostream&gt;
+<span style="color: #0000ff;">using <span style="color: #0000ff;">namespace<span style="color: #000000;"> std;
+<span style="color: #0000ff;">class<span style="color: #000000;"> CExample
+{
+<span style="color: #0000ff;">private<span style="color: #000000;">:
+    <span style="color: #0000ff;">int<span style="color: #000000;"> a;
+<span style="color: #0000ff;">public<span style="color: #000000;">:
+    CExample(<span style="color: #0000ff;">int<span style="color: #000000;"> b)
+    {
+        a=<span style="color: #000000;">b;
+        printf(<span style="color: #800000;">"<span style="color: #800000;">constructor is called\n<span style="color: #800000;">"<span style="color: #000000;">);
+    }
+    CExample(<span style="color: #0000ff;">const CExample &amp;<span style="color: #000000;"> c)
+    {
+        a=<span style="color: #000000;">c.a;
+        printf(<span style="color: #800000;">"<span style="color: #800000;">copy constructor is called\n<span style="color: #800000;">"<span style="color: #000000;">);
+    }
+    ~<span style="color: #000000;">CExample()
+    {
+     cout&lt;&lt;<span style="color: #800000;">"<span style="color: #800000;">destructor is called\n<span style="color: #800000;">"<span style="color: #000000;">;
+    }
+    <span style="color: #0000ff;">void<span style="color: #000000;"> Show()
+    {
+     cout&lt;&lt;a&lt;&lt;<span style="color: #000000;">endl;
+    }
+};
+<span style="color: #0000ff;">void<span style="color: #000000;"> g_fun(CExample c)
+{
+    cout&lt;&lt;<span style="color: #800000;">"<span style="color: #800000;">g_func<span style="color: #800000;">"&lt;&lt;<span style="color: #000000;">endl;
+}
+<span style="color: #0000ff;">int<span style="color: #000000;"> main()
+{
+    CExample A(<span style="color: #800080;">100<span style="color: #000000;">);
+    CExample B=<span style="color: #000000;">A;
+    B.Show(); 
+    g_fun(A);
+    <span style="color: #0000ff;">return <span style="color: #800080;">0<span style="color: #000000;">;
+}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<div id="codeText" class="codeText">&nbsp;</div>
+<strong>&nbsp;调用g_fun()时，会产生以下几个重要步骤：<br>(1).A对象传入形参时，会先会产生一个临时变量，就叫 C 吧。<br>(2).然后调用拷贝构造函数把A的值给C。 整个这两个步骤有点像：CExample C(A);<br>(3).等g_fun()执行完后, 析构掉 C 对象。&nbsp;&nbsp;<br><br>&nbsp; &nbsp;&nbsp;<img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/28977986_1383650085S7V1.jpg" alt="" width="379" height="191"><br><br></strong><strong><strong><strong>2. 函数的返回值是类的对象<br>&nbsp;&nbsp;</strong></strong></strong>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>#include&lt;iostream&gt;
+<span style="color: #0000ff;">using <span style="color: #0000ff;">namespace<span style="color: #000000;"> std;
+<span style="color: #0000ff;">class<span style="color: #000000;"> CExample
+{
+<span style="color: #0000ff;">private<span style="color: #000000;">:
+    <span style="color: #0000ff;">int<span style="color: #000000;"> a;
+<span style="color: #0000ff;">public<span style="color: #000000;">:
+    <span style="color: #008000;">//<span style="color: #008000;">构造函数
+    CExample(<span style="color: #0000ff;">int<span style="color: #000000;"> b)
+    {
+     a=<span style="color: #000000;">b;
+        printf(<span style="color: #800000;">"<span style="color: #800000;">constructor is called\n<span style="color: #800000;">"<span style="color: #000000;">);
+    }
+    <span style="color: #008000;">//<span style="color: #008000;">拷贝构造函数
+    CExample(<span style="color: #0000ff;">const CExample &amp;<span style="color: #000000;"> c)
+    {
+     a=<span style="color: #000000;">c.a;
+        printf(<span style="color: #800000;">"<span style="color: #800000;">copy constructor is called\n<span style="color: #800000;">"<span style="color: #000000;">);
+    }
+    <span style="color: #008000;">//<span style="color: #008000;">析构函数
+    ~<span style="color: #000000;">CExample()
+    {
+     cout&lt;&lt;<span style="color: #800000;">"<span style="color: #800000;">destructor is called\n<span style="color: #800000;">"<span style="color: #000000;">;
+    }
+    <span style="color: #0000ff;">void<span style="color: #000000;"> Show()
+    {
+     cout&lt;&lt;a&lt;&lt;<span style="color: #000000;">endl;
+    }
+};
+CExample g_fun()
+{
+    CExample temp(<span style="color: #800080;">0<span style="color: #000000;">);
+    <span style="color: #0000ff;">return<span style="color: #000000;"> temp;
+}
+<span style="color: #0000ff;">int<span style="color: #000000;"> main()
+{
+    
+    g_fun();
+    <span style="color: #0000ff;">return <span style="color: #800080;">0<span style="color: #000000;">;
+}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<div id="codeText" class="codeText">&nbsp;</div>
+<strong>&nbsp;&nbsp;&nbsp;当g_Fun()函数执行到return时，会产生以下几个重要步骤：<br>(1). 先会产生一个临时变量，就叫XXXX吧。<br>(2). 然后调用拷贝构造函数把temp的值给XXXX。整个这两个步骤有点像：CExample XXXX(temp);<br>(3). 在函数执行到最后先析构temp局部变量。<br>(4). 等g_fun()执行完后再析构掉XXXX对象。&nbsp;&nbsp;<br>&nbsp;&nbsp;<img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/28977986_1383650361VCC4.jpg" alt="" width="289" height="136"><br></strong>&nbsp;<br><strong>3. 对象需要通过另外一个对象进行初始化</strong><em id="__mceDel" style="font-family: &#39;Courier New&#39;; font-size: 12px; line-height: 1.5;"></em>
+<div class="cnblogs_code">
+<pre><em id="__mceDel"><span style="color: #000000;">CExample A(<span style="color: #800080;">100<span style="color: #000000;">);
+CExample B=A;</span></span></span></em></pre>
+</div>
+<strong>三、浅拷贝与深拷贝</strong><br>&nbsp; &nbsp;&nbsp;<strong>1. 默认拷贝构造函数</strong><br>&nbsp; 
+&nbsp;很多时候在我们都不知道拷贝构造函数的情况下，传递对象给函数参数或者函数返回对象都能很好的进行，这是因为编译器会给我们自动产生一个拷贝构造函数，这就是“默认拷贝构造函数”，这个构造函数很简单，仅仅使用“老对象”的数据成员的值对“新对象”的数据成员一一进行赋值，它一般具有以下形式：<br>
+<div id="codeText" class="codeText">
+<div class="cnblogs_code">
+<pre>Rect::Rect(<span style="color: #0000ff;">const Rect&amp;<span style="color: #000000;"> r)
+{
+    width=<span style="color: #000000;">r.width;
+    height=<span style="color: #000000;">r.height;
+}</span></span></span></span></pre>
+</div>
+</div>
+当然，以上代码不用我们编写，编译器会为我们自动生成。但是如果认为这样就可以解决对象的复制问题，那就错了，让我们来考虑以下一段代码：<br>&nbsp;
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #000000;"> 
+#include&lt;iostream&gt;
+<span style="color: #0000ff;">using <span style="color: #0000ff;">namespace<span style="color: #000000;"> std;
+<span style="color: #0000ff;">class<span style="color: #000000;"> Rect
+{
+<span style="color: #0000ff;">public<span style="color: #000000;">:
+    Rect()
+    {
+     count++<span style="color: #000000;">;
+    }
+    ~<span style="color: #000000;">Rect()
+    {
+     count--<span style="color: #000000;">;
+    }
+    <span style="color: #0000ff;">static <span style="color: #0000ff;">int<span style="color: #000000;"> getCount()
+    {
+     <span style="color: #0000ff;">return<span style="color: #000000;"> count;
+    }
+<span style="color: #0000ff;">private<span style="color: #000000;">:
+    <span style="color: #0000ff;">int<span style="color: #000000;"> width;
+    <span style="color: #0000ff;">int<span style="color: #000000;"> height;
+    <span style="color: #0000ff;">static <span style="color: #0000ff;">int<span style="color: #000000;"> count;
+};
+<span style="color: #0000ff;">int Rect::count=<span style="color: #800080;">0<span style="color: #000000;">;
+<span style="color: #0000ff;">int<span style="color: #000000;"> main()
+{
+    Rect rect1;
+    cout&lt;&lt;<span style="color: #800000;">"<span style="color: #800000;">The count of Rect:<span style="color: #800000;">"&lt;&lt;Rect::getCount()&lt;&lt;<span style="color: #000000;">endl;
+    Rect rect2(rect1);
+    cout&lt;&lt;<span style="color: #800000;">"<span style="color: #800000;">The count of Rect:<span style="color: #800000;">"&lt;&lt;Rect::getCount()&lt;&lt;<span style="color: #000000;">endl;
+    <span style="color: #0000ff;">return <span style="color: #800080;">0<span style="color: #000000;">;
+}
+  </span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>这段代码对前面的类，加入了一个静态成员，目的是进行计数。在主函数中，首先创建对象rect1，输出此时的对象个数，然后使用rect1复制出对象rect2，再输出此时的对象个数，按照理解，此时应该有两个对象存在，但实际程序运行时，输出的都是1，反应出只有1个对象。此外，在销毁对象时，由于会调用销毁两个对象，类的析构函数会调用两次，此时的计数器将变为负数。</p>
+<p>说白了，就是拷贝构造函数没有处理静态数据成员。</p>
+<p>出现这些问题最根本就在于在复制对象时，计数器没有递增，我们重新编写拷贝构造函数，如下：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>#include&lt;iostream&gt;
+<span style="color: #0000ff;">using <span style="color: #0000ff;">namespace<span style="color: #000000;"> std;
+<span style="color: #0000ff;">class<span style="color: #000000;"> Rect
+{
+<span style="color: #0000ff;">public<span style="color: #000000;">:
+    Rect()
+    {
+        count++<span style="color: #000000;">;
+    }
+    Rect(<span style="color: #0000ff;">const Rect&amp;<span style="color: #000000;"> r)
+    {
+        width=<span style="color: #000000;">r.width;
+        height=<span style="color: #000000;">r.height;
+        count++<span style="color: #000000;">;
+    }
+    ~<span style="color: #000000;">Rect()
+    {
+        count--<span style="color: #000000;">;
+    }
+    <span style="color: #0000ff;">static <span style="color: #0000ff;">int<span style="color: #000000;"> getCount()
+    {
+        <span style="color: #0000ff;">return<span style="color: #000000;"> count;
+    }
+<span style="color: #0000ff;">private<span style="color: #000000;">:
+    <span style="color: #0000ff;">int<span style="color: #000000;"> width;
+    <span style="color: #0000ff;">int<span style="color: #000000;"> height;
+    <span style="color: #0000ff;">static <span style="color: #0000ff;">int<span style="color: #000000;"> count;
+};
+<span style="color: #0000ff;">int Rect::count=<span style="color: #800080;">0<span style="color: #000000;">;
+<span style="color: #0000ff;">int<span style="color: #000000;"> main()
+{
+    Rect rect1;
+    cout&lt;&lt;<span style="color: #800000;">"<span style="color: #800000;">The count of Rect:<span style="color: #800000;">"&lt;&lt;Rect::getCount()&lt;&lt;<span style="color: #000000;">endl;
+    Rect rect2(rect1);
+    cout&lt;&lt;<span style="color: #800000;">"<span style="color: #800000;">The count of Rect:<span style="color: #800000;">"&lt;&lt;Rect::getCount()&lt;&lt;<span style="color: #000000;">endl;
+    <span style="color: #0000ff;">return <span style="color: #800080;">0<span style="color: #000000;">;
+}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<br>
+<p><strong>&nbsp;&nbsp;2. 浅拷贝</strong></p>
+<p>&nbsp;&nbsp;&nbsp; 所谓浅拷贝，指的是在对象复制时，只对对象中的数据成员进行简单的赋值，默认拷贝构造函数执行的也是浅拷贝。大多情况下“浅拷贝”已经能很好地工作了，但是一旦对象存在了动态成员，那么浅拷贝就会出问题了，让我们考虑如下一段代码：</p>
+
+
+
+
+
+&nbsp;
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>#include&lt;iostream&gt;<span style="color: #000000;">
+#include&lt;assert.h&gt;
+<span style="color: #0000ff;">using <span style="color: #0000ff;">namespace<span style="color: #000000;"> std;
+<span style="color: #0000ff;">class<span style="color: #000000;"> Rect
+{
+<span style="color: #0000ff;">public<span style="color: #000000;">:
+    Rect()
+    {
+     p=<span style="color: #0000ff;">new <span style="color: #0000ff;">int(<span style="color: #800080;">100<span style="color: #000000;">);
+    }
+   
+    ~<span style="color: #000000;">Rect()
+    {
+     assert(p!=<span style="color: #000000;">NULL);
+        delete p;
+    }
+<span style="color: #0000ff;">private<span style="color: #000000;">:
+    <span style="color: #0000ff;">int<span style="color: #000000;"> width;
+    <span style="color: #0000ff;">int<span style="color: #000000;"> height;
+    <span style="color: #0000ff;">int *<span style="color: #000000;">p;
+};
+<span style="color: #0000ff;">int<span style="color: #000000;"> main()
+{
+    Rect rect1;
+    Rect rect2(rect1);
+    <span style="color: #0000ff;">return <span style="color: #800080;">0<span style="color: #000000;">;
+}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<div id="codeText" class="codeText">&nbsp;</div>
+<p>&nbsp;在这段代码运行结束之前，会出现一个运行错误。原因就在于在进行对象复制时，对于动态分配的内容没有进行正确的操作。我们来分析一下：</p>
+<p>&nbsp;&nbsp;&nbsp; 在运行定义rect1对象后，由于在构造函数中有一个动态分配的语句，因此执行后的内存情况大致如下：</p>
+&nbsp; &nbsp; &nbsp;<img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/28977986_1383651892kW3b.jpg" alt="" width="475" height="191"><br>&nbsp;&nbsp;在使用rect1复制rect2时，由于执行的是浅拷贝，只是将成员的值进行赋值，这时&nbsp;rect1.p&nbsp;= rect2.p，也即这两个指针指向了堆里的同一个空间，如下图所示：<br>&nbsp; &nbsp;&nbsp;<img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/28977986_1383651936Y2Or.jpg" alt="" width="529" height="249"><br><br>&nbsp;当然，这不是我们所期望的结果，在销毁对象时，两个对象的析构函数将对同一个内存空间释放两次，这就是错误出现的原因。我们需要的不是两个p有相同的值，而是两个p指向的空间有相同的值，解决办法就是使用“深拷贝”。<br>&nbsp;<br>&nbsp;&nbsp;<strong>3. 深拷贝</strong><br><br>&nbsp;&nbsp;在“深拷贝”的情况下，对于对象中动态成员，就不能仅仅简单地赋值了，而应该重新动态分配空间，如上面的例子就应该按照如下的方式进行处理：<br><br>&nbsp;
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>#include&lt;iostream&gt;<span style="color: #000000;">
+#include&lt;assert.h&gt;
+<span style="color: #0000ff;">using <span style="color: #0000ff;">namespace<span style="color: #000000;"> std;
+<span style="color: #0000ff;">class<span style="color: #000000;"> Rect
+{
+<span style="color: #0000ff;">public<span style="color: #000000;">:
+    Rect()
+    {
+     p=<span style="color: #0000ff;">new <span style="color: #0000ff;">int(<span style="color: #800080;">100<span style="color: #000000;">);
+    }
+    
+    Rect(<span style="color: #0000ff;">const Rect&amp;<span style="color: #000000;"> r)
+    {
+     width=<span style="color: #000000;">r.width;
+        height=<span style="color: #000000;">r.height;
+     p=<span style="color: #0000ff;">new <span style="color: #0000ff;">int(<span style="color: #800080;">100<span style="color: #000000;">);
+        *p=*<span style="color: #000000;">(r.p);
+    }
+     
+    ~<span style="color: #000000;">Rect()
+    {
+     assert(p!=<span style="color: #000000;">NULL);
+        delete p;
+    }
+<span style="color: #0000ff;">private<span style="color: #000000;">:
+    <span style="color: #0000ff;">int<span style="color: #000000;"> width;
+    <span style="color: #0000ff;">int<span style="color: #000000;"> height;
+    <span style="color: #0000ff;">int *<span style="color: #000000;">p;
+};
+<span style="color: #0000ff;">int<span style="color: #000000;"> main()
+{
+    Rect rect1;
+    Rect rect2(rect1);
+    <span style="color: #0000ff;">return <span style="color: #800080;">0<span style="color: #000000;">;
+}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<div id="codeText" class="codeText">&nbsp;</div>
+&nbsp;&nbsp;此时，在完成对象的复制后，内存的一个大致情况如下：<br>&nbsp; &nbsp;<img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/28977986_1383652169K2dL.jpg" alt="" width="556" height="294"><br>此时rect1的p和rect2的p各自指向一段内存空间，但它们指向的空间具有相同的内容，这就是所谓的“深拷贝”。<br>
+<p><strong>3. 防止默认拷贝发生</strong></p>
+<p>&nbsp;&nbsp;&nbsp; 通过对对象复制的分析，我们发现对象的复制大多在进行“值传递”时发生，这里有一个小技巧可以防止按值传递——<strong>声明一个私有拷贝构造函数</strong>。甚至不必去定义这个拷贝构造函数，这样因为拷贝构造函数是私有的，如果用户试图按值传递或函数返回该类对象，将得到一个编译错误，从而可以避免按值传递或返回对象。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre> 
+<span style="color: #008000;">//<span style="color: #008000;">防止按值传递
+<span style="color: #0000ff;">class<span style="color: #000000;"> CExample 
+{ 
+<span style="color: #0000ff;">private<span style="color: #000000;">: 
+    <span style="color: #0000ff;">int<span style="color: #000000;"> a; 
+  
+<span style="color: #0000ff;">public<span style="color: #000000;">: 
+    <span style="color: #008000;">//<span style="color: #008000;">构造函数
+    CExample(<span style="color: #0000ff;">int<span style="color: #000000;"> b) 
+    { 
+        a =<span style="color: #000000;"> b; 
+        cout&lt;&lt;<span style="color: #800000;">"<span style="color: #800000;">creat: <span style="color: #800000;">"&lt;&lt;a&lt;&lt;<span style="color: #000000;">endl; 
+    } 
+  
+<span style="color: #0000ff;">private<span style="color: #000000;">: 
+    <span style="color: #008000;">//<span style="color: #008000;">拷贝构造函数，只是声明
+    CExample(<span style="color: #0000ff;">const CExample&amp;<span style="color: #000000;"> C); 
+  
+<span style="color: #0000ff;">public<span style="color: #000000;">: 
+    ~<span style="color: #000000;">CExample() 
+    { 
+        cout&lt;&lt; <span style="color: #800000;">"<span style="color: #800000;">delete: <span style="color: #800000;">"&lt;&lt;a&lt;&lt;<span style="color: #000000;">endl; 
+    } 
+  
+    <span style="color: #0000ff;">void<span style="color: #000000;"> Show () 
+    { 
+        cout&lt;&lt;a&lt;&lt;<span style="color: #000000;">endl; 
+    } 
+}; 
+  
+<span style="color: #008000;">//<span style="color: #008000;">???? 
+<span style="color: #0000ff;">void<span style="color: #000000;"> g_Fun(CExample C) 
+{ 
+    cout&lt;&lt;<span style="color: #800000;">"<span style="color: #800000;">test<span style="color: #800000;">"&lt;&lt;<span style="color: #000000;">endl; 
+} 
+  
+<span style="color: #0000ff;">int<span style="color: #000000;"> main() 
+{ 
+    CExample test(<span style="color: #800080;">1<span style="color: #000000;">); 
+    <span style="color: #008000;">//<span style="color: #008000;">g_Fun(test);   <span style="color: #008000;">//<span style="color: #008000;">按值传递将出错
+      
+    <span style="color: #0000ff;">return <span style="color: #800080;">0<span style="color: #000000;">; 
+}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+小结：<br>&nbsp; &nbsp;&nbsp;拷贝有两种：深拷贝，浅拷贝。
+<p>&nbsp; &nbsp; &nbsp;&nbsp;当出现类的等号赋值时，会调用拷贝函数，在未定义显示拷贝构造函数的情况下，系统会调用默认的拷贝函数——即浅拷贝，它能够完成成员的一一复制。当数据成员中没有指针时，浅拷贝是可行的。但<strong>当数据成员中有指针时</strong>，如果采用简单的浅拷贝，则两类中的两个指针将指向同一个地址，当对象快结束时，会调用两次析构函数，而导致指针悬挂现象。所以，这时，必须采用深拷贝。</p>
+<p>&nbsp; &nbsp; &nbsp;深拷贝与浅拷贝的区别就在于深拷贝会在堆内存中另外申请空间来储存数据，从而也就解决了指针悬挂的问题。<strong>简而言之，当数据成员中有指针时，必须要用深拷贝</strong>。</p>
+
+
+
+
+
+<br>四、拷贝构造函数的几个细节<br>&nbsp; &nbsp;1.为什么拷贝构造函数必须是引用传递，不能是值传递？<br>&nbsp; &nbsp; &nbsp;简单的回答是为了防止递归引用。<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 具体一些可以这么讲：<br>&nbsp;
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;&nbsp;当&nbsp;一个对象需要以值方式传递时，编译器会生成代码调用它的拷贝构造函数以生成一个复本。如果类A的拷贝构造函数是以值方式传递一个类A对象作为参数的话，当&nbsp;需要调用类A的拷贝构造函数时，需要以值方式传进一个A的对象作为实参；&nbsp;而以值方式传递需要调用类A的拷贝构造函数；结果就是调用类A的拷贝构造函数导&nbsp;致又一次调用类A的拷贝构造函数，这就是一个无限递归。<br>&nbsp; &nbsp;&nbsp;<br><strong>&nbsp; &nbsp;2. 拷贝构造函数的作用。</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;作用就是用来复制对象的，在使用这个对象的实例来初始化这个对象的一个新的实例。<br><br><strong>&nbsp; &nbsp; &nbsp;3.参数传递过程到底发生了什么？<br></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将地址传递和值传递统一起来，归根结底还是传递的是"值"(地址也是值，只不过通过它可以找到另一个值)！<br>&nbsp; &nbsp; &nbsp;&nbsp;i)值传递:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;对于内置数据类型的传递时，直接赋值拷贝给形参(注意形参是函数内局部变量)；<br>&nbsp;
+ &nbsp; &nbsp; &nbsp; 
+&nbsp;对于类类型的传递时，需要首先调用该类的拷贝构造函数来初始化形参(局部对象)；如void&nbsp;foo(class_type&nbsp;obj_local){},&nbsp;如果调用foo(obj);&nbsp;&nbsp;首先class_type&nbsp;obj_local(obj)&nbsp;,这样就定义了局部变量obj_local供函数内部使用<br>&nbsp; &nbsp; &nbsp;ii)引用传递:<br>&nbsp; &nbsp; &nbsp; &nbsp; 无论对内置类型还是类类型，传递引用或指针最终都是传递的地址值！而地址总是指针类型(属于简单类型),&nbsp;显然参数传递时，按简单类型的赋值拷贝，而不会有拷贝构造函数的调用(对于类类型).<br><br><strong>&nbsp; &nbsp;4. 在类中有指针数据成员时，拷贝构造函数的使用？<br></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果不显式声明拷贝构造函数的时候，编译器也会生成一个默认的拷贝构造函数，而且在一般的情况下运行的也很好。但是在遇到类有指针数据成员时就出现问题&nbsp;了：因为默认的拷贝构造函数是按成员拷贝构造，这导致了两个不同的指针(如ptr1=ptr2)指向了相同的内存。当一个实例销毁时，调用析构函数&nbsp;free(ptr1)释放了这段内存，那么剩下的一个实例的指针ptr2就无效了，在被销毁的时候free(ptr2)就会出现错误了,&nbsp;这相当于重复释放一块内存两次。这种情况必须显式声明并实现自己的拷贝构造函数，来为新的实例的指针分配新的内存。<br><br>问题1和2回答了为什么拷贝构造函数使用值传递会产生无限递归调用的问题；<br>问题3回答了回答了在类中有指针数据成员时，拷贝构造函数使用值传递等于白显式定义了拷贝构造函数，因为默认的拷贝构造函数就是这么干的。<br>&nbsp;
+<p><strong>&nbsp;&nbsp;5. 拷贝构造函数里能调用private成员变量吗?<br>解答：</strong>这个问题是在网上见的，当时一下子有点晕。其时从名子我们就知道拷贝构造函数其时就是一个特殊的<strong>构造函数</strong>，操作的还是自己类的成员变量，所以不受private的限制。</p>
+<div><strong><strong><strong>&nbsp;6.&nbsp;以下函数哪个是拷贝构造函数,为什么?<br></strong></strong></strong>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;"> 
+X::X(<span style="color: #0000ff;">const X&amp;);   <span style="color: #008000;">//<span style="color: #008000;">拷贝构造函数
+<span style="color: #000000;">X::X(X); 
+X::X(X&amp;, <span style="color: #0000ff;">int a=<span style="color: #800080;">1);   <span style="color: #008000;">//<span style="color: #008000;">拷贝构造函数
+X::X(X&amp;, <span style="color: #0000ff;">int a=<span style="color: #800080;">1, <span style="color: #0000ff;">int b=<span style="color: #800080;">2);  <span style="color: #008000;">//<span style="color: #008000;">拷贝构造函数</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</div>
+<strong><strong>&nbsp; &nbsp;解答：</strong>对于一个类X, 如果一个构造函数的第一个参数是下列之一:<br>&nbsp; &nbsp;a) X&amp;<br>&nbsp; &nbsp;b) const X&amp;<br>&nbsp; &nbsp;c) volatile X&amp;<br>&nbsp; &nbsp;d) const volatile X&amp;<br>&nbsp; &nbsp;且没有其他参数或其他参数都有默认值,那么这个函数是拷贝构造函数.<br></strong><br><strong>&nbsp;&nbsp;7. 一个类中可以存在多于一个的拷贝构造函数吗?<br>&nbsp; &nbsp;解答：</strong>类中可以存在超过一个拷贝构造函数。</div>
+<div class="cnblogs_code">
+<pre>  
+<span style="color: #0000ff;">class<span style="color: #000000;"> X { 
+<span style="color: #0000ff;">public<span style="color: #000000;">: 
+  X(<span style="color: #0000ff;">const X&amp;); <span style="color: #008000;">//<span style="color: #008000;"> const 的拷贝构造 
+  X(X&amp;); <span style="color: #008000;">//<span style="color: #008000;"> 非const的拷贝构造 
+};</span></span></span></span></span></span></span></span></span></pre>
+</div>
+<div id="codeText" class="codeText">&nbsp;</div>
+&nbsp;&nbsp;注意,如果一个类中只存在一个参数为 X&amp; 的拷贝构造函数,那么就不能使用const X或volatile X的对象实行拷贝初始化.<br>&nbsp;&nbsp;如果一个类中没有定义拷贝构造函数,那么编译器会自动产生一个默认的拷贝构造函数。<br>&nbsp;&nbsp;这个默认的参数可能为&nbsp;X::X(const X&amp;)或&nbsp;X::X(X&amp;),由编译器根据上下文决定选择哪一个。<br><br>&nbsp; &nbsp; &nbsp;<br>五、C++构造函数以及析构函数的若干面试问题<br>&nbsp;<br>&nbsp;Q1：构造函数能否重载，析构函数能否重载，为什么？<br>&nbsp;A1：构造函数可以，析构函数不可以。
+<div>&nbsp;</div>
+<div>&nbsp;&nbsp;Q2：析构函数为什么一般情况下要声明为虚函数？</div>
+<div>&nbsp;&nbsp;A2：虚函数是实现多态的基础，当我们通过基类的指针是析构子类对象时候，如果不定义成虚函数，那只调用基类的析构函数，子类的析构函数将不会被调用。如 &nbsp; &nbsp; &nbsp; 果定义为虚函数，则子类父类的析构函数都会被调用。</div>
+<div>&nbsp;&nbsp;Q3：什么情况下必须定义拷贝构造函数？</div>
+<div>&nbsp;&nbsp;A3：当类的对象用于函数值传递时（值参数，返回类对象），拷贝构造函数会被调用。如果对象复制并非简单的值拷贝，那就必须定义拷贝构造函数。例如大的堆 &nbsp; &nbsp; &nbsp;&nbsp;栈数据拷贝。如果定义了拷贝构造函数，那也必须重载赋值操作符。</div>
+
+
+
+
+
+<br>参考博客：<br>&nbsp;<a href="http://blog.csdn.net/lwbeyond/article/details/6202256">http://blog.csdn.net/lwbeyond/article/details/6202256</a><br><a href="http://jaden.blog.51cto.com/1549175/324480">http://jaden.blog.51cto.com/1549175/324480<br></a><a href="http://blog.chinaunix.net/uid-28662931-id-3496322.html">http://blog.chinaunix.net/uid-28662931-id-3496322.html</a></div></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/alantu2018/category/1163286.html" target="_blank">C++</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(8459250,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;4a48d11c-d94e-4e90-4fad-08d54dba4453&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/alantu2018/" target="_blank"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/alantu2018/">AlanTu</a><br>
+            <a href="http://home.cnblogs.com/u/alantu2018/followees">关注 - 0</a><br>
+            <a href="http://home.cnblogs.com/u/alantu2018/followers">粉丝 - 44</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;4a48d11c-d94e-4e90-4fad-08d54dba4453&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(8459250,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">6</span>
+    </div>
+    <div class="buryit" onclick="votePost(8459250,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/alantu2018/p/8459183.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/alantu2018/p/8459183.html" title="发布于2018-02-22 15:59">C++构造函数</a><br><a href="https://www.cnblogs.com/alantu2018/p/8459284.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/alantu2018/p/8459284.html" title="发布于2018-02-22 16:24">ext2磁盘布局</a><br></div>
+</div>
+
+
+		</div>
+		<p class="postfoot">
+			posted on <span id="post-date">2018-02-22 16:14</span> <a href="https://www.cnblogs.com/alantu2018/">AlanTu</a> 阅读(<span id="post_view_count">32718</span>) 评论(<span id="post_comment_count">1</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=8459250" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/alantu2018/p/8459250.html#" onclick="AddToWz(8459250);return false;">收藏</a>
+		</p>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=411978,cb_entryId=8459250,cb_blogApp=currentBlogApp,cb_blogUserGuid='4a48d11c-d94e-4e90-4fad-08d54dba4453',cb_entryCreatedDate='2018/2/22 16:14:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=false;</script>
+	
+	</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a name="评论"></a>
+<div id="comments">
+<h3>评论</h3>
+	
+	
+			<div class="post">
+				<h2>
+					<a href="https://www.cnblogs.com/alantu2018/p/8459250.html#4197921" class="layer">#1楼</a><a name="4197921" id="comment_anchor_4197921"></a><span id="comment-maxId" style="display:none;">4197921</span><span id="comment-maxDate" style="display:none;">2019/3/9 23:42:44</span>
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</h2>
+				<div id="comment_body_4197921" class="blog_comment_body">函数的返回值是类的对象，这个时候，为什么我运行的结果没有调用赋值构造函数？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4197921,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(4197921,&#39;Bury&#39;,this)">反对(0)</a></div>
+				<div class="postfoot">
+					 <span class="comment_date">2019-03-09 23:42</span> | <a id="a_comment_author_4197921" href="http://home.cnblogs.com/u/1417093/" target="_blank">jarven_0728</a> <a href="http://msg.cnblogs.com/send/jarven_0728" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+				</div>
+			</div>
+		
+</div>
+<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/alantu2018/p/8459250.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/alantu2018/p/8459250.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-工控&#39;)">【推荐】超50万C++/C#源码: 大型实时仿真组态图形源码</a><br><a href="https://www.bagevent.com/event/2195041?bag_track=13072958" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-看雪&#39;)">【活动】看雪2019安全开发者峰会，共话安全领域焦点话题</a><br></div>
+<div id="opt_under_post"></div>
+<script async="async" src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/gpt.js.下载"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+  googletag.cmd.push(function() {
+        googletag.defineSlot('/1090369/C1', [300, 250], 'div-gpt-ad-1546353474406-0').addService(googletag.pubads());
+        googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c1" class="c_ad_block">
+    <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;" data-google-query-id="CMuR-r-TguICFVQOKgodeY4Lgg"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none; display: inline-block; width: 300px; height: 250px;"><iframe frameborder="0" src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/container.html" id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="300" height="250" data-is-safeframe="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe></div></div>
+</div>
+<div id="under_post_news" style="display: none;"></div>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="CPH7-L-TguICFVQOKgodeY4Lgg"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="2" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/saved_resource.html"></iframe></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/624750/" target="_blank">因中级证书过期 Firefox 扩展停止工作</a><br> ·  <a href="https://news.cnblogs.com/n/624749/" target="_blank">优步司机计划IPO前罢工抗议，希望收入能够得到保障</a><br> ·  <a href="https://news.cnblogs.com/n/624748/" target="_blank">谷歌I/O大会前瞻：Pixel手机、操作系统和数字助理</a><br> ·  <a href="https://news.cnblogs.com/n/624747/" target="_blank">载136人的波音737客机在美冲出跑道：掉入河中</a><br> ·  <a href="https://news.cnblogs.com/n/624746/" target="_blank">IDC：华为超过苹果成为全球第二大智能手机制造商</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+ if(enablePostBottom()) {
+    codeHighlight();
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverT2();
+    deliverC1();
+    deliverC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);  
+}
+</script>
+</div>
+
+    
+</div>
+</div>
+<div id="leftmenu">
+
+
+<h3>导航</h3>
+<ul>
+<li>
+<a id="blog_nav_sitehome" href="https://www.cnblogs.com/">博客园</a></li>
+<li>
+<a id="blog_nav_myhome" class="two_words" href="https://www.cnblogs.com/alantu2018/">首页</a></li>
+<li>
+<a id="blog_nav_newpost" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li>
+<a id="blog_nav_contact" accesskey="9" class="two_words" rel="nofollow" href="https://msg.cnblogs.com/send/AlanTu">联系</a></li>
+<li>
+<a id="blog_nav_rss" class="two_words" href="https://www.cnblogs.com/alantu2018/rss">订阅</a>
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/alantu2018/rss"><img src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/xml.gif" alt="订阅"></a>
+</li>
+<li>
+<a id="blog_nav_admin" class="two_words" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+
+<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/04/01&#39;);return false;">&lt;</a></td><td align="center">2019年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td class="CalTodayDay" align="center">4</td></tr><tr><td class="CalWeekendDay" align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td class="CalWeekendDay" align="center">11</td></tr><tr><td class="CalWeekendDay" align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td class="CalWeekendDay" align="center">18</td></tr><tr><td class="CalWeekendDay" align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td class="CalWeekendDay" align="center">25</td></tr><tr><td class="CalWeekendDay" align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td></tr><tr><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+<meta name="vs_showGrid" content="False">
+
+<h3>公告</h3>
+<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/alantu2018/">AlanTu</a><br>园龄：<a href="https://home.cnblogs.com/u/alantu2018/" title="入园时间：2018-02-12">1年2个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/alantu2018/followers/">44</a><br>关注：<a href="https://home.cnblogs.com/u/alantu2018/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;4a48d11c-d94e-4e90-4fad-08d54dba4453&#39;)">+加关注</a></div><script>getFollowStatus('4a48d11c-d94e-4e90-4fad-08d54dba4453')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+
+<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/alantu2018/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/alantu2018/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/alantu2018/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/alantu2018/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/alantu2018/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+		<h3>随笔分类</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/alantu2018/category/1163286.html">C++(128)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/alantu2018/category/1163767.html">Linux定时测量(14)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="https://www.cnblogs.com/alantu2018/category/1163660.html">Linux进程管理(29)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="https://www.cnblogs.com/alantu2018/category/1163287.html">Linux内存管理(29)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_4" href="https://www.cnblogs.com/alantu2018/category/1163737.html">Linux内核(102)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_5" href="https://www.cnblogs.com/alantu2018/category/1163934.html">linux设备驱动(7)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_6" href="https://www.cnblogs.com/alantu2018/category/1163750.html">Linux同步(19)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_7" href="https://www.cnblogs.com/alantu2018/category/1163730.html">Linux文件系统(27)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_8" href="https://www.cnblogs.com/alantu2018/category/1163732.html">Linux中断异常(16)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_9" href="https://www.cnblogs.com/alantu2018/category/1163303.html">TCP/IP协议族(5)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_10" href="https://www.cnblogs.com/alantu2018/category/1163304.html">编译原理(12)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_11" href="https://www.cnblogs.com/alantu2018/category/1163661.html">电影观后感(2)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_12" href="https://www.cnblogs.com/alantu2018/category/1163306.html">个人总结(147)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_13" href="https://www.cnblogs.com/alantu2018/category/1163290.html">进程间通信(26)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_14" href="https://www.cnblogs.com/alantu2018/category/1163285.html">面试(56)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_15" href="https://www.cnblogs.com/alantu2018/category/1163288.html">设计模式(12)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_16" href="https://www.cnblogs.com/alantu2018/category/1168093.html">数学基础(7)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_17" href="https://www.cnblogs.com/alantu2018/category/1163289.html">算法与数据结构(129)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_18" href="https://www.cnblogs.com/alantu2018/category/1165592.html">网络编程(86)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_19" href="https://www.cnblogs.com/alantu2018/category/1171439.html">整理(22)</a></li>
+			
+				<li><a id="CatList_LinkList_0_Link_20" href="https://www.cnblogs.com/alantu2018/category/1173889.html">知识点梳理(81)</a></li>
+			
+				</ul>
+			
+	
+		<h3>随笔档案</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_1_Link_0" href="https://www.cnblogs.com/alantu2018/archive/2018/07.html">2018年7月 (1)</a></li>
+			
+				<li><a id="CatList_LinkList_1_Link_1" href="https://www.cnblogs.com/alantu2018/archive/2018/06.html">2018年6月 (12)</a></li>
+			
+				<li><a id="CatList_LinkList_1_Link_2" href="https://www.cnblogs.com/alantu2018/archive/2018/05.html">2018年5月 (36)</a></li>
+			
+				<li><a id="CatList_LinkList_1_Link_3" href="https://www.cnblogs.com/alantu2018/archive/2018/04.html">2018年4月 (6)</a></li>
+			
+				<li><a id="CatList_LinkList_1_Link_4" href="https://www.cnblogs.com/alantu2018/archive/2018/03.html">2018年3月 (339)</a></li>
+			
+				<li><a id="CatList_LinkList_1_Link_5" href="https://www.cnblogs.com/alantu2018/archive/2018/02.html">2018年2月 (559)</a></li>
+			
+				</ul>
+			
+	
+		<h3>文章分类</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_2_Link_0" href="https://www.cnblogs.com/alantu2018/category/1163556.html">程序员面试</a></li>
+			
+				</ul>
+			
+	
+		<h3>高质量博客链接</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_3_Link_0" href="http://edsionte.com/techblog/archives/category/linuxc%e8%af%ad%e8%a8%80/page/3"> edsionte's TechBlog</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_1" href="http://blog.csdn.net/tommy_wxie/article/category/1060154/8"> wxie的Linux人生</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_2" href="http://blog.csdn.net/gatieme" rel="nofollow">AderStep博客</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_3" href="https://cse.google.com/cse/home?cx=006422944775554126616:gbrsbrjbfug" rel="nofollow">google资源</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_4" href="https://blog.csdn.net/gatieme" rel="nofollow">linux学习笔记</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_5" href="https://www.kernelnewbies.org/" rel="nofollow">Linux源码</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_6" href="http://blog.csdn.net/jnu_simba" rel="nofollow">Meditation博客园</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_7" href="https://www.cnblogs.com/skywang12345/p/3624177.html" rel="nofollow">skywang</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_8" href="http://www.yinwang.org/" rel="nofollow">wangyin</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_9" href="https://henix.github.io/feeds/yinwang/" rel="nofollow">wangyin链接</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_10" href="https://www.cnblogs.com/yymn/category/683113.html">菜鸡一枚</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_11" href="https://www.jiumodiary.com/" rel="nofollow">鸠摩网</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_12" href="https://coolshell.cn/articles/11609.html" rel="nofollow">酷壳链接</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_13" href="http://mindhacks.cn/" rel="nofollow">刘未鹏</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_14" href="http://www.ruanyifeng.com/blog/computer/" rel="nofollow">阮一峰的网络日志</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_15" href="https://soulmachine.gitbooks.io/algorithm-essentials/content/cpp/" rel="nofollow">算法珠玑——一个最精简的题库</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_16" href="http://www.ituring.com.cn/" rel="nofollow">图灵社区</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_17" href="http://www.wowotech.net/" rel="nofollow">蜗窝科技</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_18" href="https://blog.csdn.net/sailor_8318/article/category/323453/4?">杨帆</a></li>
+			
+				<li><a id="CatList_LinkList_3_Link_19" href="https://blog.codingnow.com/" rel="nofollow">云风</a></li>
+			
+				</ul>
+			
+	</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/alantu2018/p/8528299.html#4233233">1. Re:理解矩阵乘法</a></li>
+        <li class="recent_comment_body">优秀</li>
+        <li class="recent_comment_author">--Happy_lei</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/alantu2018/p/8471813.html#4210949">2. Re:AOV网与拓扑排序</a></li>
+        <li class="recent_comment_body">写得非常清晰易懂！赞一个~</li>
+        <li class="recent_comment_author">--坚持的彼岸是星辰大海</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/alantu2018/p/8459250.html#4197921">3. Re:c++拷贝构造函数详解</a></li>
+        <li class="recent_comment_body">函数的返回值是类的对象，这个时候，为什么我运行的结果没有调用赋值构造函数？</li>
+        <li class="recent_comment_author">--jarven_0728</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/alantu2018/p/8447524.html#4161848">4. Re:linux内存碎片防治技术</a></li>
+        <li class="recent_comment_body">你好，请教一个问题就是fallbacks这个数组的构建，这里定义的是一个5*4的数组，但是只初始化了部分元素，没有初始化的元素变成了0，而0刚好对应的是UNMOVABLE，也就是说所有的迁移类型最后都......</li>
+        <li class="recent_comment_author">--DoOrDie</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/alantu2018/p/9000777.html#4157628">5. Re:TLB的作用及工作原理</a></li>
+        <li class="recent_comment_body">厉害了</li>
+        <li class="recent_comment_author">--Edwin_Xu</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/alantu2018/p/8504362.html#4149243">6. Re:编程能力与编程年龄</a></li>
+        <li class="recent_comment_body">赞成博主想法的年轻人前来报道</li>
+        <li class="recent_comment_author">--不放糖的咖啡</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/alantu2018/p/8461749.html#4114543">7. Re:Linux文件系统详解</a></li>
+        <li class="recent_comment_body">很好，谢谢您</li>
+        <li class="recent_comment_author">--Paulkg12</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/alantu2018/p/8528269.html#4081852">8. Re:区块链入门教程</a></li>
+        <li class="recent_comment_body">区块链项目实战视频课程（Java版）网盘地址： 提取码: h634备用地址（腾讯微云）： 密码：3rgeye本课程是基于java语言的区块链实战教程。目的是让更多的java编程者了解区块链，掌握区块链......</li>
+        <li class="recent_comment_author">--开心也是一天</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/alantu2018/p/8547520.html#3927613">9. Re:【转】C# 的 IDisposable 接口</a></li>
+        <li class="recent_comment_body">原文是？</li>
+        <li class="recent_comment_author">--JervisCui</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/alantu2018/p/8459250.html">1. c++拷贝构造函数详解(32711)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8461749.html">2. Linux文件系统详解(30478)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8528299.html">3. 理解矩阵乘法(19726)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8465894.html">4. C语言二维数组作为函数的参数(19529)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8504373.html">5. 二维码的生成细节和原理(17584)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8462574.html">6. Linux查看端口使用状态、关闭端口方法(13374)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/9000777.html">7. TLB的作用及工作原理(9495)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8459369.html">8. 如何恢复 Linux删除的文件(6876)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8462110.html">9. 动态规划 - 最优二叉搜索树(5943)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8459379.html">10. 浅谈Linux的内存管理机制(5414)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8461272.html">11. Ext4文件系统架构分析(一)(5395)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8469168.html">12. 并发无锁队列(4749)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8461068.html">13. 三十道linux内核面试题(4235)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8503411.html">14. C语言结构体里的成员数组和指针(3534)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8461074.html">15. Linux驱动面试题总结(3105)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8460761.html">16. 关于结构体占用空间大小总结(2922)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8547502.html">17. 【转】对 Rust 语言的分析(2892)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8447396.html">18. Linux引导启动程序 - boot(2850)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8460958.html">19. 二叉树中常见的面试题(2792)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8471612.html">20. 二叉树 - 定义和性质以及特殊二叉树(2762)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8471888.html">21. 散列表(三)冲突处理的方法之开地址法: 线性探测再散列的实现(2716)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8506381.html">22. mmap映射文件至内存( 实现 共享内存 与 文件的另类访问 )(2566)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8526916.html">23. 普通线程和内核线程(2542)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8526970.html">24. linux的0号进程和1号进程(2534)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/9209143.html">25. Linux系统下x86和ARM的区别有哪些？(2358)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8460838.html">26. Windows内存管理和linux内存管理(2207)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8994590.html">27. Linux驱动面试题(2172)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8471726.html">28. 图 - 广度优先遍历(2157)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8468687.html">29. Linux获取进程执行时间(2127)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8527077.html">30. 缺页异常处理(2121)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8457420.html">31. KASAN实现原理(2113)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8547569.html">32. 【转】带猫回国经历(1991)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8462500.html">33. 地址已经被使用 - Address already in use(1980)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8460804.html">34. malloc的内存分配原理(1962)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8471542.html">35. 静态链表(1937)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8461680.html">36. linux文件系统管理的工作原理(1931)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8997173.html">37. 调试器工作原理(1896)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8465919.html">38. __attribute__中constructor和destructor(1858)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8471060.html">39. 完善String类（[]、 +、 += 运算符重载）、&gt;&gt;和&lt;&lt;运算符重载(1816)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8997149.html">40. Linux内核调试方法总结(1720)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="https://www.cnblogs.com/alantu2018/p/8447524.html">1. linux内存碎片防治技术(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8459250.html">2. c++拷贝构造函数详解(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8461749.html">3. Linux文件系统详解(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8471813.html">4. AOV网与拓扑排序(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/9000777.html">5. TLB的作用及工作原理(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8547520.html">6. 【转】C# 的 IDisposable 接口(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8528299.html">7. 理解矩阵乘法(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8528269.html">8. 区块链入门教程(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8504362.html">9. 编程能力与编程年龄(1)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="https://www.cnblogs.com/alantu2018/p/8459250.html">1. c++拷贝构造函数详解(6)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8528299.html">2. 理解矩阵乘法(5)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/9000777.html">3. TLB的作用及工作原理(2)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8504373.html">4. 二维码的生成细节和原理(2)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8465894.html">5. C语言二维数组作为函数的参数(2)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8464339.html">6. P问题、NP问题和NPC问题(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8461749.html">7. Linux文件系统详解(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8461598.html">8. Ext4文件系统架构分析(三)(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8461587.html">9. Ext4文件系统架构分析(二)(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8478669.html">10. 理解矩阵(一)(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8471813.html">11. AOV网与拓扑排序(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8471542.html">12. 静态链表(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8469168.html">13. 并发无锁队列(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/9224001.html">14. kalman滤波(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8447576.html">15. Linux内存初始化(一)(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8991113.html">16. linux内核剖析（零）linux系统启动过程详解-开机加电后发生了什么(1)</a></li><li><a href="https://www.cnblogs.com/alantu2018/p/8526916.html">17. 普通线程和内核线程(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+
+</div>
+</div>
+<div class="clear"></div>
+<div id="footer">
+
+<p id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="https://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br>
+	Copyright © AlanTu
+</p>
+</div>
+</div>
+
+
+
+
+<iframe id="google_osd_static_frame_8656262757995" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./c++拷贝构造函数详解 - AlanTu - 博客园_files/saved_resource(1).html"></iframe></body></html>

@@ -1,0 +1,200 @@
+#div_digg {
+   float:right;
+   font-size:12px;
+   margin-bottom:10px;
+   margin-right:30px;
+   margin-top:10px;
+   text-align:center;
+   width:120px;
+   position: fixed; right: 0px; 
+   bottom: 0px; z-index: 10; 
+   background-color: white; 
+   margin: 10px; padding: 10px; 
+   border: 1px solid rgb(204, 204, 204);
+}
+
+#post_detail a{
+    text-decoration: none;
+}
+
+.vote{
+   float:right;
+   font-size:12px;
+   margin-bottom:10px;
+   margin-right:30px;
+   margin-top:10px;
+   text-align:center;
+   width:120px;
+   position: fixed; right: 0px; 
+   bottom: 0px; z-index: 10;
+   background-color: white; 
+   margin: 10px; padding: 10px; 
+   border: 1px solid green;
+}
+
+#MySignature #psDiv{
+   width:100%;
+   margin:30px 0px 8px 0px;
+   font-size:15px;
+   color : red;
+}
+
+#MySignature #psDiv span{
+   font-weight:bolder;
+}
+
+#MySignature #psDiv span[class="tjSpan"]{
+   cursor:pointer;
+}
+ 
+#MySignature #bqDiv{　　 
+   margin-top: 10px;
+  border:2px solid orange;
+  float:left;
+}
+
+#MySignature .share_text{
+  display: block;
+  font-weight:bloder;
+  float: left;
+  line-height: 16px !important;
+  margin: 0 5px 0px 0px;
+  color: #3297FB;
+  font-size:14px;
+}
+
+#mainContent .postBody h1 {
+    border-top-left-radius:8px;
+    border-top-right-radius:8px;
+    background-color: #808080;
+    color: white;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 15px 0px 15px 0;
+    padding: 8px;
+    box-shadow:0 0 0 1px #808080, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+    text-shadow:2px 2px 3px #222222;
+}
+
+#mainContent .postBody h2 {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: rgb(69, 182, 247);
+    color: white;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: rgb(34, 34, 34) 2px 2px 3px;
+    margin: 15px 0px;
+    padding: 10px 5px;
+}
+
+#mainContent .postBody h3 {
+    color: rgb(69, 182, 247);
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 20px;
+    border-radius: 6px;
+    padding: 0px 10px;
+    border-bottom: 1px solid rgb(69, 182, 247);
+    margin: 15px !important;
+}
+
+#sideBarMain .catListTitle{
+  background-color:#45B6F7;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.8e;
+  margin: 16px 0px 0px 0px;
+  padding: 6px;
+  text-align: left;
+  font-family: Verdana,Arial,Helvetica,sans-serif;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+}
+
+.menu{
+   font-size: 14px;
+   font-weight: bold;
+}
+
+.headermaintitle{
+   font-weight: bold;
+}
+
+.subtitle{
+   font-weight: bold;
+}
+
+blockquote{
+    padding: 15px 1rem;
+    font-size: 14px;
+    line-height: 18px;
+    padding-right: 15px;
+    margin-left: 0;
+    color: #45B6F7;
+    border-left: 6px solid #45B6F7;
+    background: #f2f7fb;
+}
+
+blockquote p {
+    color: #f79646;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    margin: 10px 0;
+    padding: 0;
+}
+
+blockquote p {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0px;
+}
+
+#blog-news{
+  border: 1px solid #dedede;
+  padding: 0px;
+  background-color: #ffffff;
+}
+
+#blog-news hr{
+  color : #DDDDDD;
+}
+
+#cnblogs_post_body hr{
+ height:3px;border:none;border-top:3px double orange;
+}
+
+#cnblogs_post_body p a{
+ color : orange;
+}
+
+#sideBar ul {
+    word-break: break-all;
+    list-style: none;
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#profile_block {
+    border:0px !important;
+}
+
+#profile_block:hover {
+    border:0px !important;
+}
+
+.cnblogs-markdown code, .cnblogs-post-body code{
+    padding: 2px 4px  !important;
+    font-size: 90%  !important;
+    color: #c7254e  !important;
+    background-color: #f9f2f4  !important;
+    border-radius: 4px  !important;
+    border: 0px !important;
+}

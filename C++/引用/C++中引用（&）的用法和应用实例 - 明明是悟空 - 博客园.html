@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://www.cnblogs.com/x_wukong/p/5653253.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+    <title>C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园</title>
+<meta property="og:description" content="转自：http://www.cnblogs.com/Mr-xu/archive/2012/08/07/2626973.html 对于习惯使用C进行开发的朋友们，在看到c++中出现的&amp;符号，可能">
+    <link type="text/css" rel="stylesheet" href="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/bundle-CodingLife.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/bundle-CodingLife-mobile.css">
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/x_wukong/rss">
+    <link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/x_wukong/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/x_wukong/wlwmanifest.xml">
+    <script src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/osd.js.下载"></script><script src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/pubads_impl_rendering_2019043001.js.下载"></script><script async="" src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/analytics.js.下载"></script><script src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+    <script>var currentBlogId=128278;var currentBlogApp='x_wukong',cb_enable_mathjax=false;var isLogined=false;</script>
+    <script src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/blog-common.js.下载" type="text/javascript"></script>
+<link rel="preload" href="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/f(4).txt" as="script"><script type="text/javascript" src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/f(4).txt"></script><script src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/pubads_impl_2019043001.js.下载" async=""></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-33/html/container.html"></head>
+<body>
+<a name="top"></a>
+
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="https://www.cnblogs.com/x_wukong/"><img id="blogLogo" src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/x_wukong/">明明是悟空</a></h1>
+<h2>术到极致，几近于道！</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/x_wukong/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E6%98%8E%E6%98%8E%E6%98%AF%E6%82%9F%E7%A9%BA">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/x_wukong/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="https://www.cnblogs.com/x_wukong/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 691&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 42</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+        <div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/x_wukong/p/5653253.html">C++中引用（&amp;）的用法和应用实例</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>转自：http://www.cnblogs.com/Mr-xu/archive/2012/08/07/2626973.html</p>
+<p>&nbsp;</p>
+<p>对于习惯使用C进行开发的朋友们，在看到c++中出现的&amp;符号，可能会犯迷糊，因为在C语言中这个符号表示了取地址符，但是在C++中它却有着不同的用途，掌握C++的&amp;符号，是提高代码执行效率和增强代码质量的一个很好的办法。在&nbsp;<a href="http://blog.sina.com.cn/s/blog_4a1f59bf0100ldqb.html" target="_blank">c++学习提高篇(3)---隐式指针的文章中我详细介绍了在隐式指针&amp;的用法，其实这两个概念是统一的。<br></a></p>
+<p>引用是C++引入的新语言特性，是C++常用的一个重要内容之一，正确、灵活地使用引用，可以使程序简洁、高效。我在工作中发现，许多人使用它仅仅 是想当然，在某些微妙的场合，很容易出错，究其原由，大多因为没有搞清本源。故在本篇中我将对引用进行详细讨论，希望对大家更好地理解和使用引用起到抛砖 引玉的作用。</p>
+<p>　　<strong>一、引用简介</strong></p>
+<p>　　引用就是某一变量（目标）的一个别名，对引用的操作与对变量直接操作完全一样。</p>
+<p>　　引用的声明方法：类型标识符 &amp;引用名=目标变量名；</p>
+<p>　　【例1】：int a; int &amp;ra=a; //定义引用ra,它是变量a的引用，即别名</p>
+<p>　　说明：</p>
+<p>　　（1）&amp;在此不是求地址运算，而是起标识作用。</p>
+<p>　　（2）类型标识符是指目标变量的类型。</p>
+<p>　　（3）声明引用时，必须同时对其进行初始化。</p>
+<p>　　（4）引用声明完毕后，相当于目标变量名有两个名称，即该目标原名称和引用名，且不能再把该引用名作为其他变量名的别名。</p>
+<p>　　 ra=1; 等价于 a=1;</p>
+<p>　　（5）声明一个引用，不是新定义了一个变量，它只表示该引用名是目标变量名的一个别名，它本身不是一种数据类型，因此引用本身不占存储单元，系统也不给引用分配存储单元。故：对引用求地址，就是对目标变量求地址。&amp;ra与&amp;a相等。</p>
+<p>　　（6）不能建立数组的引用。因为数组是一个由若干个元素所组成的集合，所以无法建立一个数组的别名。</p>
+<p>　　<strong>二、引用应用</strong></p>
+<p>　　1、引用作为参数</p>
+<p>　　引用的一个重要作用就是作为函数的参数。以前的C语言中函数参数传递是值传递，如果有大块数据作为参数传递的时候，采用的方案往往是指针，因为 这样可以避免将整块数据全部压栈，可以提高程序的效率。但是现在（C++中）又增加了一种同样有效率的选择（在某些特殊情况下又是必须的选择），就是引 用。</p>
+<p>　　【例2】：</p>
+<p>void swap(int &amp;p1, int &amp;p2) //此处函数的形参p1, p2都是引用<br>{ int p; p=p1; p1=p2; p2=p; }</p>
+<p>　　为在程序中调用该函数，则相应的主调函数的调用点处，直接以变量作为实参进行调用即可，而不需要实参变量有任何的特殊要求。如：对应上面定义的swap函数，相应的主调函数可写为：</p>
+<p>main( )<br>{<br>　int a,b;<br>　cin&gt;&gt;a&gt;&gt;b; //输入a,b两变量的值<br>　swap(a,b); //直接以变量a和b作为实参调用swap函数<br>　cout&lt;&lt;a&lt;&lt; ' ' &lt;&lt;b; //输出结果<br>}</p>
+<p>　　上述程序运行时，如果输入数据10 20并回车后，则输出结果为20 10。</p>
+<p>　　由【例2】可看出：</p>
+<p>　　（1）传递引用给函数与传递指针的效果是一样的。这时，被调函数的形参就成为原来主调函数中的实参变量或对象的一个别名来使用，所以在被调函数中对形参变量的操作就是对其相应的目标对象（在主调函数中）的操作。</p>
+<p>　　（2）使用引用传递函数的参数，在内存中并没有产生实参的副本，它是直接对实参操作；而使用一般变量传递函数的参数，当发生函数调用时，需要给 形参分配存储单元，形参变量是实参变量的副本；如果传递的是对象，还将调用拷贝构造函数。因此，当参数传递的数据较大时，用引用比用一般变量传递参数的效 率和所占空间都好。</p>
+<p>　　（3）使用指针作为函数的参数虽然也能达到与使用引用的效果，但是，在被调函数中同样要给形参分配存储单元，且需要重复使用"*指针变量名"的 形式进行运算，这很容易产生错误且程序的阅读性较差；另一方面，在主调函数的调用点处，必须用变量的地址作为实参。而引用更容易使用，更清晰。</p>
+<p>　　如果既要利用引用提高程序的效率，又要保护传递给函数的数据不在函数中被改变，就应使用常引用。</p>
+<p>　　2、常引用</p>
+<p>　　常引用声明方式：const 类型标识符 &amp;引用名=目标变量名；</p>
+<p>　　用这种方式声明的引用，不能通过引用对目标变量的值进行修改,从而使引用的目标成为const，达到了引用的安全性。</p>
+<p>　　【例3】：</p>
+<p>int a ;<br>const int &amp;ra=a;<br>ra=1; //错误<br>a=1; //正确</p>
+<p>　　这不光是让代码更健壮，也有些其它方面的需要。</p>
+<p>　　【例4】：假设有如下函数声明：</p>
+<p>string foo( );<br>void bar(string &amp; s);</p>
+<p>　　那么下面的表达式将是非法的：</p>
+<p>bar(foo( ));<br>bar("hello world");</p>
+<p>　　原因在于foo( )和"hello world"串都会产生一个临时对象，而在C++中，这些临时对象都是const类型的。因此上面的表达式就是试图将一个const类型的对象转换为非const类型，这是非法的。</p>
+<p>　　引用型参数应该在能被定义为const的情况下，尽量定义为const 。</p>
+<p><br>　　3、引用作为返回值</p>
+<p>　　要以引用返回函数值，则函数定义时要按以下格式：</p>
+<p>类型标识符 &amp;函数名（形参列表及类型说明）<br>{函数体}</p>
+<p>　　说明：</p>
+<p>　　（1）以引用返回函数值，定义函数时需要在函数名前加&amp;</p>
+<p>　　（2）用引用返回一个函数值的最大好处是，在内存中不产生被返回值的副本。</p>
+<p>　　【例5】以下程序中定义了一个普通的函数fn1（它用返回值的方法返回函数值），另外一个函数fn2，它以引用的方法返回函数值。</p>
+<p>#include &lt;iostream.h&gt;<br>float temp; //定义全局变量temp<br>float fn1(float r); //声明函数fn1<br>float &amp;fn2(float r); //声明函数fn2<br>float fn1(float r) //定义函数fn1，它以返回值的方法返回函数值<br>{<br>　temp=(float)(r*r*3.14);<br>　return temp;<br>}<br>float &amp;fn2(float r) //定义函数fn2，它以引用方式返回函数值<br>{<br>　temp=(float)(r*r*3.14);<br>　return temp;<br>}<br>void main() //主函数<br>{<br>　float a=fn1(10.0); //第1种情况，系统生成要返回值的副本（即临时变量）<br>　float &amp;b=fn1(10.0); //第2种情况，可能会出错（不同 C++系统有不同规定）<br>　//不能从被调函数中返回一个临时变量或局部变量的引用<br>　float c=fn2(10.0); //第3种情况，系统不生成返回值的副本<br>　//可以从被调函数中返回一个全局变量的引用<br>　float &amp;d=fn2(10.0); //第4种情况，系统不生成返回值的副本<br>　//可以从被调函数中返回一个全局变量的引用<br>　cout&lt;&lt;a&lt;&lt;c&lt;&lt;d;<br>}</p>
+<p>　　引用作为返回值，必须遵守以下规则：</p>
+<p>　　（1）不能返回局部变量的引用。这条可以参照Effective C++[1]的Item 31。主要原因是局部变量会在函数返回后被销毁，因此被返回的引用就成为了"无所指"的引用，程序会进入未知状态。</p>
+<p>　　（2）不能返回函数内部new分配的内存的引用。这条可以参照Effective C++[1]的Item 31。虽然不存在局部变量的被动销毁问题，可对于这种情况（返回函数内部new分配内存的引用），又面临其它尴尬局面。例如，被函数返回的引用只是作为一 个临时变量出现，而没有被赋予一个实际的变量，那么这个引用所指向的空间（由new分配）就无法释放，造成memory leak。</p>
+<p>　　（3）可以返回类成员的引用，但最好是const。这条原则可以参照Effective C++[1]的Item 30。主要原因是当对象的属性是与某种业务规则（business rule）相关联的时候，其赋值常常与某些其它属性或者对象的状态有关，因此有必要将赋值操作封装在一个业务规则当中。如果其它对象可以获得该属性的非常 量引用（或指针），那么对该属性的单纯赋值就会破坏业务规则的完整性。</p>
+<p>　　（4）引用与一些操作符的重载：</p>
+<p>　　流操作符&lt;&lt;和&gt;&gt;，这两个操作符常常希望被连续使用，例如：cout &lt;&lt; "hello" &lt;&lt; endl;　因此这两个操作符的返回值应该是一个仍然支持这两个操作符的流引用。可选的其它方案包括：返回一个流对象和返回一个流对象指针。但是对于返回 一个流对象，程序必须重新（拷贝）构造一个新的流对象，也就是说，连续的两个&lt;&lt;操作符实际上是针对不同对象的！这无法让人接受。对于返回一 个流指针则不能连续使用&lt;&lt;操作符。因此，返回一个流对象引用是惟一选择。这个唯一选择很关键，它说明了引用的重要性以及无可替代性，也许这 就是C++语言中引入引用这个概念的原因吧。 赋值操作符=。这个操作符象流操作符一样，是可以连续使用的，例如：x = j = 10;或者(x=10)=100;赋值操作符的返回值必须是一个左值，以便可以被继续赋值。因此引用成了这个操作符的惟一返回值选择。</p>
+<p>　　【例6】 测试用返回引用的函数值作为赋值表达式的左值。</p>
+<p>#include &lt;iostream.h&gt;<br>int &amp;put(int n);<br>int vals[10];<br>int error=-1;<br>void main()<br>{<br>put(0)=10; //以put(0)函数值作为左值，等价于vals[0]=10;<br>put(9)=20; //以put(9)函数值作为左值，等价于vals[9]=20;<br>cout&lt;&lt;vals[0];<br>cout&lt;&lt;vals[9];<br>}<br>int &amp;put(int n)<br>{<br>if (n&gt;=0 &amp;&amp; n&lt;=9 ) return vals[n];<br>else { cout&lt;&lt;"subscript error"; return error; }<br>}</p>
+<p>　　（5）在另外的一些操作符中，却千万不能返回引用：+-*/ 四则运算符。它们不能返回引用，Effective C++[1]的Item23详细的讨论了这个问题。主要原因是这四个操作符没有side effect，因此，它们必须构造一个对象作为返回值，可选的方案包括：返回一个对象、返回一个局部变量的引用，返回一个new分配的对象的引用、返回一 个静态对象引用。根据前面提到的引用作为返回值的三个规则，第2、3两个方案都被否决了。静态对象的引用又因为((a+b) == (c+d))会永远为true而导致错误。所以可选的只剩下返回一个对象了。</p>
+<p>　　4、引用和多态</p>
+<p>　　引用是除指针外另一个可以产生多态效果的手段。这意味着，一个基类的引用可以指向它的派生类实例。</p>
+<p>　　【例7】：</p>
+<p>class 　A;<br>class 　B：public A{……};<br>B 　b;<br>A 　&amp;Ref = b; // 用派生类对象初始化基类对象的引用</p>
+<p>　　Ref 只能用来访问派生类对象中从基类继承下来的成员，是基类引用指向派生类。如果A类中定义有虚函数，并且在B类中重写了这个虚函数，就可以通过Ref产生多态效果。</p>
+<p>　　<strong>三、引用总结</strong></p>
+<p>　　（1）在引用的使用中，单纯给某个变量取个别名是毫无意义的，引用的目的主要用于在函数参数传递中，解决大块数据或对象的传递效率和空间不如意的问题。</p>
+<p>　　（2）用引用传递函数的参数，能保证参数传递中不产生副本，提高传递的效率，且通过const的使用，保证了引用传递的安全性。</p>
+<p>　　（3）引用与指针的区别是，指针通过某个指针变量指向一个对象后，对它所指向的变量间接操作。程序中使用指针，程序的可读性差；而引用本身就是目标变量的别名，对引用的操作就是对目标变量的操作。</p>
+<p>　　（4）使用引用的时机。流操作符&lt;&lt;和&gt;&gt;、赋值操作符=的返回值、拷贝构造函数的参数、赋值操作符=的参数、其它情况都推荐使用引用。</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="https://www.cnblogs.com/x_wukong/tag/c%2Fc%2B%2B/">c/c++</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(5653253,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;6600e358-9c8f-e111-aa3f-842b2b196315&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/x_wukong/" target="_blank"><img src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/20130827155958.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/x_wukong/">明明是悟空</a><br>
+            <a href="http://home.cnblogs.com/u/x_wukong/followees">关注 - 4</a><br>
+            <a href="http://home.cnblogs.com/u/x_wukong/followers">粉丝 - 128</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;6600e358-9c8f-e111-aa3f-842b2b196315&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(5653253,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(5653253,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/x_wukong/p/5652540.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/x_wukong/p/5652540.html" title="发布于2016-07-08 10:31">C++ list的基本操作和使用</a><br><a href="https://www.cnblogs.com/x_wukong/p/5664835.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/x_wukong/p/5664835.html" title="发布于2016-07-12 20:53">单链表带头结点&amp;不带头结点</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2016-07-08 14:21</span> <a href="https://www.cnblogs.com/x_wukong/">明明是悟空</a> 阅读(<span id="post_view_count">33288</span>) 评论(<span id="post_comment_count">2</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5653253" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/x_wukong/p/5653253.html#" onclick="AddToWz(5653253);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=128278,cb_entryId=5653253,cb_blogApp=currentBlogApp,cb_blogUserGuid='6600e358-9c8f-e111-aa3f-842b2b196315',cb_entryCreatedDate='2016/7/8 14:21:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=false;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="https://www.cnblogs.com/x_wukong/p/5653253.html#4203650" class="layer">#1楼</a><a name="4203650" id="comment_anchor_4203650"></a>  <span class="comment_date">2019-03-15 17:19</span> <a id="a_comment_author_4203650" href="https://www.cnblogs.com/brucedota/" target="_blank">天之骄子'</a> <a href="http://msg.cnblogs.com/send/%E5%A4%A9%E4%B9%8B%E9%AA%84%E5%AD%90%27" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_4203650" class="blog_comment_body">不错，比较详细。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4203650,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(4203650,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="https://www.cnblogs.com/x_wukong/p/5653253.html#4203654" class="layer">#2楼</a><a name="4203654" id="comment_anchor_4203654"></a><span id="comment-maxId" style="display:none;">4203654</span><span id="comment-maxDate" style="display:none;">2019/3/15 17:22:10</span>  <span class="comment_date">2019-03-15 17:22</span> <a id="a_comment_author_4203654" href="https://www.cnblogs.com/brucedota/" target="_blank">天之骄子'</a> <a href="http://msg.cnblogs.com/send/%E5%A4%A9%E4%B9%8B%E9%AA%84%E5%AD%90%27" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_4203654" class="blog_comment_body">还有Lambda表达式的没有写</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4203654,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(4203654,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/x_wukong/p/5653253.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/x_wukong/p/5653253.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-工控&#39;)">【推荐】超50万C++/C#源码: 大型实时仿真组态图形源码</a><br></div>
+<div id="opt_under_post"></div>
+<script async="async" src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/gpt.js.下载"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+  googletag.cmd.push(function() {
+        googletag.defineSlot('/1090369/C1', [300, 250], 'div-gpt-ad-1546353474406-0').addService(googletag.pubads());
+        googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c1" class="c_ad_block">
+    <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;" data-google-query-id="COWY7PvJ_-ECFReflgodMHUJWw"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none; display: inline-block; width: 300px; height: 250px;"><iframe frameborder="0" src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/container.html" id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="300" height="250" data-is-safeframe="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe></div></div>
+</div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>相关博文：</b><br>·  <a href="https://www.cnblogs.com/walccott/p/4957036.html" target="_blank" onclick="clickRecomItmem(4957036)">C++中引用（&amp;）的用法和应用实例</a><br>·  <a href="https://www.cnblogs.com/yzl050819/p/5895897.html" target="_blank" onclick="clickRecomItmem(5895897)">C++中引用（&amp;）的用法和应用实例</a><br>·  <a href="https://www.cnblogs.com/yymn/p/4479410.html" target="_blank" onclick="clickRecomItmem(4479410)">C++中引用（&amp;）的用法和应用实例</a><br>·  <a href="https://www.cnblogs.com/guanqingbuyu/p/5563631.html" target="_blank" onclick="clickRecomItmem(5563631)">C++中引用（&amp;）的用法和应用实例</a><br>·  <a href="https://www.cnblogs.com/sanmenyi/p/7267300.html" target="_blank" onclick="clickRecomItmem(7267300)">c++的引用用法</a><br></div></div>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="CM396vvJ_-ECFReflgodMHUJWw"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="2" data-load-complete="true" src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/saved_resource.html"></iframe></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/624731/" target="_blank">步长制药董事长赵涛：女儿留学资金与步长制药无关</a><br> ·  <a href="https://news.cnblogs.com/n/624730/" target="_blank">今天 三大运营商都发了这条短信：你收到了吗？</a><br> ·  <a href="https://news.cnblogs.com/n/624729/" target="_blank">回到工程技术本身：应该如何看待“院士之争”？</a><br> ·  <a href="https://news.cnblogs.com/n/624728/" target="_blank">谷歌做了个机器人，扔东西比人准多了 | 极客酷玩</a><br> ·  <a href="https://news.cnblogs.com/n/624727/" target="_blank">联想没有996</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+ if(enablePostBottom()) {
+    codeHighlight();
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverT2();
+    deliverC1();
+    deliverC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);  
+}
+</script>
+</div>
+
+    
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/x_wukong/">明明是悟空</a><br>园龄：<a href="https://home.cnblogs.com/u/x_wukong/" title="入园时间：2012-04-26">7年</a><br>粉丝：<a href="https://home.cnblogs.com/u/x_wukong/followers/">128</a><br>关注：<a href="https://home.cnblogs.com/u/x_wukong/followees/">4</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;6600e358-9c8f-e111-aa3f-842b2b196315&#39;)">+加关注</a></div><script>getFollowStatus('6600e358-9c8f-e111-aa3f-842b2b196315')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/04/01&#39;);return false;">&lt;</a></td><td align="center">2019年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td align="center">2</td><td class="CalTodayDay" align="center">3</td><td class="CalWeekendDay" align="center">4</td></tr><tr><td class="CalWeekendDay" align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td class="CalWeekendDay" align="center">11</td></tr><tr><td class="CalWeekendDay" align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td class="CalWeekendDay" align="center">18</td></tr><tr><td class="CalWeekendDay" align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td class="CalWeekendDay" align="center">25</td></tr><tr><td class="CalWeekendDay" align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td></tr><tr><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/x_wukong/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/x_wukong/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/x_wukong/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/x_wukong/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/x_wukong/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/x_wukong/tag/Linux/">Linux</a>(131)</li><li><a href="https://www.cnblogs.com/x_wukong/tag/web%E5%BC%80%E5%8F%91/">web开发</a>(84)</li><li><a href="https://www.cnblogs.com/x_wukong/tag/java/">java</a>(63)</li><li><a href="https://www.cnblogs.com/x_wukong/tag/c%2Fc%2B%2B/">c/c++</a>(59)</li><li><a href="https://www.cnblogs.com/x_wukong/tag/android/">android</a>(46)</li><li><a href="https://www.cnblogs.com/x_wukong/tag/Linux%E5%86%85%E6%A0%B8/">Linux内核</a>(38)</li><li><a href="https://www.cnblogs.com/x_wukong/tag/chromium/">chromium</a>(29)</li><li><a href="https://www.cnblogs.com/x_wukong/tag/webrtc/">webrtc</a>(23)</li><li><a href="https://www.cnblogs.com/x_wukong/tag/H264/">H264</a>(17)</li><li><a href="https://www.cnblogs.com/x_wukong/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>(16)</li><li><a href="https://www.cnblogs.com/x_wukong/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/x_wukong/archive/2019/04.html">2019年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/x_wukong/archive/2019/01.html">2019年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="https://www.cnblogs.com/x_wukong/archive/2018/12.html">2018年12月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="https://www.cnblogs.com/x_wukong/archive/2018/11.html">2018年11月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="https://www.cnblogs.com/x_wukong/archive/2018/10.html">2018年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="https://www.cnblogs.com/x_wukong/archive/2018/09.html">2018年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="https://www.cnblogs.com/x_wukong/archive/2018/08.html">2018年8月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="https://www.cnblogs.com/x_wukong/archive/2018/07.html">2018年7月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="https://www.cnblogs.com/x_wukong/archive/2018/06.html">2018年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="https://www.cnblogs.com/x_wukong/archive/2018/05.html">2018年5月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="https://www.cnblogs.com/x_wukong/archive/2018/04.html">2018年4月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="https://www.cnblogs.com/x_wukong/archive/2018/03.html">2018年3月 (18)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="https://www.cnblogs.com/x_wukong/archive/2018/02.html">2018年2月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="https://www.cnblogs.com/x_wukong/archive/2018/01.html">2018年1月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="https://www.cnblogs.com/x_wukong/archive/2017/12.html">2017年12月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="https://www.cnblogs.com/x_wukong/archive/2017/11.html">2017年11月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="https://www.cnblogs.com/x_wukong/archive/2017/10.html">2017年10月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_17" href="https://www.cnblogs.com/x_wukong/archive/2017/09.html">2017年9月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_18" href="https://www.cnblogs.com/x_wukong/archive/2017/08.html">2017年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_19" href="https://www.cnblogs.com/x_wukong/archive/2017/07.html">2017年7月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_20" href="https://www.cnblogs.com/x_wukong/archive/2017/06.html">2017年6月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_21" href="https://www.cnblogs.com/x_wukong/archive/2017/05.html">2017年5月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_22" href="https://www.cnblogs.com/x_wukong/archive/2017/04.html">2017年4月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_23" href="https://www.cnblogs.com/x_wukong/archive/2017/03.html">2017年3月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_24" href="https://www.cnblogs.com/x_wukong/archive/2017/02.html">2017年2月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_25" href="https://www.cnblogs.com/x_wukong/archive/2017/01.html">2017年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_26" href="https://www.cnblogs.com/x_wukong/archive/2016/12.html">2016年12月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_27" href="https://www.cnblogs.com/x_wukong/archive/2016/11.html">2016年11月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_28" href="https://www.cnblogs.com/x_wukong/archive/2016/10.html">2016年10月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_29" href="https://www.cnblogs.com/x_wukong/archive/2016/09.html">2016年9月 (27)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_30" href="https://www.cnblogs.com/x_wukong/archive/2016/08.html">2016年8月 (23)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_31" href="https://www.cnblogs.com/x_wukong/archive/2016/07.html">2016年7月 (28)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_32" href="https://www.cnblogs.com/x_wukong/archive/2016/06.html">2016年6月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_33" href="https://www.cnblogs.com/x_wukong/archive/2016/05.html">2016年5月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_34" href="https://www.cnblogs.com/x_wukong/archive/2016/04.html">2016年4月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_35" href="https://www.cnblogs.com/x_wukong/archive/2016/03.html">2016年3月 (26)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_36" href="https://www.cnblogs.com/x_wukong/archive/2016/02.html">2016年2月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_37" href="https://www.cnblogs.com/x_wukong/archive/2016/01.html">2016年1月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_38" href="https://www.cnblogs.com/x_wukong/archive/2015/12.html">2015年12月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_39" href="https://www.cnblogs.com/x_wukong/archive/2015/11.html">2015年11月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_40" href="https://www.cnblogs.com/x_wukong/archive/2015/10.html">2015年10月 (14)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_41" href="https://www.cnblogs.com/x_wukong/archive/2015/09.html">2015年9月 (22)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_42" href="https://www.cnblogs.com/x_wukong/archive/2015/08.html">2015年8月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_43" href="https://www.cnblogs.com/x_wukong/archive/2015/07.html">2015年7月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_44" href="https://www.cnblogs.com/x_wukong/archive/2015/06.html">2015年6月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_45" href="https://www.cnblogs.com/x_wukong/archive/2015/05.html">2015年5月 (26)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_46" href="https://www.cnblogs.com/x_wukong/archive/2015/04.html">2015年4月 (27)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_47" href="https://www.cnblogs.com/x_wukong/archive/2015/03.html">2015年3月 (27)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_48" href="https://www.cnblogs.com/x_wukong/archive/2015/02.html">2015年2月 (18)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_49" href="https://www.cnblogs.com/x_wukong/archive/2015/01.html">2015年1月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_50" href="https://www.cnblogs.com/x_wukong/archive/2014/12.html">2014年12月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_51" href="https://www.cnblogs.com/x_wukong/archive/2014/11.html">2014年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_52" href="https://www.cnblogs.com/x_wukong/archive/2014/10.html">2014年10月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_53" href="https://www.cnblogs.com/x_wukong/archive/2014/09.html">2014年9月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_54" href="https://www.cnblogs.com/x_wukong/archive/2014/08.html">2014年8月 (37)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_55" href="https://www.cnblogs.com/x_wukong/archive/2014/07.html">2014年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_56" href="https://www.cnblogs.com/x_wukong/archive/2014/06.html">2014年6月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_57" href="https://www.cnblogs.com/x_wukong/archive/2014/05.html">2014年5月 (26)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_58" href="https://www.cnblogs.com/x_wukong/archive/2014/04.html">2014年4月 (17)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_59" href="https://www.cnblogs.com/x_wukong/archive/2014/03.html">2014年3月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_60" href="https://www.cnblogs.com/x_wukong/archive/2014/02.html">2014年2月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_61" href="https://www.cnblogs.com/x_wukong/archive/2014/01.html">2014年1月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_62" href="https://www.cnblogs.com/x_wukong/archive/2013/11.html">2013年11月 (14)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_63" href="https://www.cnblogs.com/x_wukong/archive/2013/10.html">2013年10月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_64" href="https://www.cnblogs.com/x_wukong/archive/2013/09.html">2013年9月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_65" href="https://www.cnblogs.com/x_wukong/archive/2013/08.html">2013年8月 (20)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/x_wukong/p/5827492.html#4235758">1. Re:RTP RTCP在音视频传输与同步方面的使用</a></li>
+        <li class="recent_comment_body">Video_TRUERTP是啥意思</li>
+        <li class="recent_comment_author">--wsygyb</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/x_wukong/p/5148152.html#4216617">2. Re:如何在java程序中调用linux命令或者shell脚本</a></li>
+        <li class="recent_comment_body">@Sunzz 方案一：linux上命令重命名，这个是针对所有客户端的，不仅仅java方案二：仅针对java，你把runtime。exec方法封装一下，内部处理一下...</li>
+        <li class="recent_comment_author">--破石</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/x_wukong/p/5653253.html#4203654">3. Re:C++中引用（&amp;）的用法和应用实例</a></li>
+        <li class="recent_comment_body">还有Lambda表达式的没有写</li>
+        <li class="recent_comment_author">--天之骄子'</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/x_wukong/p/5653253.html#4203650">4. Re:C++中引用（&amp;）的用法和应用实例</a></li>
+        <li class="recent_comment_body">不错，比较详细。</li>
+        <li class="recent_comment_author">--天之骄子'</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/x_wukong/p/5582559.html#4200739">5. Re:linux下搭建属于自己的博客（WordPress安装）</a></li>
+        <li class="recent_comment_body">Linux系统各种版本ISO镜像下载地址：<br><a href="https://www.cnblogs.com/x_wukong/p/5653253.html" target="_blank"></a></li>
+        <li class="recent_comment_author">--风爷</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/x_wukong/p/5148152.html">1. 如何在java程序中调用linux命令或者shell脚本(54755)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/5837346.html">2. linux mysql 操作命令(44637)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/4679116.html">3. java写入文件的几种方法分享(43435)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/5653253.html">4. C++中引用（&amp;）的用法和应用实例(33288)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/5842138.html">5. 1080P、720P、4CIF、CIF所需要的理论带宽(31548)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="https://www.cnblogs.com/x_wukong/p/3292664.html">1. JSP/Servlet的编码原理(2)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/3703017.html">2. struts2文件下载及 &lt;param name="inputName"&gt;inputStream&lt;/param&gt;的理解(2)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/3952688.html">3. 二进制的计算（计算机为什么采用补码存储数据）(2)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/3969114.html">4. jsp放在web-inf下的注意事项(2)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/5712345.html">5. 传指针和传指针引用的区别/指针和引用的区别（本质）(2)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="https://www.cnblogs.com/x_wukong/p/3962315.html">1. 线程安全的单例模式(4)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/4009709.html">2. JAVA 的wait(), notify()与synchronized同步机制(4)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/3929654.html">3. 理解HTTP session原理及应用(3)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/3969114.html">4. jsp放在web-inf下的注意事项(3)</a></li><li><a href="https://www.cnblogs.com/x_wukong/p/5743369.html">5. C语言中结构体的位域（bit-fields）(2)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2019 明明是悟空
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+
+<iframe id="google_osd_static_frame_4819463361443" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./C++中引用（&amp;）的用法和应用实例 - 明明是悟空 - 博客园_files/saved_resource(1).html"></iframe></body></html>

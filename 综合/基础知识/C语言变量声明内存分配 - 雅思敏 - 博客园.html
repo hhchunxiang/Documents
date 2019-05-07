@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://www.cnblogs.com/yasmi/articles/4933842.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+    <title>C语言变量声明内存分配 - 雅思敏 - 博客园</title>
+<meta property="og:description" content="一个由c/C++编译的程序占用的内存分为以下几个部分1、栈区（stack）— 程序运行时由编译器自动分配，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。程序结束时由编译器自动释放。">
+    <link type="text/css" rel="stylesheet" href="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/bundle-BlueSky.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/bundle-BlueSky-mobile.css">
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/yasmi/rss">
+    <link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/yasmi/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/yasmi/wlwmanifest.xml">
+    <script src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/osd.js.下载"></script><script src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/pubads_impl_rendering_2019043001.js.下载"></script><script async="" src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/analytics.js.下载"></script><script src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+    <script>var currentBlogId=241120;var currentBlogApp='yasmi',cb_enable_mathjax=false;var isLogined=false;</script>
+    <script src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/blog-common.js.下载" type="text/javascript"></script>
+<link rel="preload" href="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/f.txt" as="script"><script type="text/javascript" src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/f.txt"></script><script src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/pubads_impl_2019043001.js.下载" async=""></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-33/html/container.html"></head>
+<body>
+<a name="top"></a>
+
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="https://www.cnblogs.com/yasmi/"><img id="blogLogo" src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/yasmi/">雅思敏</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/yasmi/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E9%9B%85%E6%80%9D%E6%95%8F">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/yasmi/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="https://www.cnblogs.com/yasmi/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 139&nbsp; </span>
+<span id="stats_article_count">文章 - 130&nbsp; </span>
+<span id="stats-comment_count">评论 - 9</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+        <div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/yasmi/articles/4933842.html">C语言变量声明内存分配</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>一个由c/C++编译的程序占用的内存分为以下几个部分</p>
+<p>1、栈区（stack）— 程序运行时由编译器自动分配，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。程序结束时由编译器自动释放。</p>
+<p>2、堆区（heap） — 在内存开辟另一块存储区域。一般由程序员分配释放， 若程序员不释放，程序结束时可能由OS回收 。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表，呵呵。</p>
+<p>3、全局区（静态区）（static）—编译器编译时即分配内存。全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域， 未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。 - 程序结束后由系统释放</p>
+<p>4、文字常量区 —常量字符串就是放在这里的。 程序结束后由系统释放</p>
+<p>5、程序代码区—存放函数体的二进制代码。</p>
+<p>例子程序</p>
+<p>这是一个前辈写的，非常详细</p>
+<p>//main.cpp</p>
+<p>int a = 0; 全局初始化区</p>
+<p>char *p1; 全局未初始化区</p>
+<p>main()</p>
+<p>{</p>
+<p>int b;// 栈</p>
+<p>char s[] = "abc"; //栈</p>
+<p>char *p2; //栈</p>
+<p>char *p3 = "123456"; //"123456\0"在常量区，p3在栈上。</p>
+<p>static int c =0； //全局（静态）初始化区</p>
+<p>p1 = (char *)malloc(10);</p>
+<p>p2 = (char *)malloc(20);</p>
+<p>//分配得来得10和20字节的区域就在堆区。</p>
+<p>strcpy(p1, "123456"); //123456\0放在常量区，编译器可能会将它与p3所指向的"123456"优化成一个地方。</p>
+<p>}&nbsp;</p>
+<p>===============</p>
+<p>C语言程序的内存分配方式</p>
+<p><strong>1.内存分配方式</strong><br>　　内存分配方式有三种：<br>　　[1]从静态存储区域分配。内存在程序编译的时候就已经分配好，这块内存在程序的整个运行期间都存在。例如全局变量，static变量。<br>　　[2]在栈上创建。在执行函数时，函数内局部变量的存储单元都可以在栈上创建，函数执行结束时这些存储单元自动被释放。栈内存分配运算内置于处理器的指令集中，效率很高，但是分配的内存容量有限。<br>　
+　[3]从堆上分配，亦称动态内存分配。程序在运行的时候用malloc或new申请任意多少的内存，程序员自己负责在何时用free或delete释放
+内存。动态内存的生存期由程序员决定，使用非常灵活，但如果在堆上分配了空间，就有责任回收它，否则运行的程序会出现内存泄漏，频繁地分配和释放不同大小
+的堆空间将会产生堆内碎块。<br><strong>2.程序的内存空间</strong><br>　　一个程序将操作系统分配给其运行的内存块分为4个区域，如下图所示。<br>　　一个由C/C++编译的程序占用的内存分为以下几个部分,<br>　　1、栈区（stack）—　 由编译器自动分配释放 ，存放为运行函数而分配的局部变量、函数参数、返回数据、返回地址等。其操作方式类似于数据结构中的栈。<br>　　2、堆区（heap） —　 一般由程序员分配释放， 若程序员不释放，程序结束时可能由OS回收 。分配方式类似于链表。<br>　　3、全局区（静态区）（static）—存放全局变量、静态数据、常量。程序结束后由系统释放。<br>　　4、文字常量区 —常量字符串就是放在这里的。 程序结束后由系统释放。<br>　　5、程序代码区—存放函数体（类成员函数和全局函数）的二进制代码。<br>　　下面给出例子程序，<br>　　int a = 0; //全局初始化区<br>　　char *p1; //全局未初始化区<br>　　int main() {<br>　　int b; //栈<br>　　char s[] = "abc"; //栈<br>　　char *p2; //栈<br>　　char *p3 = "123456"; //123456在常量区，p3在栈上。<br>　　static int c =0;//全局（静态）初始化区<br>　　p1 = new char[10];<br>　　p2 = new char[20];<br>　　//分配得来得和字节的区域就在堆区。<br>　　strcpy(p1, "123456"); //123456放在常量区，编译器可能会将它与p3所指向的"123456"优化成一个地方。<br>　　}<br><strong>3．堆与栈的比较</strong><br>　　3.1申请方式<br>　　stack: 由系统自动分配。 例如，声明在函数中一个局部变量 int b; 系统自动在栈中为b开辟空间。<br>　　heap: 需要程序员自己申请，并指明大小，在C中malloc函数，C++中是new运算符。<br>　　如p1 = (char *)malloc(10); p1 = new char[10];<br>　　如p2 = (char *)malloc(10); p2 = new char[20];<br>　　但是注意p1、p2本身是在栈中的。<br>　　3.2申请后系统的响应<br>　　栈：只要栈的剩余空间大于所申请空间，系统将为程序提供内存，否则将报异常提示栈溢出。<br>　　堆：首先应该知道操作系统有一个记录空闲内存地址的链表，当系统收到程序的申请时，会遍历该链表，寻找第一个空间大于所申请空间的堆结点，然后将该结点从空闲结点链表中删除，并将该结点的空间分配给程序。<br>　　对于大多数系统，会在这块内存空间中的首地址处记录本次分配的大小，这样，代码中的delete语句才能正确的释放本内存空间。<br>　　由于找到的堆结点的大小不一定正好等于申请的大小，系统会自动的将多余的那部分重新放入空闲链表中。<br>　　3.3申请大小的限制<br>　
+　栈：在Windows下,栈是向低地址扩展的数据结构，是一块连续的内存的区域。这句话的意思是栈顶的地址和栈的最大容量是系统预先规定好的，在 
+WINDOWS下，栈的大小是2M（也有的说是1M，总之是一个编译时就确定的常数），如果申请的空间超过栈的剩余空间时，将提示overflow。因 
+此，能从栈获得的空间较小。<br>　　堆：堆是向高地址扩展的数据结构，是不连续的内存区域。这是由于系统是用链表来存储的空闲内存地址的，自然是不连续的，而链表的遍历方向是由低地址向高地址。堆的大小受限于计算机系统中有效的虚拟内存。由此可见，堆获得的空间比较灵活，也比较大。<br>　　3.4申请效率的比较<br>　　栈由系统自动分配，速度较快。但程序员是无法控制的。<br>　　堆是由new分配的内存，一般速度比较慢，而且容易产生内存碎片,不过用起来最方便。<br>　　另外，在WINDOWS下，最好的方式是用VirtualAlloc分配内存，他不是在堆，也不是栈，而是直接在进程的地址空间中保留一快内存，虽然用起来最不方便。但是速度快，也最灵活。<br>　　3.5堆和栈中的存储内容<br>　　栈：在函数调用时，第一个进栈的是主函数中后的下一条指令（函数调用语句的下一条可执行语句）的地址，然后是函数的各个参数，在大多数的C编译器中，参数是由右往左入栈的，然后是函数中的局部变量。注意静态变量是不入栈的。<br>　　当本次函数调用结束后，局部变量先出栈，然后是参数，最后栈顶指针指向最开始存的地址，也就是主函数中的下一条指令，程序由该点继续运行。<br>　　堆：一般是在堆的头部用一个字节存放堆的大小。堆中的具体内容有程序员安排。<br>　　3.6存取效率的比较<br>　　char s1[] = "a";<br>　　char *s2 = "b";<br>　　a是在运行时刻赋值的；而b是在编译时就确定的；但是，在以后的存取中，在栈上的数组比指针所指向的字符串(例如堆)快。 比如：<br>　　int　main(){<br>　　char a = 1;<br>　　char c[] = "1234567890";<br>　　char *p ="1234567890";<br>　　a = c[1];<br>　　a = p[1];<br>　　return 0;<br>　　}<br>　　对应的汇编代码<br>　　10: a = c[1];<br>　　00401067 8A 4D F1 mov cl,byte ptr [ebp-0Fh]<br>　　0040106A 88 4D FC mov byte ptr [ebp-4],cl<br>　　11: a = p[1];<br>　　0040106D 8B 55 EC mov edx,dword ptr [ebp-14h]<br>　　00401070 8A 42 01 mov al,byte ptr [edx+1]<br>　　00401073 88 45 FC mov byte ptr [ebp-4],al<br>　　第一种在读取时直接就把字符串中的元素读到寄存器cl中，而第二种则要先把指针值读到edx中，再根据edx读取字符，显然慢了。 </p>
+<p>3.7小结<br>　　堆和栈的主要区别由以下几点：<br>　　1、管理方式不同；<br>　　2、空间大小不同；<br>　　3、能否产生碎片不同；<br>　　4、生长方向不同；<br>　　5、分配方式不同；<br>　　6、分配效率不同；<br>　　管理方式：对于栈来讲，是由编译器自动管理，无需我们手工控制；对于堆来说，释放工作由程序员控制，容易产生memory leak。<br>　　空间大小：一般来讲在32位系统下，堆内存可以达到4G的空间，从这个角度来看堆内存几乎是没有什么限制的。但是对于栈来讲，一般都是有一定的空间大小的，例如，在VC6下面，默认的栈空间大小是1M。当然，这个值可以修改。<br>　
+　碎片问题：对于堆来讲，频繁的new/delete势必会造成内存空间的不连续，从而造成大量的碎片，使程序效率降低。对于栈来讲，则不会存在这个问
+题，因为栈是先进后出的队列，他们是如此的一一对应，以至于永远都不可能有一个内存块从栈中间弹出，在他弹出之前，在他上面的后进的栈内容已经被弹出，详
+细的可以参考数据结构。<br>　　生长方向：对于堆来讲，生长方向是向上的，也就是向着内存地址增加的方向；对于栈来讲，它的生长方向是向下的，是向着内存地址减小的方向增长。<br>　　分配方式：堆都是动态分配的，没有静态分配的堆。栈有2种分配方式：静态分配和动态分配。静态分配是编译器完成的，比如局部变量的分配。动态分配由malloca函数进行分配，但是栈的动态分配和堆是不同的，他的动态分配是由编译器进行释放，无需我们手工实现。<br>　
+　分配效率：栈是机器系统提供的数据结构，计算机会在底层对栈提供支持：分配专门的寄存器存放栈的地址，压栈出栈都有专门的指令执行，这就决定了栈的效率
+比较高。堆则是C/C++函数库提供的，它的机制是很复杂的，例如为了分配一块内存，库函数会按照一定的算法（具体的算法可以参考数据结构/操作系统）在
+堆内存中搜索可用的足够大小的空间，如果没有足够大小的空间（可能是由于内存碎片太多），就有可能调用系统功能去增加程序数据段的内存空间，这样就有机会
+分 到足够大小的内存，然后进行返回。显然，堆的效率比栈要低得多。<br>　　从这里我们可以看到，堆和栈相比，由于大量new/delete的使用，
+容易造成大量的内存碎片；由于没有专门的系统支持，效率很低；由于可能引发用户态和核心态的切换，内存的申请，代价变得更加昂贵。所以栈在程序中是应用最
+广泛的，就算是函数的调用也利用栈去完成，函数调用过程中的参数，返回地址， 
+EBP和局部变量都采用栈的方式存放。所以，我们推荐大家尽量用栈，而不是用堆。<br>　　虽然栈有如此众多的好处，但是由于和堆相比不是那么灵活，有时候分配大量的内存空间，还是用堆好一些。<br>　　无论是堆还是栈，都要防止越界现象的发生（除非你是故意使其越界），因为越界的结果要么是程序崩溃，要么是摧毁程序的堆、栈结构，产生以想不到的结果。<br><strong>4.new/delete与malloc/free比较</strong><br>　　从C++角度上说，使用new分配堆空间可以调用类的构造函数，而malloc()函数仅仅是一个函数调用，它不会调用构造函数，它所接受的参数是一个unsigned long类型。同样，delete在释放堆空间之前会调用析构函数，而free函数则不会。<br>　　class Time{<br>　　public:<br>　　Time(int,int,int,string);<br>　　~Time(){<br>　　cout&lt;&lt;"call Time’s destructor by:"&lt;&lt;name&lt;&lt;endl;<br>　　}<br>　　private:<br>　　int hour;<br>　　int min;<br>　　int sec;<br>　　string name;<br>　　};<br>　　Time::Time(int h,int m,int s,string n){<br>　　hour=h;<br>　　min=m;<br>　　sec=s;<br>　　name=n;<br>　　cout&lt;&lt;"call Time’s constructor by:"&lt;&lt;name&lt;&lt;endl;<br>　　}<br>　　int main(){<br>　　Time *t1;<br>　　t1=(Time*)malloc(sizeof(Time));<br>　　free(t1);<br>　　Time *t2;<br>　　t2=new Time(0,0,0,"t2");<br>　　delete t2;<br>　　system("PAUSE");<br>　　return EXIT_SUCCESS;<br>　　}<br>　　结果：<br>　　call Time’s constructor by:t2<br>　　call Time’s destructor by:t2<br>　　从结果可以看出，使用new/delete可以调用对象的构造函数与析构函数，并且示例中调用的是一个非默认构造函数。但在堆上分配对象数组时，只能调用默认构造函数，不能调用其他任何构造函数。 </p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/yasmi/category/727167.html" target="_blank">程序设计管理</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4933842,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;9677f3c4-da47-e511-b908-9dcfd8948a71&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/yasmi/" target="_blank"><img src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/yasmi/">雅思敏</a><br>
+            <a href="http://home.cnblogs.com/u/yasmi/followees">关注 - 0</a><br>
+            <a href="http://home.cnblogs.com/u/yasmi/followers">粉丝 - 21</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;9677f3c4-da47-e511-b908-9dcfd8948a71&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(4933842,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">1</span>
+    </div>
+    <div class="buryit" onclick="votePost(4933842,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/yasmi/articles/4917449.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/yasmi/articles/4917449.html" title="发布于2015-10-28 15:18">以正确的方式开源Python项目</a><br><a href="https://www.cnblogs.com/yasmi/articles/4939686.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/yasmi/articles/4939686.html" title="发布于2015-11-05 15:29">ubuntu目录结构</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2015-11-03 17:30</span> <a href="https://www.cnblogs.com/yasmi/">雅思敏</a> 阅读(<span id="post_view_count">3915</span>) 评论(<span id="post_comment_count">0</span>) &nbsp;<a href="https://i.cnblogs.com/EditArticles.aspx?postid=4933842" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/yasmi/articles/4933842.html#" onclick="AddToWz(4933842);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=241120,cb_entryId=4933842,cb_blogApp=currentBlogApp,cb_blogUserGuid='9677f3c4-da47-e511-b908-9dcfd8948a71',cb_entryCreatedDate='2015/11/3 17:30:00';loadViewCount(cb_entryId);var cb_postType=2;var isMarkdown=false;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/yasmi/articles/4933842.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/yasmi/articles/4933842.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-工控&#39;)">【推荐】超50万C++/C#源码: 大型实时仿真组态图形源码</a><br><a href="https://www.bagevent.com/event/2195041?bag_track=13072958" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-看雪&#39;)">【活动】看雪2019安全开发者峰会，共话安全领域焦点</a><br><a href="https://ke.qq.com/adActivity.html?name=xiangxueketang2" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-享学&#39;)">【培训】Java程序员年薪40W，他1年走了别人5年的路</a><br></div>
+<div id="opt_under_post"></div>
+<script async="async" src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/gpt.js.下载"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+  googletag.cmd.push(function() {
+        googletag.defineSlot('/1090369/C1', [300, 250], 'div-gpt-ad-1546353474406-0').addService(googletag.pubads());
+        googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c1" class="c_ad_block">
+    <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;" data-google-query-id="COKHoJu7iOICFYNiYAod6HcL8Q"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C1_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/saved_resource.html"></iframe></div></div>
+</div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>相关博文：</b><br>·  <a href="https://www.cnblogs.com/dyhouse/p/3139303.html" target="_blank" onclick="clickRecomItmem(3139303)">变量内存分配知多少</a><br>·  <a href="https://www.cnblogs.com/virusdefender/p/3339568.html" target="_blank" onclick="clickRecomItmem(3339568)">C语言变量声明内存分配</a><br>·  <a href="https://www.cnblogs.com/emanlee/archive/2009/04/12/1434278.html" target="_blank" onclick="clickRecomItmem(1434278)">C语言变量声明内存分配</a><br>·  <a href="https://www.cnblogs.com/jeff-wgc/p/4455754.html" target="_blank" onclick="clickRecomItmem(4455754)">变量内存分配</a><br>·  <a href="https://www.cnblogs.com/data1213/p/4897495.html" target="_blank" onclick="clickRecomItmem(4897495)">C语言变量声明内存分配</a><br></div></div>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="COOHoJu7iOICFYNiYAod6HcL8Q"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="2" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/saved_resource(1).html"></iframe></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/624890/" target="_blank">追赶谷歌和亚马逊：微软提升Cortana响应对话能力</a><br> ·  <a href="https://news.cnblogs.com/n/624889/" target="_blank">微软被迫“变芯”Chromium，但还未完全放弃IE</a><br> ·  <a href="https://news.cnblogs.com/n/624888/" target="_blank">微软抢先 Google 开了一场「真·开发者大会」，关键词是责任和开放</a><br> ·  <a href="https://news.cnblogs.com/n/624887/" target="_blank">最前线 | 上市计划失败，沪江无缘港股</a><br> ·  <a href="https://news.cnblogs.com/n/624886/" target="_blank">苹果前零售负责人阿伦茨：在苹果我学到了这三点</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+ if(enablePostBottom()) {
+    codeHighlight();
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverT2();
+    deliverC1();
+    deliverC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);  
+}
+</script>
+</div>
+
+    
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/yasmi/">雅思敏</a><br>园龄：<a href="https://home.cnblogs.com/u/yasmi/" title="入园时间：2015-08-21">3年8个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/yasmi/followers/">21</a><br>关注：<a href="https://home.cnblogs.com/u/yasmi/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;9677f3c4-da47-e511-b908-9dcfd8948a71&#39;)">+加关注</a></div><script>getFollowStatus('9677f3c4-da47-e511-b908-9dcfd8948a71')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/04/01&#39;);return false;">&lt;</a></td><td align="center">2019年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td class="CalWeekendDay" align="center">4</td></tr><tr><td class="CalWeekendDay" align="center">5</td><td align="center">6</td><td class="CalTodayDay" align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td class="CalWeekendDay" align="center">11</td></tr><tr><td class="CalWeekendDay" align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td class="CalWeekendDay" align="center">18</td></tr><tr><td class="CalWeekendDay" align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td class="CalWeekendDay" align="center">25</td></tr><tr><td class="CalWeekendDay" align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td></tr><tr><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/yasmi/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/yasmi/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/yasmi/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/yasmi/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/yasmi/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/yasmi/category/727964.html">django(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/yasmi/category/726389.html">openstack(10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="https://www.cnblogs.com/yasmi/category/727897.html">python(30)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="https://www.cnblogs.com/yasmi/category/768914.html">ubuntu(16)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="https://www.cnblogs.com/yasmi/category/726395.html">ubuntu-错误(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="https://www.cnblogs.com/yasmi/category/726388.html">ubuntu-服务器(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="https://www.cnblogs.com/yasmi/category/726386.html">ubuntu-命令(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="https://www.cnblogs.com/yasmi/category/726404.html">ubuntu-软件与服务(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="https://www.cnblogs.com/yasmi/category/726387.html">ubuntu-桌面版(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="https://www.cnblogs.com/yasmi/category/727093.html">web设计(21)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="https://www.cnblogs.com/yasmi/category/756144.html">程序设计管理(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="https://www.cnblogs.com/yasmi/category/727048.html">工作(52)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="https://www.cnblogs.com/yasmi/category/811392.html">网络(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="https://www.cnblogs.com/yasmi/category/768915.html">信息集(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="https://www.cnblogs.com/yasmi/category/726390.html">虚拟机技术(1)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="https://www.cnblogs.com/yasmi/archive/2016/06.html">2016年6月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="https://www.cnblogs.com/yasmi/archive/2016/05.html">2016年5月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="https://www.cnblogs.com/yasmi/archive/2016/04.html">2016年4月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="https://www.cnblogs.com/yasmi/archive/2016/03.html">2016年3月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="https://www.cnblogs.com/yasmi/archive/2016/02.html">2016年2月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="https://www.cnblogs.com/yasmi/archive/2016/01.html">2016年1月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="https://www.cnblogs.com/yasmi/archive/2015/12.html">2015年12月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="https://www.cnblogs.com/yasmi/archive/2015/11.html">2015年11月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="https://www.cnblogs.com/yasmi/archive/2015/10.html">2015年10月 (20)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="https://www.cnblogs.com/yasmi/archive/2015/09.html">2015年9月 (36)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="https://www.cnblogs.com/yasmi/archive/2015/08.html">2015年8月 (22)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_articlecategory" class="catListArticleCategory sidebar-block">
+<h3 class="catListTitle">文章分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="https://www.cnblogs.com/yasmi/category/727117.html">django(4)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_1" href="https://www.cnblogs.com/yasmi/category/726412.html">openstack(23)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_2" href="https://www.cnblogs.com/yasmi/category/727898.html">python(24)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_3" href="https://www.cnblogs.com/yasmi/category/787976.html">ubuntu(3)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_4" href="https://www.cnblogs.com/yasmi/category/726410.html">ubuntu-错误</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_5" href="https://www.cnblogs.com/yasmi/category/726407.html">ubuntu-服务器(15)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_6" href="https://www.cnblogs.com/yasmi/category/726409.html">ubuntu-命令(11)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_7" href="https://www.cnblogs.com/yasmi/category/726408.html">ubuntu-软件与服务(12)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_8" href="https://www.cnblogs.com/yasmi/category/726406.html">ubuntu-桌面版(1)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_9" href="https://www.cnblogs.com/yasmi/category/727116.html">web设计(22)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_10" href="https://www.cnblogs.com/yasmi/category/727167.html">程序设计管理(20)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_11" href="https://www.cnblogs.com/yasmi/category/727248.html">算法(10)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_12" href="https://www.cnblogs.com/yasmi/category/726411.html">虚拟机技术(6)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/yasmi/articles/5064588.html#4098186">1. Re:为什么javascript是单线程的却能让AJAX异步调用？</a></li>
+        <li class="recent_comment_body">事实上ajax就是一个被监听事件，我可以这么理解不？</li>
+        <li class="recent_comment_author">--大凯伦</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/yasmi/articles/5064588.html#4011199">2. Re:为什么javascript是单线程的却能让AJAX异步调用？</a></li>
+        <li class="recent_comment_body">楼主讲的很好，不过水平较低的人应该会看不懂</li>
+        <li class="recent_comment_author">--歌哓，得德</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/yasmi/articles/5075778.html#3979837">3. Re:如何面试Python后端工程师？</a></li>
+        <li class="recent_comment_body">是同志仍需努力，不是 同志任需努力</li>
+        <li class="recent_comment_author">--RGC</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/yasmi/articles/5064588.html#3965237">4. Re:为什么javascript是单线程的却能让AJAX异步调用？</a></li>
+        <li class="recent_comment_body">意思就是说浏览器调度js执行异步事件和任务，js只能顺序执行程序段，不能并发同时执行两个程序段，Settimeout是改变了函数被执行的顺序，被延迟异步执行，是由浏览器实现的，不是由js实现的。</li>
+        <li class="recent_comment_author">--pzhu1</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/yasmi/articles/5064588.html#3947863">5. Re:为什么javascript是单线程的却能让AJAX异步调用？</a></li>
+        <li class="recent_comment_body">学习了，异步API都是另外开启线程实现的</li>
+        <li class="recent_comment_author">--廖振廷</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/yasmi/p/4832461.html">1. ubuntu 安装python3(26848)</a></li><li><a href="https://www.cnblogs.com/yasmi/p/4844653.html">2. Ubuntu如何配置网桥 Ubuntu系统配置网桥详细教程(6529)</a></li><li><a href="https://www.cnblogs.com/yasmi/p/4911053.html">3. 使用bootstrap-table等自动使用ajax地址载入数据的插件的数据设计建议(6167)</a></li><li><a href="https://www.cnblogs.com/yasmi/p/5341079.html">4. 数据后台与前端展现(5455)</a></li><li><a href="https://www.cnblogs.com/yasmi/p/5183423.html">5. openstack 使用pbr配置,setup.cfg的格式与含义(4689)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap" style="display: none;">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="https://www.cnblogs.com/yasmi/p/5192694.html">1. ubuntu 上运行的django 出现No space left on device错误(2)</a></li><li><a href="https://www.cnblogs.com/yasmi/p/5056089.html">2. sqlalchemy中使用event设置条件触发短信与邮件通知(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2019 雅思敏
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+
+<iframe id="google_osd_static_frame_1732426767670" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./C语言变量声明内存分配 - 雅思敏 - 博客园_files/saved_resource(2).html"></iframe></body></html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://c.biancheng.net/view/151.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" charset="utf-8" src="./C++拷贝构造函数（复制构造函数）详解_files/core.php"></script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="force-rendering" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="format-detection" content="telephone=no">
+<link rel="shortcut icon" href="http://c.biancheng.net/favicon.ico?v=1.3.5">
+<link href="./C++拷贝构造函数（复制构造函数）详解_files/common.css" rel="stylesheet">
+<title>C++拷贝构造函数（复制构造函数）详解</title>
+<meta name="description" content="复制构造函数是构造函数的一种，也称拷贝构造函数，它只有一个参数，参数类型是本类的引用。复制构造函数的参数可以是 const 引用，也可以是非 const 引用。 一般使用前者，这样既">
+</head>
+<body>
+<div id="topbar" class="clearfix">
+<ul id="ad-page-top-left" class="left">
+<li class="top">
+<span style="color: #d84135;">C语言辅导班 <span class="glyphicon"></span></span>
+<ul>
+<li><a href="http://fudao.biancheng.net/c/" rel="nofollow" target="_blank">普通班(600元)</a></li>
+<li><a href="http://fudao.biancheng.net/c_abroad/" rel="nofollow" target="_blank">留学生班(2000元)</a></li>
+</ul>
+</li>
+<li class="top">
+<span style="color: #08a408;">C++辅导班 <span class="glyphicon"></span></span>
+<ul>
+<li><a href="http://fudao.biancheng.net/cpp/" rel="nofollow" target="_blank">普通班(1000元)</a></li>
+<li><a href="http://fudao.biancheng.net/cpp_abroad/" rel="nofollow" target="_blank">留学生班(3000元)</a></li>
+</ul>
+</li>
+<li class="top"><span style="color: #b9a30c;">数据结构辅导班 <span class="glyphicon"></span></span>
+<ul>
+<li><a href="http://fudao.biancheng.net/data/" rel="nofollow" target="_blank">普通班(600元)</a></li>
+<li><a href="http://fudao.biancheng.net/data_abroad/" rel="nofollow" target="_blank">留学生班(2000元)</a></li>
+</ul>
+</li>
+</ul>
+<ul id="ad-page-top-right" class="right">
+<li><a href="http://c.biancheng.net/view/2403.html" rel="nofollow" target="_blank" style="color: #fff;">【招募令】加入我们，一起编写教程，收集资料包！</a></li>
+</ul>
+</div>
+<div id="header" class="clearfix">
+<a id="logo" class="left" href="http://c.biancheng.net/">
+<img height="26" src="./C++拷贝构造函数（复制构造函数）详解_files/logo.png" alt="C语言中文网">
+</a>
+<ul id="nav-main" class="hover-none left clearfix">
+<li><a href="http://c.biancheng.net/c/">C语言教程</a></li>
+<li><a href="http://c.biancheng.net/cplus/">C++教程</a></li>
+<li><a href="http://c.biancheng.net/linux_tutorial/">Linux教程</a></li>
+<li><a href="http://c.biancheng.net/shell/">Shell脚本</a></li>
+<li><a href="http://c.biancheng.net/socket/">socket编程</a></li>
+<li><a href="http://c.biancheng.net/sitemap/" title="网站地图">更多&gt;&gt;</a></li>
+</ul>
+<span id="sidebar-toggle" class="toggle-btn" toggle-target="#sidebar">目录 <span class="glyphicon"></span></span>
+<a href="http://vip.biancheng.net/" class="user-info user-info-pc glyphicon glyphicon-user hover-none" target="_blank" rel="nofollow" title="用户中心"></a>
+<a href="http://vip-m.biancheng.net/" class="user-info user-info-mobile glyphicon glyphicon-user hover-none" rel="nofollow" title="用户中心"></a>
+</div>
+<div id="main" class="clearfix">
+<div id="sidebar" class="toggle-target">
+<div id="contents">
+<dt><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span><a href="http://c.biancheng.net/cplus/">C++教程</a></dt>
+<dd><span class="channel-num">1</span><a href="http://c.biancheng.net/cplus/c2cpp/">从C到C++</a></dd><dd><span class="channel-num">2</span><a href="http://c.biancheng.net/cplus/class/">类和对象</a></dd><dd><span class="channel-num">3</span><a href="http://c.biancheng.net/cplus/25/">C++引用</a></dd><dd><span class="channel-num">4</span><a href="http://c.biancheng.net/cplus/inherit/">继承与派生</a></dd><dd><span class="channel-num">5</span><a href="http://c.biancheng.net/cplus/polymorphism/">C++多态与虚函数</a></dd><dd><span class="channel-num">6</span><a href="http://c.biancheng.net/cplus/operator/">运算符重载</a></dd><dd><span class="channel-num">7</span><a href="http://c.biancheng.net/cplus/70/">模板</a></dd><dd><span class="channel-num">8</span><a href="http://c.biancheng.net/cplus/exception/">C++异常</a></dd><dd><span class="channel-num">9</span><a href="http://c.biancheng.net/cplus/100/">面向对象进阶</a></dd><dd><span class="channel-num">10</span><a href="http://c.biancheng.net/cplus/50/">输入输出流</a></dd><dd><span class="channel-num">11</span><a href="http://c.biancheng.net/cplus/60/">文件操作</a></dd><dd><span class="channel-num">12</span><a href="http://c.biancheng.net/cplus/80/">STL（标准模板库）</a></dd><dd><span class="channel-num">13</span><a href="http://c.biancheng.net/cplus/90/">C++高级主题</a></dd>
+</div>
+</div>
+<div id="article-wrap">
+<div id="article">
+<div class="arc-info">
+<span class="position"><span class="glyphicon glyphicon-map-marker"></span> <a href="http://c.biancheng.net/">首页</a> &gt; <a href="http://c.biancheng.net/skill/">编程笔记</a> &gt; <a href="http://c.biancheng.net/skill/cpp/">C++笔记</a></span>
+<span class="click-box">阅读：<span class="click">5,967</span></span>
+</div>
+<div id="ad-position-bottom"><a href="https://coding.net/?utm_source=cbiancheng&amp;utm_medium=banner&amp;utm_campaign=march2019" target="_blank"><img width="100%" src="./C++拷贝构造函数（复制构造函数）详解_files/ad_position_bottom_wap.gif"></a></div>
+<h1>C++拷贝构造函数（复制构造函数）详解</h1>
+<div id="ad-arc-top"><p class="pic"><a href="https://coding.net/?utm_source=cbiancheng&amp;utm_medium=banner&amp;utm_campaign=march2019" target="_blank"><img width="100%" src="./C++拷贝构造函数（复制构造函数）详解_files/ad_arc_top.gif"></a></p><p class="text" adid="default"><a href="http://fudao.biancheng.net/" rel="nofollow" target="_blank" style="color:#D33428;">C语言中文网推出辅导班啦，包括<span style="color: #008000;">「C语言辅导班、C++辅导班、算法/数据结构辅导班」</span>，全部都是一对一教学：一对一辅导 + 一对一答疑 + 布置作业 + 项目实践 + 永久学习。QQ在线，随时响应！</a></p></div>
+<div id="arc-body"><span style="color:#008000;">复制构造函数</span>是构造函数的一种，也称<span style="color:#008000;">拷贝构造函数</span>，它只有一个参数，参数类型是本类的引用。<br>
+<br>
+复制构造函数的参数可以是 const 引用，也可以是非 const 引用。 一般使用前者，这样既能以常量对象（初始化后值不能改变的对象）作为参数，也能以非常量对象作为参数去初始化其他对象。一个类中写两个复制构造函数，一个的参数是 const 引用，另一个的参数是非 const 引用，也是可以的。<br>
+<br>
+如果类的设计者不写复制构造函数，编译器就会自动生成复制构造函数。大多数情况下，其作用是实现从源对象到目标对象逐个字节的复制，即使得目标对象的每个成员变量都变得和源对象相等。编译器自动生成的复制构造函数称为“<span style="color:#008000;">默认复制构造函数</span>”。<br>
+<br>
+注意，默认构造函数（即无参构造函数）不一定存在，但是复制构造函数总是会存在。<br>
+<br>
+下面是一个复制构造函数的例子。
+<div class="snippet-container" style="undefined;"><div class="sh_bright snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display: none;"><pre><a class="snippet-copy sh_url" href="http://c.biancheng.net/view/151.html#" style="display: none;">复制</a><a class="snippet-text sh_url" href="http://c.biancheng.net/view/151.html#">纯文本</a><a class="snippet-window sh_url" href="http://c.biancheng.net/view/151.html#">复制</a></pre></div><pre class="cpp sh_cpp snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">#include</span><span class="sh_string">&lt;iostream &gt;</span></li><li><span class="sh_keyword">u</span><a href="http://c.biancheng.net/ref/sin.html" target="_blank" class="sh_url"><span class="sh_keyword">sin</span></a><span class="sh_keyword">g</span> <span class="sh_keyword">namespace</span> std<span class="sh_symbol">;</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Complex</span></li><li><span class="sh_cbracket">{</span></li><li><span class="sh_keyword">public</span><span class="sh_symbol">:</span></li><li>    <span class="sh_type">double</span> real<span class="sh_symbol">,</span> imag<span class="sh_symbol">;</span></li><li>    <span class="sh_function">Complex</span><span class="sh_symbol">(</span><span class="sh_type">double</span> r<span class="sh_symbol">,</span> <span class="sh_type">double</span> i<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        real<span class="sh_symbol">=</span> r<span class="sh_symbol">;</span> imag <span class="sh_symbol">=</span> i<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> <span class="sh_function">main</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>    <span class="sh_usertype">Complex</span><span class="sh_normal"> </span><span class="sh_function">cl</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">);</span></li><li>    <span class="sh_usertype">Complex</span><span class="sh_normal"> </span><span class="sh_function">c2</span> <span class="sh_symbol">(</span>cl<span class="sh_symbol">);</span>  <span class="sh_comment">//用复制构造函数初始化c2</span></li><li>    cout<span class="sh_symbol">&lt;&lt;</span>c2<span class="sh_symbol">.</span>real<span class="sh_symbol">&lt;&lt;</span><span class="sh_string">","</span><span class="sh_symbol">&lt;&lt;</span>c2<span class="sh_symbol">.</span>imag<span class="sh_symbol">;</span>  <span class="sh_comment">//输出 1,2</span></li><li>    <span class="sh_keyword">return</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">#include&lt;iostream &gt;
+u<a href="http://c.biancheng.net/ref/sin.html" target="_blank" class="sh_url">sin</a>g namespace std;
+class Complex
+{
+public:
+    double real, imag;
+    Complex(double r, double i) {
+        real= r; imag = i;
+    }
+};
+int main(){
+    Complex cl(1, 2);
+    Complex c2 (cl);  //用复制构造函数初始化c2
+    cout&lt;&lt;c2.real&lt;&lt;","&lt;&lt;c2.imag;  //输出 1,2
+    return 0;
+}</pre></div></div>
+第 13 行给出了初始化 c2 的参数，即 c1。只有编译器自动生成的那个默认复制构造函数的参数才能和 c1 匹配，因此，c2 就是以 c1 为参数，调用默认复制构造函数进行初始化的。初始化的结果是 c2 成为 c1 的复制品，即 c2 和 c1 每个成员变量的值都相等。<br>
+<br>
+如果编写了复制构造函数，则默认复制构造函数就不存在了。下面是一个非默认复制构造函数的例子。
+<div class="snippet-container" style="undefined;"><div class="sh_bright snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display: none;"><pre><a class="snippet-copy sh_url" href="http://c.biancheng.net/view/151.html#" style="display: none;">复制</a><a class="snippet-text sh_url" href="http://c.biancheng.net/view/151.html#">纯文本</a><a class="snippet-window sh_url" href="http://c.biancheng.net/view/151.html#">复制</a></pre></div><pre class="cpp sh_cpp snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">#include</span><span class="sh_string">&lt;iostream&gt;</span></li><li><span class="sh_keyword">using</span> <span class="sh_keyword">namespace</span> std<span class="sh_symbol">;</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Complex</span><span class="sh_cbracket">{</span></li><li><span class="sh_keyword">public</span><span class="sh_symbol">:</span></li><li>    <span class="sh_type">double</span> real<span class="sh_symbol">,</span> imag<span class="sh_symbol">;</span></li><li>    <span class="sh_function">Complex</span><span class="sh_symbol">(</span><span class="sh_type">double</span> r<span class="sh_symbol">,</span><span class="sh_type">double</span> i<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>        real <span class="sh_symbol">=</span> r<span class="sh_symbol">;</span> imag <span class="sh_symbol">=</span> i<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li>    <span class="sh_function">Complex</span><span class="sh_symbol">(</span><span class="sh_keyword">const</span> Complex <span class="sh_symbol">&amp;</span> c<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>        real <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span>real<span class="sh_symbol">;</span> imag <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span>imag<span class="sh_symbol">;</span></li><li>        cout<span class="sh_symbol">&lt;&lt;</span><span class="sh_string">"Copy Constructor called"</span><span class="sh_symbol">&lt;&lt;</span>endl <span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_type">int</span> <span class="sh_function">main</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>    <span class="sh_usertype">Complex</span><span class="sh_normal"> </span><span class="sh_function">cl</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">);</span></li><li>    <span class="sh_usertype">Complex</span><span class="sh_normal"> </span><span class="sh_function">c2</span> <span class="sh_symbol">(</span>cl<span class="sh_symbol">);</span>  <span class="sh_comment">//调用复制构造函数</span></li><li>    cout<span class="sh_symbol">&lt;&lt;</span>c2<span class="sh_symbol">.</span>real<span class="sh_symbol">&lt;&lt;</span><span class="sh_string">","</span><span class="sh_symbol">&lt;&lt;</span>c2<span class="sh_symbol">.</span>imag<span class="sh_symbol">;</span></li><li>    <span class="sh_keyword">return</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">#include&lt;iostream&gt;
+using namespace std;
+class Complex{
+public:
+    double real, imag;
+    Complex(double r,double i){
+        real = r; imag = i;
+    }
+    Complex(const Complex &amp; c){
+        real = c.real; imag = c.imag;
+        cout&lt;&lt;"Copy Constructor called"&lt;&lt;endl ;
+    }
+};
+
+int main(){
+    Complex cl(1, 2);
+    Complex c2 (cl);  //调用复制构造函数
+    cout&lt;&lt;c2.real&lt;&lt;","&lt;&lt;c2.imag;
+    return 0;
+}</pre></div></div>
+程序的输出结果是：<br>
+Copy Constructor called<br>
+1,2<br>
+<br>
+第 9 行，复制构造函数的参数加不加 const 对本程序來说都一样。但加上 const 是更好的做法，这样复制构造函数才能接受常量对象作为参数，即才能以常量对象作为参数去初始化别的对象。<br>
+<br>
+第 17 行，就是以 c1 为参数调用第 9 行的那个复制构造函数初始化的。该复制构造函数执行的结果是使 c2 和 c1 相等，此外还输出<code>Copy Constructor called</code>。<br>
+<br>
+可以想象，如果将第 10 行删去或改成<code>real = 2*c.real; imag = imag + 1;</code>，那么 c2 的值就不会等于 c1 了。也就是说，自己编写的复制构造函数并不一定要做复制的工作（如果只做复制工作，那么使用编译器自动生成的默认复制构造函数就行了）。但从习惯上来讲，复制构造函数还是应该完成类似于复制的工作为好，在此基础上还可以根据需要做些別的操作。<br>
+<br>
+构造函数不能以本类的对象作为唯一参数，以免和复制构造函数相混淆。例如，不能写如下构造函数：
+<p class="info-box">
+Complex (Complex c) {...}</p>
+<h2>
+复制构造函数被调用的三种情况</h2>
+复制构造函数在以下三种情况下会被调用。<br>
+<br>
+1) 当用一个对象去初始化同类的另一个对象时，会引发复制构造函数被调用。例如，下面的两条语句都会引发复制构造函数的调用，用以初始化 c2。
+<div class="snippet-container" style="undefined;"><div class="sh_bright snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display: none;"><pre><a class="snippet-copy sh_url" href="http://c.biancheng.net/view/151.html#" style="display: none;">复制</a><a class="snippet-text sh_url" href="http://c.biancheng.net/view/151.html#">纯文本</a><a class="snippet-window sh_url" href="http://c.biancheng.net/view/151.html#">复制</a></pre></div><pre class="cpp sh_cpp snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Complex</span><span class="sh_normal"> </span><span class="sh_function">c2</span><span class="sh_symbol">(</span>c1<span class="sh_symbol">);</span></li><li><span class="sh_usertype">Complex</span><span class="sh_normal"> </span>c2 <span class="sh_symbol">=</span> c1<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Complex c2(c1);
+Complex c2 = c1;</pre></div></div>
+这两条语句是等价的。<br>
+<br>
+注意，第二条语句是初始化语句，不是赋值语句。赋值语句的等号左边是一个早已有定义的变量，赋值语句不会引发复制构造函数的调用。例如：
+<div class="snippet-container" style="undefined;"><div class="sh_bright snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display: none;"><pre><a class="snippet-copy sh_url" href="http://c.biancheng.net/view/151.html#" style="display: none;">复制</a><a class="snippet-text sh_url" href="http://c.biancheng.net/view/151.html#">纯文本</a><a class="snippet-window sh_url" href="http://c.biancheng.net/view/151.html#">复制</a></pre></div><pre class="cpp sh_cpp snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Complex</span><span class="sh_normal"> </span>c1<span class="sh_symbol">,</span> c2<span class="sh_symbol">;</span> c1 <span class="sh_symbol">=</span> c2 <span class="sh_symbol">;</span></li><li>c1<span class="sh_symbol">=</span>c2<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Complex c1, c2; c1 = c2 ;
+c1=c2;</pre></div></div>
+这条语句不会引发复制构造函数的调用，因为 c1 早已生成，已经初始化过了。<br>
+<br>
+2) 如果函数 F 的参数是类 A 的对象，那么当 F 被调用时，类 A 的复制构造函数将被调用。换句话说，作为形参的对象，是用复制构造函数初始化的，而且调用复制构造函数时的参数，就是调用函数时所给的实参。
+<div class="snippet-container" style="undefined;"><div class="sh_bright snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display: none;"><pre><a class="snippet-copy sh_url" href="http://c.biancheng.net/view/151.html#" style="display: none;">复制</a><a class="snippet-text sh_url" href="http://c.biancheng.net/view/151.html#">纯文本</a><a class="snippet-window sh_url" href="http://c.biancheng.net/view/151.html#">复制</a></pre></div><pre class="cpp sh_cpp snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">#include</span><span class="sh_string">&lt;iostream&gt;</span></li><li><span class="sh_keyword">using</span> <span class="sh_keyword">namespace</span> std<span class="sh_symbol">;</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">A</span><span class="sh_cbracket">{</span></li><li><span class="sh_keyword">public</span><span class="sh_symbol">:</span></li><li>    <span class="sh_function">A</span><span class="sh_symbol">()</span><span class="sh_cbracket">{}</span><span class="sh_symbol">;</span></li><li>    <span class="sh_function">A</span><span class="sh_symbol">(</span>A <span class="sh_symbol">&amp;</span> a<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>        cout<span class="sh_symbol">&lt;&lt;</span><span class="sh_string">"Copy constructor called"</span><span class="sh_symbol">&lt;&lt;</span>endl<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_type">void</span> <span class="sh_function">Func</span><span class="sh_symbol">(</span><span class="sh_usertype">A</span><span class="sh_normal"> </span>a<span class="sh_symbol">)</span><span class="sh_cbracket">{</span> <span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_type">int</span> <span class="sh_function">main</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>    <span class="sh_usertype">A</span><span class="sh_normal"> </span>a<span class="sh_symbol">;</span></li><li>    <span class="sh_function">Func</span><span class="sh_symbol">(</span>a<span class="sh_symbol">);</span></li><li>    <span class="sh_keyword">return</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">#include&lt;iostream&gt;
+using namespace std;
+class A{
+public:
+    A(){};
+    A(A &amp; a){
+        cout&lt;&lt;"Copy constructor called"&lt;&lt;endl;
+    }
+};
+
+void Func(A a){ }
+
+int main(){
+    A a;
+    Func(a);
+    return 0;
+}</pre></div></div>
+程序的输出结果为：<br>
+Copy constructor called<br>
+<br>
+这是因为 Func 函数的形参 a 在初始化时调用了复制构造函数。<br>
+<br>
+前面说过，函数的形参的值等于函数调用时对应的实参，现在可以知道这不一定是正确的。如果形参是一个对象，那么形参的值是否等于实参，取决于该对象所属的类的复制构造函数是如何实现的。例如上面的例子，Func 函数的形参 a 的值在进入函数时是随机的，未必等于实参，因为复制构造函数没有做复制的工作。<br>
+<br>
+以对象作为函数的形参，在函数被调用时，生成的形参要用复制构造函数初始化，这会带来时间上的开销。如果用对象的引用而不是对象作为形参，就没有这个问题了。但是以引用作为形参有一定的风险，因为这种情况下如果形参的值发生改变，实参的值也会跟着改变。<br>
+<br>
+如果要确保实参的值不会改变，又希望避免复制构造函数带来的开销，解决办法就是将形参声明为对象的 const 引用。例如：
+<div class="snippet-container" style="undefined;"><div class="sh_bright snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display: none;"><pre><a class="snippet-copy sh_url" href="http://c.biancheng.net/view/151.html#" style="display: none;">复制</a><a class="snippet-text sh_url" href="http://c.biancheng.net/view/151.html#">纯文本</a><a class="snippet-window sh_url" href="http://c.biancheng.net/view/151.html#">复制</a></pre></div><pre class="cpp sh_cpp snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">Function</span><span class="sh_symbol">(</span><span class="sh_keyword">const</span> Complex <span class="sh_symbol">&amp;</span> c<span class="sh_symbol">)</span></li><li><span class="sh_cbracket">{</span></li><li>    <span class="sh_symbol">...</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void Function(const Complex &amp; c)
+{
+    ...
+}</pre></div></div>
+这样，Function 函数中出现任何有可能导致 c 的值被修改的语句，都会引发编译错误。<br>
+<br>
+思考题：在上面的 Function 函数中，除了赋值语句，还有什么语句有可能改变 c 的值？例如，是否允许通过 c 调用 Complex 的成员函数？<br>
+<br>
+3) 如果函数的返冋值是类 A 的对象，则函数返冋时，类 A 的复制构造函数被调用。换言之，作为函数返回值的对象是用复制构造函数初始化 的，而调用复制构造函数时的实参，就是 return 语句所返回的对象。例如下面的程序：
+<div class="snippet-container" style="undefined;"><div class="sh_bright snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display: none;"><pre><a class="snippet-copy sh_url" href="http://c.biancheng.net/view/151.html#" style="display: none;">复制</a><a class="snippet-text sh_url" href="http://c.biancheng.net/view/151.html#">纯文本</a><a class="snippet-window sh_url" href="http://c.biancheng.net/view/151.html#">复制</a></pre></div><pre class="cpp sh_cpp snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">#include</span><span class="sh_string">&lt;iostream&gt;</span></li><li><span class="sh_keyword">using</span> <span class="sh_keyword">namespace</span> std<span class="sh_symbol">;</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">A</span> <span class="sh_cbracket">{</span></li><li><span class="sh_keyword">public</span><span class="sh_symbol">:</span></li><li>    <span class="sh_type">int</span> v<span class="sh_symbol">;</span></li><li>    <span class="sh_function">A</span><span class="sh_symbol">(</span><span class="sh_type">int</span> n<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> v <span class="sh_symbol">=</span> n<span class="sh_symbol">;</span> <span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>    <span class="sh_function">A</span><span class="sh_symbol">(</span><span class="sh_keyword">const</span> A <span class="sh_symbol">&amp;</span> a<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        v <span class="sh_symbol">=</span> a<span class="sh_symbol">.</span>v<span class="sh_symbol">;</span></li><li>        cout <span class="sh_symbol">&lt;&lt;</span> <span class="sh_string">"Copy constructor called"</span> <span class="sh_symbol">&lt;&lt;</span> endl<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_usertype">A</span><span class="sh_normal"> </span><span class="sh_function">Func</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_usertype">A</span><span class="sh_normal"> </span><span class="sh_function">a</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">);</span></li><li>    <span class="sh_keyword">return</span> a<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_type">int</span> <span class="sh_function">main</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>    cout <span class="sh_symbol">&lt;&lt;</span> <span class="sh_function">Func</span><span class="sh_symbol">().</span>v <span class="sh_symbol">&lt;&lt;</span> endl<span class="sh_symbol">;</span></li><li>    <span class="sh_keyword">return</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">#include&lt;iostream&gt;
+using namespace std;
+class A {
+public:
+    int v;
+    A(int n) { v = n; };
+    A(const A &amp; a) {
+        v = a.v;
+        cout &lt;&lt; "Copy constructor called" &lt;&lt; endl;
+    }
+};
+
+A Func() {
+    A a(4);
+    return a;
+}
+
+int main() {
+    cout &lt;&lt; Func().v &lt;&lt; endl;
+    return 0;
+}</pre></div></div>
+程序的输出结果是：<br>
+Copy constructor called<br>
+4<br>
+<br>
+第19行调用了 Func 函数，其返回值是一个对象，该对象就是用复制构造函数初始化的， 而且调用复制构造函数时，实参就是第 16 行 return 语句所返回的 a。复制构造函数在第 9 行确实完成了复制的工作，所以第 19 行 Func 函数的返回值和第 14 行的 a 相等。<br>
+<br>
+需要说明的是，有些编译器出于程序执行效率的考虑，编译的时候进行了优化，函数返回值对象就不用复制构造函数初始化了，这并不符合 <a href="http://c.biancheng.net/cplus/" target="_blank">C++</a> 的标准。上面的程序，用 Visual Studio 2010 编译后的输出结果如上所述，但是在 Dev C++ 4.9 中不会调用复制构造函数。把第 14 行的 a 变成全局变量，才会调用复制构造函数。对这一点，读者不必深究。</div>
+<div id="all-course" class="box-bottom">
+<h4>所有教程</h4>
+<ul class="clearfix">
+<li><a href="http://c.biancheng.net/python/">Python基础教程</a></li>
+<li><a href="http://c.biancheng.net/csharp/">C#教程</a></li>
+<li><a href="http://c.biancheng.net/socket/">socket</a></li>
+<li><a href="http://c.biancheng.net/mysql/">MySQL</a></li>
+<li><a href="http://c.biancheng.net/mysql/function/">MySQL函数</a></li>
+<li><a href="http://c.biancheng.net/c/">C语言入门</a></li>
+<li><a href="http://c.biancheng.net/c/s/">C语言专题</a></li>
+<li><a href="http://c.biancheng.net/compiler/">C语言编译器</a></li>
+<li><a href="http://c.biancheng.net/c/example/">C语言编程实例</a></li>
+<li><a href="http://c.biancheng.net/gcc/">GCC编译器</a></li>
+<li><a href="http://c.biancheng.net/data_structure/">数据结构</a></li>
+<li><a href="http://c.biancheng.net/cplus/">C++教程</a></li>
+<li><a href="http://c.biancheng.net/opencv/">OpenCV</a></li>
+<li><a href="http://c.biancheng.net/qt/">Qt教程</a></li>
+<li><a href="http://c.biancheng.net/unity3d/">Unity 3D教程</a></li>
+<li><a href="http://c.biancheng.net/ue4/">UE4</a></li>
+<li><a href="http://c.biancheng.net/stl/">STL</a></li>
+<li><a href="http://c.biancheng.net/vi/">vi命令</a></li>
+<li><a href="http://c.biancheng.net/android/">Android教程</a></li>
+<li><a href="http://c.biancheng.net/linux_tutorial/">Linux入门</a></li>
+<li><a href="http://c.biancheng.net/linux/">Linux命令</a></li>
+<li><a href="http://c.biancheng.net/shell/">Shell脚本</a></li>
+<li><a href="http://c.biancheng.net/java/">Java教程</a></li>
+<li><a href="http://c.biancheng.net/design_pattern/">设计模式</a></li>
+<li><a href="http://c.biancheng.net/swing/">Java Swing</a></li>
+<li><a href="http://c.biancheng.net/jsp/">JSP教程</a></li>
+<li><a href="http://c.biancheng.net/css/">CSS教程</a></li>
+<li><a href="http://c.biancheng.net/tensorflow/">TensorFlow</a></li>
+<li><a href="http://c.biancheng.net/blockchain/">区块链</a></li>
+<li><a href="http://c.biancheng.net/golang/">Go语言教程</a></li>
+<li><a href="http://c.biancheng.net/docker/">Docker</a></li>
+<li><a href="http://c.biancheng.net/skill/">编程笔记</a></li>
+<li><a href="http://c.biancheng.net/download/">资源下载</a></li>
+<li><a href="http://c.biancheng.net/video/">编程视频</a></li>
+<li><a href="http://c.biancheng.net/about/">关于我们</a></li>
+<li><a href="http://c.biancheng.net/asm/">汇编语言</a></li>
+</ul>
+</div>
+<div id="nice-arcs" class="box-bottom">
+<h4>优秀文章</h4>
+<ul class="clearfix">
+<li><a href="http://c.biancheng.net/view/469.html" title="Turbo C 2.0使用教程（使用Turbo C 2.0编写C语言程序）">Turbo C 2.0使用教程（使用Turbo C 2.0编写C语言程序）</a></li>
+<li><a href="http://c.biancheng.net/view/765.html" title="Java变量的声明和初始化">Java变量的声明和初始化</a></li>
+<li><a href="http://c.biancheng.net/view/998.html" title="Java方法重载">Java方法重载</a></li>
+<li><a href="http://c.biancheng.net/view/1004.html" title="Java抽象（abstract）类">Java抽象（abstract）类</a></li>
+<li><a href="http://c.biancheng.net/view/1216.html" title="Java Swing JLable：标签组件">Java Swing JLable：标签组件</a></li>
+<li><a href="http://c.biancheng.net/view/1438.html" title="浅谈C++ auto_ptr智能指针">浅谈C++ auto_ptr智能指针</a></li>
+<li><a href="http://c.biancheng.net/view/1633.html" title="C++菜鸟入门起飞视频(黑盾VIP 125课)">C++菜鸟入门起飞视频(黑盾VIP 125课)</a></li>
+<li><a href="http://c.biancheng.net/view/vip_1987.html" title="C语言#error命令，阻止程序编译">C语言#error命令，阻止程序编译</a></li>
+<li><a href="http://c.biancheng.net/view/2553.html" title="Python linecache用法：随机读取文件指定行">Python linecache用法：随机读取文件指定行</a></li>
+<li><a href="http://c.biancheng.net/view/2876.html" title="C#继承关系中构造器之间的关系">C#继承关系中构造器之间的关系</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+// 当前文章ID
+window.arcIdRaw = 'a_' + 151;
+window.arcId = "611dMUYf6vO5qojDsX2FVydKEDTBdib71gztfvgTfMjIhwje2vviI/b9xA";
+window.typeidChain = "120|119";
+</script>
+<div id="footer" class="clearfix">
+<div class="info left">
+<p>精美而实用的网站，提供<a href="http://c.biancheng.net/c/">C语言</a>、<a href="http://c.biancheng.net/cplus/">C++</a>、<a href="http://c.biancheng.net/stl/">STL</a>、<a href="http://c.biancheng.net/linux_tutorial/">Linux</a>、<a href="http://c.biancheng.net/shell/">Shell</a>、<a href="http://c.biancheng.net/java/">Java</a>、<a href="http://c.biancheng.net/golang/">Go语言</a>等教程，以及<a href="http://c.biancheng.net/socket/">socket</a>、<a href="http://c.biancheng.net/gcc/">GCC</a>、<a href="http://c.biancheng.net/vi/">vi</a>、<a href="http://c.biancheng.net/swing/">Swing</a>、<a href="http://c.biancheng.net/design_pattern/">设计模式</a>、<a href="http://c.biancheng.net/jsp/">JSP</a>等专题。</p>
+<p>Copyright ©2011-2018 biancheng.net, 陕ICP备15000209号</p>
+</div>
+<img class="right" src="./C++拷贝构造函数（复制构造函数）详解_files/logo_bottom.gif" alt="底部Logo">
+<span id="return-top"><b>↑</b></span>
+</div>
+<script type="text/javascript">
+window.siteId = 4;
+window.cmsTemplets = "/templets/new";
+window.cmsTempletsVer = "1.3.5";
+</script>
+<script src="./C++拷贝构造函数（复制构造函数）详解_files/jquery1.12.4.min.js.下载"></script>
+<script src="./C++拷贝构造函数（复制构造函数）详解_files/common.js.下载"></script>
+<span style="display:none;"><script src="./C++拷贝构造函数（复制构造函数）详解_files/z_stat.php" type="text/javascript" defer="defer" async="async"></script></span>
+
+</body></html>

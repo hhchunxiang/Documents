@@ -1,0 +1,620 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0052)http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客,simoniu,it">
+<meta name="description" content="为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客,simoniu,">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://blog.sina.cn/dpool/blog/s/blog_5396eb530100mtc9.html?vt=4">
+<meta http-equiv="mobile-agent" content="format=wml; url=http://blog.sina.cn/dpool/blog/ArtRead.php?nid=5396eb530100mtc9&amp;vt=1">
+<!--–[if lte IE 6]-->
+<script id="sinaads-ck-script" charset="utf-8" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sinaads_ck.js.下载"></script><script type="text/javascript">
+try{
+document.execCommand("BackgroundImageCache", false, true);
+}catch(e){}
+</script>
+<!--[endif]–-->
+<script type="text/javascript">
+window.staticTime=new Date().getTime();
+</script>
+<link rel="pingback" href="http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php?rsd">
+<link href="http://blog.sina.com.cn/blog_rebuild/blog/wlwmanifest.xml" type="application/wlwmanifest+xml" rel="wlwmanifest">
+<link rel="alternate" type="application/rss+xml" href="http://blog.sina.com.cn/rss/1402399571.xml" title="RSS">
+<link href="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/article.css" type="text/css" rel="stylesheet"><link href="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/common.css" type="text/css" rel="stylesheet"><link href="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/blog.css" type="text/css" rel="stylesheet"><link href="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/blog(1).css" type="text/css" rel="stylesheet"><style id="tplstyle" type="text/css">@charset "utf-8";@import url("http://simg.sinajs.cn/blog7newtpl/css/1/1_13/t.css");
+</style>
+<style id="positionstyle" type="text/css">
+.sinabloghead .blogtoparea{ left:154px;top:31%;}
+.sinabloghead .blognav{ left:134px;top:56%;}
+</style>
+<style id="bgtyle" type="text/css">
+</style>
+<style id="headtyle" type="text/css">
+</style>
+<style id="navtyle" type="text/css">
+</style>
+<script type="text/javascript" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sspnew.js.下载"></script><script src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/ssologin.js.下载" charset="utf-8" async=""></script><script src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/article.js.下载" charset="utf-8"></script><script src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sinaads.js.下载" charset="utf-8"></script><script src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/suda_s_v851c.js.下载" charset="utf-8"></script><iframe src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/ckctl.html" id="ckctlFrame" scrolling="no" style="height: 0px; width: 1px; overflow: hidden;"></iframe><script src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/tmp_clone.js.下载" charset="utf-8"></script><style type="text/css" id="stylefix">#bsPanelHolder,#sinaads_pdps54771{display:none;}</style><script src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/getSinaadsExParamsForBlog.js.下载" charset="utf-8"></script><script src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/collect.js.下载" charset="gb2312"></script><script src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/blog_bottom_float.js.下载" charset="utf-8"></script></head>
+<body><div id="sinaadToolkitBox3" class="sinaad-toolkit-box" style="position: fixed; width: 640px; height: 90px; z-index: 10501; display: none; left: 199px; top: 528px; transition: all 0.3s ease 0s;"><div id="sinaAD_type_blogbf"><a style="display:block;line-height:0;" href="http://saxn.sina.com.cn/dsp/click?t=MjAxOS0wNS0wNSAxNDo0ODo0NS4zMjIJMjcuNDQuMjUuMjEzCTI3LjQ0LjIwMi4xODRfMTU0NDkzODkxMi4yNjQxNDcJYzc0YzFjZjgtZWM3OC00NGZjLTg2NWEtMzdiYWEwZWRmNWU4CTMzMzE3MzUJNTcyMDc5NzM5NF9QSU5QQUktQ1BDCTMxNTA5OTkJMTI4NTkzCTAuMDAxOTczNTYJMQl0cnVlCVBEUFMwMDAwMDAwNTI5NTAJMzcwNDI4MglQQwlpbWFnZQktCTB8MXNaT0dDSE1sTDFPaG1vUDVoeDRFdXxudWxsfG51bGx8Ymp8MzMzMTczNXw3bnEybGVZZVN3aE5mdGpyT2tTZUV8MHx8fHxEfHwwfHx8MHwtMXwwfAkJMQktCS0JLQkwCTI3LjQ0LjIwMi4xODRfMTU0NDkzODkxMi4yNjQxNDcJUENfSU1BR0UJLQlub3JtYWx8dXZmbS1ydAkJdXNlcl90YWc6MjA2MzU6MC41fHVzZXJfYWdlOjYwMTowLjY5ODE0fHVzZXJfZ2VuZGVyOjUwMToxLjB8dl96b25lOjMwNjAwMjowLjB8Y3Jvd2RzOnxfY3Jvd2RzOgkxCTE2MTAwMAk1MDAwMAktCQkwCQkzZjk3MmU0YS00YTIwLTM1NTAtOTNiZS1hZTIzMmMwYzA5NzAJMA==&amp;userid=27.44.202.184_1544938912.264147&amp;auth=a9ca3250cd808f61&amp;p=m7tjAGbLNpKWmJ2zO2YCdcSjwDhUeEJYM7CWMg%3D%3D&amp;url=http%3A%2F%2Fsaxn.sina.com.cn%2Fclick%3Fid%3D17%26t%3DOWJiYjYzMDAtNjZjYi0zNjkyLTk2OTgtOWRiMzNiNjYwMjc1CTE3CVBEUFMwMDAwMDAwNTI5NTAJMzcwNDI4MgkxCVJUQgktCVY1LjAuMF9fX0JYXzEwLjEzLjIyNC4xMzMJCQlwcm92aW5jZTozMDYwMDB8Y2l0eTozMDYwMDN8aXA6MjcuNDQuMjUuMjEzfGRldmljZWlkOnxjb29raWU6MjcuNDQuMjAyLjE4NF8xNTQ0OTM4OTEyLjI2NDE0N3xkaWQ6fHBsYXQ6cGN8dHM6MTU1NzAzODkyNXx0ZjowfGFidGVzdDp8b3JpZ2luaXA6MTAuMTMuMjI0LjEzM3x0cmFmZmljOnBvcnRhbHxkeW5hbWljYWQ6fGNyZTp8YmFja2FkaW5kZXg6fGFjdGlvbjotMXx1cDotMXxkb3duOi0xfGNudG51bTotMXxwZGNvbnRyYWN0Oi18cGRkZXRhaWxpZDotfHByb2R1Y3RpZDotfHBkcGFja2FnZWlkOi0JM2Y5NzJlNGEtNGEyMC0zNTUwLTkzYmUtYWUyMzJjMGMwOTcw%26type%3D2%26url%3Dhttp%253A%252F%252Fwww.shuiliaospa.com%252F%253FSET_A%253DPDPS000000052950%2526SET_B%253D3331735%2526SET_C%253D3704282%2526SET_D%253Dc74c1cf8-ec78-44fc-865a-37baa0edf5e8%2526SET_E%253D3150999%2526SET_F%253D1%26sina_sign%3D1a8930ab2f35fb29&amp;sign=0cefef2bf68ff84e" target="_blank" data-ss="e48ff86fb2fefec0=ngis&amp;92bf53f2ba0398a1D3%ngis_anis62%1D352%F_TES6252%9990513D352%E_TES6252%8e5fde0aab73-a568-cf44-87ce-8fc1c47cD352%D_TES6252%2824073D352%C_TES6252%5371333D352%B_TES6252%059250000000SPDPD352%A_TESF352%F252%moc.apsoailiuhs.wwwF252%F252%A352%ptthD3%lru62%2D3%epyt62%wcTOwMGMjJzMyUWYtUmYzkTLwUTNz0CMyEGNtEGNlJzN5Y2MJ0iOklWZnF2ajFGckBHftoDZpR3Y1R2byBHftoDZpxWahRXZkRGc81iO0NWYyRnbvNGZwxXMtoTb15GduNGfx0iOud3bkxXMtoDc1xXMtojbvlGdjFGf6gXZk5WakF2ajFmY8pTZyNGf6QWYjlWbh5WekxHbhRncvBnOjlmZmFmc0x3MzEjL0IjMuMTMuATM6AXaul2ZpJ3b8pDdzVGdiFGfwojZ0xXNykDOzAzN1UTM6MHd8NGc6QXYsBHf6QWakx3N0EDN2IjLyETO4MTO0QTNx8FN4EjLyAjMuQDNucjM6UWar92bjxnOklWZjlmdlRGfzEjMuUjMuQDNucjM6AXa8NDMwYDMzoTe0l2Y8BDMwYDMzoTZj5Wa29mcwlQCJMzMx4CNyIjLzEjLwEzXYJ0Xf9FMuAjL1YVCtkgQUJVCxkgM4IDNwczMJATN5ITNwADMwADMwMFUEBVC3ETC1cjMwYjNiNzMiRWOtgTO2kTLykjNz0iYjZjNtADMzYjYiJWOD3%t62%71D3%diF3%kcilcF2%nc.moc.anis.nxasF2%F2%A3%ptth=lru&amp;D3%D3%gMWC7MYJEeUhDwjScdCY2Oz2JmWKpNLbGAjt7m=p&amp;16f808dc0523ac9a=htua&amp;741462.2198394451_481.202.44.72=diresu&amp;==AMJAzN5AzYwMmMzITZh1SZiNTOtATN1MTLwITY00SY0UmM3kjZzkQCwkQCtkAMwADM1kAMwATM2ETCxkgOzR2dvJ3YfxnOzR2dvJ3Y8BjLwojMwAjNwMjOl52b69ld8BjLxoTMwUjOyVGZuV2ZfJXZzVHf0EDO5YjLwoTMwYjOldWYfJXZzVHf14CM6UzM2AjM6cWY09lclNXdJkAdy1SbmZXd8xWYtJ3bulQLJU0RB1USfNEUJcDNxQjNy4iMxkDOzkDN0UTMfRDOx4iMwIjL0QjL3ITCwkQLJ0SCtkQMJkAfwwXMtwHM8xHfwwHfExHf8xHM8VUZTt2TypGdm5Ea3NVZZVGbyEnb3wXNzcTMzMzM8pmY8xGb15GfsxWduxXdFRDeoVDUv1GaPFDTs1ESDd0TaNXM8BTCtkQZnFWbplwQQlgM4IDNwczMJATN5ITNwADMwADMwMFUEBVClVnc0lQMJYTNzcTOxADMuATCzkTN4ITMJkTO5ATNxMTCDB1QtkUQQ5USQ9FN5MzN5cDMycTNJUzM3EzMzMTC4UWNmRWZwEWYidzMtEWN2gTLjZGN00CO3MWZtgjZjFzY0czYJcDNxQjNy4iMxkDOzkDN0UTMfRDOx4iMwIjL0QjL3ITCzEjMuUjMuQDNucjMJIjMz4SN0oDO0oDNxASNw0SNw0SOxAjM=t?kcilc/psd/nc.moc.anis.nxas//:ptth" onmousedown="return sinaadToolkit.url.fortp(this, event);"><img border="0" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/30394c9db4592dc9cfad3fe952dd5906.jpg" style="width:640px;height:90px;border:0" alt="广告"></a></div><div style="background: url(&quot;http://d1.sina.com.cn/litong/zhitou/sinaads/60x18_2_close.gif&quot;) left top no-repeat; cursor: pointer; z-index: 11010; position: absolute; width: 60px; height: 18px; right: 7px; top: 1px;"></div></div><div id="sinaadToolkitBox2" class="sinaad-toolkit-box" style="position: fixed; width: 25px; height: 239px; z-index: 10000; display: none; left: 1324px; top: 200px;"><div></div><div style="width: 25px; height: 24px; position: absolute; left: 0px; top: 150px; background: url(&quot;//d5.sina.com.cn/d1images/lmt/play.gif&quot;) center center no-repeat; margin: 0px; padding: 0px; display: block; cursor: pointer;"></div><div style="margin: 0px; padding: 0px; display: block; cursor: pointer; width: 25px; height: 65px; position: absolute; left: 0px; top: 174px; background: url(&quot;//d2.sina.com.cn/litong/zhitou/sinaads/25x65_1-close.gif&quot;) center center no-repeat;"></div></div><div id="sinaadToolkitBox1" class="sinaad-toolkit-box" style="position: fixed; width: 120px; height: 270px; z-index: 10010; display: none; left: 1229px; top: 30px;"><div></div><div style="width: 120px; height: 18px; position: absolute; right: 0px; bottom: -18px; z-index: 9999; background: url(&quot;//d2.sina.com.cn/litong/zhitou/sinaads/60x18_1_close.gif&quot;) left top no-repeat rgb(238, 238, 238); margin: 0px; padding: 0px; cursor: pointer;"></div></div><div id="sinaadToolkitBox0" class="sinaad-toolkit-box" style="position: fixed; width: 120px; height: 288px; z-index: 99999; display: block; left: 0px; top: 120px;"><div style="width: 120px; height: 18px; position: absolute; right: 0px; top: 270px; z-index: 10000; background: url(&quot;//d2.sina.com.cn/litong/zhitou/sinaads/60x18_1_close.gif&quot;) right center no-repeat rgb(235, 235, 235); margin: 0px; padding: 0px; cursor: pointer;"></div><div style="width: 120px; height: 270px; position: absolute; right: 0px; top: 0px;"><iframe adtypeturning="undefined" width="120px" height="270px" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" sandbox="allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="javascript:&#39;&lt;html&gt;&lt;body style=background:transparent;&gt;&lt;/body&gt;&lt;/html&gt;&#39;" id="sinaadtk_sandbox_id_1" style="float:left;" name="sinaadtk_sandbox_id_1" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/saved_resource.html"></iframe></div></div>
+<!--$sinatopbar-->
+<ins class="sinaads sinaads-done" data-ad-pdps="PDPS000000049439" style="width: 1000px; margin: 0px auto; display: block; overflow: hidden; text-decoration: none;" data-ad-status="done"><ins style="text-decoration:none;margin:0px auto;width:1000px;display:block;position:relative;overflow:hidden;"><a style="display:block;line-height:0;" href="http://saxn.sina.com.cn/dsp/click?t=MjAxOS0wNS0wNSAxNDo0ODo0MS4xMDIJMjcuNDQuMjUuMjEzCTI3LjQ0LjIwMi4xODRfMTU0NDkzODkxMi4yNjQxNDcJNzBlYmYyNmYtMDRhNi00MDgyLTg3NzYtNjI5NjNmNWQxZGNhCTM0NDQ2NjYJNTk1NTg5NjQyMF9QSU5QQUktQ1BDCTMxODg4MDUJMjY3NDE1CTEuNzU0Mzg2RS00CTEJdHJ1ZQlQRFBTMDAwMDAwMDQ5NDM5CTM5NTMzOTgJUEMJaW1hZ2UJLQkwfDFvcEJ5N2Y5aEpycGQwRTVoQlMyVjV8bnVsbHxudWxsfGJqfDM0NDQ2NjZ8NlRTd3NuY2hHNGhlTThtSmlUWjJqN3wwfHx8fEJ8fDB8fHwwfC0xfDB8CQkxCS0JLQktCTAJMjcuNDQuMjAyLjE4NF8xNTQ0OTM4OTEyLjI2NDE0NwlQQ19JTUFHRQktCW5vcm1hbHx1dmZtLXJ0CQl1c2VyX3RhZzoyMDYzNTowLjV8dXNlcl9hZ2U6NjAyOjAuNzAwODh8dXNlcl9nZW5kZXI6NTAxOjEuMHx2X3pvbmU6MzA2MDAyOjAuMHxjcm93ZHM6fF9jcm93ZHM6CTMJMjg1MDAwCTUwMDAwCS0JCTAJCTVhNGU3NDkwLTdmNjktMzRiMy04N2QyLTY4OWVmOTEyOGZlMgkw&amp;userid=27.44.202.184_1544938912.264147&amp;auth=d7275c4205b9ca98&amp;p=WQQgEEyrOfCN28HP0tXHie%2FDSiAxrCc7vmtKfg%3D%3D&amp;url=http%3A%2F%2Fsaxn.sina.com.cn%2Fclick%3Fid%3D17%26t%3DNTkwNDIwMTAtNGNhYi0zOWYwLThkZGItYzFjZmQyZDVjNzg5CTE3CVBEUFMwMDAwMDAwNDk0MzkJMzk1MzM5OAkxCVJUQgktCVY1LjAuMF9fX0JYXzEwLjEzLjIyNC4xMjgJCQlwcm92aW5jZTozMDYwMDB8Y2l0eTozMDYwMDN8aXA6MjcuNDQuMjUuMjEzfGRldmljZWlkOnxjb29raWU6MjcuNDQuMjAyLjE4NF8xNTQ0OTM4OTEyLjI2NDE0N3xkaWQ6fHBsYXQ6cGN8dHM6MTU1NzAzODkyMXx0ZjowfGFidGVzdDp8b3JpZ2luaXA6MTAuMTMuMjI0LjEyOHx0cmFmZmljOnBvcnRhbHxkeW5hbWljYWQ6fGNyZTp8YmFja2FkaW5kZXg6fGFjdGlvbjotMXx1cDotMXxkb3duOi0xfGNudG51bTotMXxwZGNvbnRyYWN0Oi18cGRkZXRhaWxpZDotfHByb2R1Y3RpZDotfHBkcGFja2FnZWlkOi0JNWE0ZTc0OTAtN2Y2OS0zNGIzLTg3ZDItNjg5ZWY5MTI4ZmUy%26type%3D2%26url%3Dhttp%253A%252F%252Fxft5.davidpicturebook.com%252F%253Fgzid%253D100090.9%26sina_sign%3Dbcabbe694a5a7aa7&amp;sign=d749fd0b759baccf" target="_blank" data-ss="fccab957b0df947d=ngis&amp;7aa7a5a496ebbacbD3%ngis_anis62%9.090001D352%dizgF352%F252%moc.kooberutcipdivad.5tfxF252%F252%A352%ptthD3%lru62%2D3%epyt62%yUmZ4ITM5YWZ5gjNtIDZ3gTLzIGNz0SO2Y2NtATO0cTZ0EWNJ0iOklWZnF2ajFGckBHftoDZpR3Y1R2byBHftoDZpxWahRXZkRGc81iO0NWYyRnbvNGZwxXMtoTb15GduNGfx0iOud3bkxXMtoDc1xXMtojbvlGdjFGf6gXZk5WakF2ajFmY8pTZyNGf6QWYjlWbh5WekxHbhRncvBnOjlmZmFmc0xHOyEjL0IjMuMTMuATM6AXaul2ZpJ3b8pDdzVGdiFGfwojZ0xXMykDOzAzN1UTM6MHd8NGc6QXYsBHf6QWakx3N0EDN2IjLyETO4MTO0QTNx8FN4EjLyAjMuQDNucjM6UWar92bjxnOklWZjlmdlRGfzEjMuUjMuQDNucjM6AXa8NDMwYDMzoTe0l2Y8BDMwYDMzoTZj5Wa29mcwlQCJgjMx4CNyIjLzEjLwEzXYJ0Xf9FMuAjL1YVCtkgQUJVCxkAO5MzM1kzMJkzM0kDNwADMwADMwMFUEBVC3ETC5gzNjVDZyQmZjFzYtIGZkhTLwYWOz0iYhNGNtATMwIDNwkTND3%t62%71D3%diF3%kcilcF2%nc.moc.anis.nxasF2%F2%A3%ptth=lru&amp;D3%D3%gfKtmv7cCrxAiSDF2%eiHXt0PH82NCfOryEEgQQW=p&amp;89ac9b5024c5727d=htua&amp;741462.2198394451_481.202.44.72=diresu&amp;wkgMlZGOyETOmVWO4YTLyQ2N40yMiRzMtkjNmdTLwkDN3UGNhVTCJATCJ0SCwADMwUTCwADM1gjMJMTC6MHZ39mcj9Ff6MHZ39mcjxHMuAjOyADM2AzM6Umbvp3X2xHMuEjOxATN6IXZk5WZn9lclNXd8hDOwAzNuAjOyAjN6U2Zh9lclNXd8VjLwoTNzYDMyozZhR3XyV2c1lQC0JXLtZmd1xHbh1mcv5WCtkQRHFUTJ91QQlwN0EDN2IjLyETO4MTO0QTNx8FN4EjLyAjMuQDNucjMJATCtkQLJ0SCxkQC8BDfx0CfwwHf8BDf8JEf8xHfww3NqJjWUlmSthTTlhGNHh2YuN3dTRlN8ZjN2QDN0MDfqJGfsxWduxHbsVnb8VjVyMlQoVTRwQGcypEa5Y2N5JEcvFDfwkQLJU2Zh1WaJMEUJgTOzMTN5MTC5MDN5QDMwADMwADMTBFRQlQZ1JHdJETC00SR2gzM0UzNuETC1EDN3YjMJUDM4gDOxMTCDB1QtkUQQ5USQ9FMyQjN5gTN1kTNJYjN2QDN0MTChNGZxQWNmNjN5IjNtYzN3gTLygDM00iNhRDMtYmNyYmYlBzNJcDNxQjNy4iMxkDOzkDN0UTMfRDOx4iMwIjL0QjL3ITCzEjMuUjMuQDNucjMJIDMx4SM0oDO0oDNxASNw0SNw0SOxAjM=t?kcilc/psd/nc.moc.anis.nxas//:ptth" onmousedown="return sinaadToolkit.url.fortp(this, event);"><img border="0" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/2dcb64a64f6ca88e750723125b11d79b.jpg" style="width:1000px;height:90px;border:0" alt="广告"></a><div style="width: 26px; height: 13px; position: absolute; right: 1px; bottom: 1px; z-index: 99; background: url(&quot;//d2.sina.com.cn/litong/zhitou/sinaads/release/ad_logo_update_IAB.gif&quot;) no-repeat;"></div></ins></ins><div style="z-index: 512; display: block; position: fixed; top: 0px; width: 100%;" class="nsinatopbar">
+  <div style="position:absolute;left:0;top:0;" id="trayFlashConnetion"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" src="http://sjs.sinajs.cn/blog7swf/scache.swf" width="1" height="1" style="undefined" id="scache" name="scache" bgcolor="#00ff00" quality="high" wmode="transparent" allowscriptaccess="always"></div>
+  <div class="ntopbar_main"><div id="_1441557038919713_panel" class="horn" style=""><div id="_1441557038919713_tj" class="horn_con" style="">推荐：<a id="_1441557038919713_noticeAd1" target="_blank" href="http://blog.sina.com.cn/s/blog_14f7c05f10102yizz.html" title="她怎摊上这样一个恶魔父亲" suda-uatrack="key=blog_notice&amp;value=h_SLOT_58_84_N">她怎摊上这样一个恶魔父亲</a><a id="_1441557038919713_noticeAd2" target="_blank" href="http://blog.sina.com.cn/s/blog_7d75a1df0102z3yo.html" title="长期单身的姑娘都在想些啥" suda-uatrack="key=blog_notice&amp;value=h_SLOT_59_84_N">长期单身的姑娘都在想些啥</a></div><div id="_1441557038919713_announce" class="horn_con" style="display:none;"><p id="_1441557038919713_announceCon">公告：<em>请您及时更换请请请您正在使用的模版将于2周后被下线，请您及时更换</em></p></div><a class="close" title="关闭" id="_1441557038919713_close" style="float:none;">×</a></div> 
+    <a id="login_bar_logo_link_350" href="http://blog.sina.com.cn/" target="_blank" style="display: none;"><img class="ntopbar_logo" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/topbar_logo.gif" width="100" alt="新浪博客"></a>
+    <div class="ntopbar_floatL" style="display: none;">
+      <div class="ntopbar_search" id="traySearchBar"><div class="ntopbar_input" id="_8001557038919484_panel" style=""><form id="_8001557038919484_searchForm" method="get" target="_blank" action="http://search.sina.com.cn/"><input id="_8001557038919484_queryTxt" class="ntopbar_txt" type="text" name="q" autocomplete="off"><input id="_8001557038919484_submit" type="submit" onclick="v7sendLog(&#39;40_01_44&#39;)" class="ntopbar_searchBtn" value=""><input type="hidden" name="ie" value="utf-8"><input type="hidden" name="e" value="utf-8"><input id="_8001557038919484_range" type="hidden" name="range" value="article"><input id="_8001557038919484_t" type="hidden" name="t" value=""><input id="_8001557038919484_s" type="hidden" name="s" value="sup"><input id="_8001557038919484_by" type="hidden" name="by" value="all"><input id="_8001557038919484_type" type="hidden" name="type" value=""><input id="_8001557038919484_stype" type="hidden" name="stype" value="1"><input id="_8001557038919484_c" type="hidden" name="c" value="blog"></form></div></div>
+	  <div class="ntopbar_ad" id="loginBarActivity" style=""><ins class="sinaads sinaads-fail" data-ad-pdps="PDPS000000033238" style="display:block;" data-ad-status="done"></ins></div>
+    </div>
+    <div class="ntopbar_loading" style="display: none;"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/loading.gif">加载中…</div>
+  <div class="ntopbar_menu" id="_2521557038919480_panel" style=""><div id="_2521557038919480_openBlog" style="display: block;"><span class="link"><a href="http://www.sina.com.cn/" target="_blank" suda-uatrack="key=sinahome_from_blog&amp;value=sinahome_from_blogpage"><i class="SG_bkhome"></i>新浪首页</a></span><span class="link" id="_2521557038919480_userMenu" init="1"><a id="_2521557038919480_userNick" onclick="v7sendLog(&#39;40_01_21&#39;);return false;" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html###">那束坡</a><a href="javascript:;" class="link_arrow" title=""></a></span><span id="_2521557038919480_msnHolder" class="ico_msn" style="display:none"><a id="_2521557038919480_msnLink" href="http://control.blog.sina.com.cn/blogprofile/msnbind.php?c=" target="_blank"><img height="18" width="18" align="absmiddle" class="SG_icon SG_icon136" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif"></a></span><span class="line_s"></span><span class="link"><a onclick="v7sendLog(&#39;40_01_27&#39;)" href="http://i.blog.sina.com.cn/blogprofile/index.php?com=1">个人中心</a></span><span class="line_s"></span><em id="_2521557038919480_newFeed" class="mtip" style="left:341px;display:none;cursor:pointer;"></em><span class="link" id="_2521557038919480_blogMenu"><a target="_blank" onclick="v7sendLog(&#39;40_01_24&#39;)" href="http://control.blog.sina.com.cn/admin/article/article_add.php">发博文</a><a id="_2521557038919480_addArticle" onclick="v7sendLog(&#39;40_01_25&#39;);return false;" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html###" class="link_arrow" init="1"></a></span><span class="line_s"></span><span class="link" id="_2521557038919480_trayMsg" msg-panel-show-state="0" init="1" init-unre="1" msg-count="{&quot;sum&quot;:0,&quot;feed&quot;:0,&quot;invite&quot;:0,&quot;photocomment&quot;:0,&quot;like&quot;:0,&quot;message&quot;:0,&quot;blogcomment&quot;:0,&quot;point&quot;:0,&quot;gbook&quot;:0,&quot;notice_quote&quot;:0,&quot;notice_favourite&quot;:0,&quot;notice&quot;:0,&quot;blogrecomment&quot;:0,&quot;unreadnotices&quot;:0}" unread-show-state="0" adshow="1"><a onclick="v7sendLog(&#39;40_01_30&#39;);return false;" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html###">消息</a><a href="javascript:return false;" class="link_arrow" title=""></a></span><em id="_2521557038919480_newTips" onclick="v7sendLog(&#39;40_01_29&#39;)" class="mtip" style="left:341px;display:none;cursor:pointer;" init="1"></em></div><div id="_2521557038919480_noOpenBlog" style="display:none;"><span class="link"><a id="_2521557038919480_ssoNick" onclick="v7sendLog(&#39;40_01_40&#39;);return false;" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html###">读取中...</a></span><span class="line_s"></span><span class="link"><a id="_2521557038919480_ssoLoginOut" onclick="v7sendLog(&#39;40_01_41&#39;);return false;" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html###">退出</a></span><div class="ntopbar_login" style="float:left;"><a id="_2521557038919480_openBlogBtn" onclick="v7sendLog(&#39;40_01_42&#39;)" class="login" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html###"><span>立即拥有一个新博客</span></a></div></div></div></div>
+</div><div id="______noticeTrayHolder" style="height: 30px;"></div>
+<!--$end sinatopbar-->
+
+<div class="sinabloga" id="sinabloga">
+	<div id="sinablogb" class="sinablogb">
+
+	   
+ <div id="sinablogHead" class="sinabloghead">
+     <div style="display: none;" id="headflash" class="headflash"></div>
+	   <div id="headarea" class="headarea">
+      <div id="blogTitle" class="blogtoparea">
+      <h1 id="blogname" class="blogtitle"><a href="http://blog.sina.com.cn/simoniu"><span id="blognamespan">simoniu的博客</span></a></h1>
+	  		
+					<div id="bloglink" class="bloglink"><a href="http://blog.sina.com.cn/simoniu">http://blog.sina.com.cn/simoniu</a>  <a onclick="return false;" class="CP_a_fuc" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" id="SubscribeNewRss">[<cite>订阅</cite>]</a><a class="CP_a_fuc" href="javascript:void(scope.pa_add.add(&#39;1402399571&#39;));">[<cite>手机订阅</cite>]</a></div>
+      </div>
+      <div class="blognav" id="blognav">
+      			  <div id="blognavBg" class="blognavBg"></div> <div class="blognavInfo"> 
+		<span><a href="http://blog.sina.com.cn/simoniu">首页</a></span>
+      <span><a class="on" href="http://blog.sina.com.cn/s/articlelist_1402399571_0_1.html">博文目录</a></span>
+      <span><a href="http://photo.blog.sina.com.cn/simoniu">图片</a></span>
+      <span class="last"><a href="http://blog.sina.com.cn/s/profile_1402399571.html">关于我</a></span></div>
+      </div>      		      		 	
+      
+             <div class="autoskin" id="auto_skin">
+       </div>
+
+<div class="adsarea">
+     <a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#"><div id="template_clone_pic" class="pic"></div></a>
+     <div id="template_clone_link" class="link wdc_HInf"></div>
+     <div id="template_clone_other" class="other"></div>        
+</div>
+    </div>
+    </div>
+    
+    <!--主题内容开始 -->
+    <div class="sinablogbody" id="sinablogbody">
+		
+	<!--第一列start-->
+    <div id="column_1" class="SG_colW21 SG_colFirst"><div class="SG_conn" id="module_901">
+    <div class="SG_connHead">
+            <span class="title" comp_title="个人资料">个人资料</span>
+            <span class="edit">
+                        </span>
+    </div>
+    <div class="SG_connBody">
+        <div class="info">
+                         
+            <div class="info_img" id="comp_901_head"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/1" real_src="http://p4.sinaimg.cn/1402399571/180/1" id="comp_901_head_image" width="180" height="180" alt="simoniu" title="simoniu"></div>
+            
+            <div class="info_txt">
+              <div class="info_nm">
+                <img id="comp_901_online_icon" style="display:none;" class="SG_icon SG_icon1" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" align="absmiddle">
+                <span class="SG_txtb"><strong id="ownernick">simoniu</strong></span>
+                
+                <div class="clearit"></div>
+              </div>
+              <div class="info_btn1">
+                <a target="_blank" href="http://weibo.com/u/1402399571?source=blog" class="SG_aBtn SG_aBtn_ico"><cite><img class="SG_icon SG_icon51" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" align="absmiddle">微博</cite></a>
+                <div class="clearit"></div>
+              </div>
+    <div class="SG_j_linedot"></div>        <div class="info_locate" id="info_locate_id">
+<div class="SG_j_linedot"></div>
+<div class="info_btn2">
+    <p>
+    <a href="javascript:void(0)" class="SG_aBtn " id="comp901_btn_invite"><cite>加好友</cite></a>
+    <a href="javascript:void(0)" class="SG_aBtn" id="comp901_btn_sendpaper"><cite>发纸条</cite></a>
+    </p>
+    <p>
+    <a href="http://blog.sina.com.cn/s/profile_1402399571.html#write" class="SG_aBtn" id="comp901_btn_msninfo"><cite>写留言</cite></a>
+    <a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" onclick="return false;" class="SG_aBtn" id="comp901_btn_follow"><cite>加关注</cite></a>
+    </p>
+    <div class="clearit"></div>
+</div>
+<div class="SG_j_linedot"></div>
+</div>
+                  <div class="info_list"><a href="http://blog.sina.com.cn/lm/map/" target="_blank" title=""><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/ten_map.png" alt="博客十周年地图"></a></div><div class="info_list">     
+                                   <ul class="info_list1">
+                    <li><span class="SG_txtc">博客等级：</span><span id="comp_901_grade"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/1.gif"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/6.gif"></span></li>
+                    <li><span class="SG_txtc">博客积分：</span><span id="comp_901_score"><a href="http://control.blog.sina.com.cn/blog_rebuild/profile/controllers/points_action.php" title="积分"><strong>582</strong><img width="15" height="15" align="top" title="积分" alt="积分" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon11"></a></span></li>
+                    </ul>
+                    <ul class="info_list2">
+                    <li><span class="SG_txtc">博客访问：</span><span id="comp_901_pv"><strong>126,181</strong></span></li>
+                    <li><span class="SG_txtc">关注人气：</span><span id="comp_901_attention"><strong>33</strong></span></li>
+                    <li><span class="SG_txtc">获赠金笔：</span><strong id="comp_901_d_goldpen">7</strong></li>
+                    <li><span class="SG_txtc">赠出金笔：</span><strong id="comp_901_r_goldpen">0</strong></li>
+					<li class="lisp" id="comp_901_badge"><span class="SG_txtc">荣誉徽章：</span><a href="http://control.blog.sina.com.cn/blog_rebuild/profile/controllers/points_action.php" title="点亮荣誉勋章"><img title="点亮荣誉勋章" alt="点亮荣誉勋章" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" class="badge" style="background-image:url(http://simg.sinajs.cn/blog7style/images/common/badge/badge08.png);_background-image: url(http://simg.sinajs.cn/blog7style/images/common/badge/badge08.gif);"></a><a href="http://control.blog.sina.com.cn/blog_rebuild/profile/controllers/points_action.php" title="兑换图片博主服务"><img title="兑换图片博主服务" alt="兑换图片博主服务" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" class="badge" style="background-image:url(http://simg.sinajs.cn/blog7style/images/common/badge/badge11.png);_background-image: url(http://simg.sinajs.cn/blog7style/images/common/badge/badge11.gif);"></a><a href="http://control.blog.sina.com.cn/blog_rebuild/profile/controllers/points_action.php" title="兑换私密博文"><img title="兑换私密博文" alt="兑换私密博文" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" class="badge" style="background-image:url(http://simg.sinajs.cn/blog7style/images/common/badge/badge13.png);_background-image: url(http://simg.sinajs.cn/blog7style/images/common/badge/badge13.gif);"></a><a href="http://control.blog.sina.com.cn/blog_rebuild/profile/controllers/points_action.php" title="兑换金笔"><img title="兑换金笔" alt="兑换金笔" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" class="badge" style="background-image:url(http://simg.sinajs.cn/blog7style/images/common/badge/badge15.png);_background-image: url(http://simg.sinajs.cn/blog7style/images/common/badge/badge15.gif);"></a></li>
+                    </ul>
+                  </div>
+<div class="clearit"></div>
+    </div>
+    <div class="clearit"></div>
+</div>
+            </div>       
+            <div class="SG_connFoot"></div>
+</div>
+<div class="SG_conn" suda-uatrack="key=blog_article&amp;value=h_article53" id="hotShangPin"><ins class="sinaads sinaads-fail" data-ad-pdps="PDPS000000057414" style="display:block;" data-ad-status="done"></ins></div><div id="module_903" class="SG_conn ">
+    <div class="SG_connHead">
+    <span comp_title="相关博文" class="title">相关博文</span>
+    <span class="edit"> </span>
+    </div>
+    <div class="SG_connBody">
+    <div class="atcTitList relaList">        <ul class="">
+
+                <li class="SG_j_linedot1" style="display:none;">
+            <p id="atcTitLi_SLOT_41" class="atcTitCell_tit SG_dot" style="display:none">
+        </p>
+        </li>
+        <li class="SG_j_linedot1" style="display:none;">
+            <p id="atcTitLi_SLOT_42" class="atcTitCell_tit SG_dot" style="display:none">
+        </p>
+        </li>
+        
+                	<li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/s/blog_6e0699740102ykqd.html#cre=blogpagepc&amp;mod=f&amp;loc=1&amp;r=0&amp;rfunc=100&amp;tj=none" target="_blank" title="国产变形金刚C版红蜘蛛玩具评测">国产变形金刚C版红蜘蛛玩具评测</a></p><p class="atcTitCell_nm"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/u/1845926260" class="SG_linkb" target="_blank">津上熊吉</a></p></li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/s/blog_15b128f4d0102ybl5.html#cre=blogpagepc&amp;mod=f&amp;loc=2&amp;r=0&amp;rfunc=100&amp;tj=none" target="_blank" title="宝宝睡觉为什么会咧嘴偷笑，是生病还是正常现象？宝妈们知道吗？">宝宝睡觉为什么会咧嘴偷笑，是生病还是正常现象？宝妈们知道吗？</a></p><p class="atcTitCell_nm"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/u/5822910285" class="SG_linkb" target="_blank">唔哩</a></p></li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/s/blog_16bedcc610102yjor.html#cre=blogpagepc&amp;mod=f&amp;loc=3&amp;r=0&amp;rfunc=100&amp;tj=none" target="_blank" title="深圳强降雨引发洪水已致9人死亡，2人失联！搜救工作仍在继续">深圳强降雨引发洪水已致9人死亡，2人失联！搜救工作仍在继续</a></p><p class="atcTitCell_nm"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/u/6105713761" class="SG_linkb" target="_blank">红星新闻</a></p></li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/s/blog_5ea6c58e0102ydzj.html#cre=blogpagepc&amp;mod=f&amp;loc=4&amp;r=0&amp;rfunc=100&amp;tj=none" target="_blank" title="青花菜10种异常花球怎样预防！">青花菜10种异常花球怎样预防！</a></p><p class="atcTitCell_nm"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/u/1587987854" class="SG_linkb" target="_blank">莱阳一品蔬菜开发中心</a></p></li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/s/blog_3fa6c07f0102ys48.html#cre=blogpagepc&amp;mod=f&amp;loc=5&amp;r=0&amp;rfunc=100&amp;tj=none" target="_blank" title="在那梨花盛开的地方……">在那梨花盛开的地方……</a></p><p class="atcTitCell_nm"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/u/1067892863" class="SG_linkb" target="_blank">阿拉摄影nbzwp</a></p></li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/s/blog_4b911b1c0102yzs7.html#cre=blogpagepc&amp;mod=f&amp;loc=6&amp;r=0&amp;rfunc=100&amp;tj=none" target="_blank" title="阳宅风水——学习愛众篇">阳宅风水——学习愛众篇</a></p><p class="atcTitCell_nm"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/u/1267800860" class="SG_linkb" target="_blank">云龙牛</a></p></li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/s/blog_5951b3310102zd6n.html#cre=blogpagepc&amp;mod=f&amp;loc=7&amp;r=0&amp;rfunc=100&amp;tj=none" target="_blank" title="牛人为何要加班？要么被傻缺拖累的，要么被坑货陷害！">牛人为何要加班？要么被傻缺拖累的，要么被坑货陷害！</a></p><p class="atcTitCell_nm"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/u/1498526513" class="SG_linkb" target="_blank">新老王不装</a></p></li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/s/blog_48f319170102yryd.html#cre=blogpagepc&amp;mod=f&amp;loc=8&amp;r=0&amp;rfunc=100&amp;tj=none" target="_blank" title="还能买房吗？冯仑：除非钱是捡来的，孙宏斌：没有生意比房产更好">还能买房吗？冯仑：除非钱是捡来的，孙宏斌：没有生意比房产更好</a></p><p class="atcTitCell_nm"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/u/1223891223" class="SG_linkb" target="_blank">刘光宇</a></p></li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/s/blog_4b70cd200102yp1t.html#cre=blogpagepc&amp;mod=f&amp;loc=9&amp;r=0&amp;rfunc=100&amp;tj=none" target="_blank" title="撞衫丨同一件衣服，怎么你就穿得比我好">撞衫丨同一件衣服，怎么你就穿得比我好</a></p><p class="atcTitCell_nm"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/u/1265683744" class="SG_linkb" target="_blank">刘纪辉</a></p></li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/s/blog_1643b1df60102yhc4.html#cre=blogpagepc&amp;mod=f&amp;loc=10&amp;r=0&amp;rfunc=100&amp;tj=none" target="_blank" title="司马错错在哪儿？">司马错错在哪儿？</a></p><p class="atcTitCell_nm"><a suda-uatrack="key=blog_xg&amp;value=h_blogxg" href="http://blog.sina.com.cn/u/5976563190" class="SG_linkb" target="_blank">盘锦大米_杨</a></p></li></ul>
+    <div class="atcTit_more"><span class="SG_more"><a href="http://blog.sina.com.cn/" target="_blank">更多&gt;&gt;</a></span></div></div>    </div>
+    <div class="SG_connFoot"></div>
+  </div><ins class="sinaads sinaads-done" data-ad-pdps="PDPS000000055124" style="display: block; overflow: hidden; text-decoration: none; margin-bottom: 10px;" data-ad-status="done"><ins style="text-decoration:none;margin:0px auto;width:210px;display:block;position:relative;overflow:hidden;"><iframe adtypeturning="false" width="210px" height="220px" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" sandbox="allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="javascript:&#39;&lt;html&gt;&lt;body style=background:transparent;&gt;&lt;/body&gt;&lt;/html&gt;&#39;" id="sinaadtk_sandbox_id_2" style="float:left;" name="sinaadtk_sandbox_id_2" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/saved_resource(1).html"></iframe></ins></ins><div class="SG_conn"><!--博客左侧推荐商讯210*220按钮(扶翼) Start--><ins class="sinaads sinaads-fail" data-ad-pdps="PDPS000000057669" data-ad-status="done"></ins><script>(sinaads = window.sinaads || []).push({})</script><!--博客左侧推荐商讯210*220按钮(扶翼) End—></div>--></div>
+<div id="module_904_top_ad"></div>
+<ins class="sinaads sinaads-done" data-ad-pdps="PDPS000000033239" style="display: block; overflow: hidden; text-decoration: none; margin-bottom: 10px;" data-ad-status="done"><ins style="text-decoration:none;margin:0px auto;width:210px;display:block;position:relative;overflow:hidden;"><iframe adtypeturning="false" width="210px" height="220px" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" sandbox="allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="javascript:&#39;&lt;html&gt;&lt;body style=background:transparent;&gt;&lt;/body&gt;&lt;/html&gt;&#39;" id="sinaadtk_sandbox_id_0" style="float:left;" name="sinaadtk_sandbox_id_0" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/saved_resource(2).html"></iframe></ins></ins><div id="notAe" class="SG_conn"><ins class="sinaads sinaads-fail" data-ad-pdps="593E0A43A6FE" style="display:block;" data-ad-status="done"></ins></div><div class="SG_conn " id="module_904">
+<div class="SG_connHead">
+<span class="title">推荐博文</span>
+</div>
+<div class="SG_connBody ">
+	<div class="atcTitList relaList">		<ul class="">
+			<li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" title="短期调整或将仍有反复" target="_blank" href="http://blog.sina.com.cn/s/blog_4c7ca1550102wqoo.html?tj=2?tj=2">短期调整或将仍有反复</a></p>
+        <p class="atcTitCell_nm"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" target="_blank" href="http://blog.sina.com.cn/u/1283236181" class="SG_linkb"></a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" title="中阴是否拉开调整的序幕" target="_blank" href="http://blog.sina.com.cn/s/blog_4c7ca1550102y3vi.html?tj=2?tj=2">中阴是否拉开调整的序幕</a></p>
+        <p class="atcTitCell_nm"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" target="_blank" href="http://blog.sina.com.cn/u/1283236181" class="SG_linkb"></a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" title="人工智能与隐私保护" target="_blank" href="http://blog.sina.com.cn/s/blog_6c7e111d0102x4g7.html?tj=2?tj=2">人工智能与隐私保护</a></p>
+        <p class="atcTitCell_nm"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" target="_blank" href="http://blog.sina.com.cn/u/1820201245" class="SG_linkb"></a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" title="台湾科技挣扎，人祸大于天灾？" target="_blank" href="http://blog.sina.com.cn/s/blog_4a46c3960102wifo.html?tj=2?tj=2">台湾科技挣扎，人祸大于天灾？</a></p>
+        <p class="atcTitCell_nm"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" target="_blank" href="http://blog.sina.com.cn/u/1246151574" class="SG_linkb"></a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" title="收入份额=市场份额，虎嗅想干什" target="_blank" href="http://blog.sina.com.cn/s/blog_5ff50e8f0102w4tq.html?tj=2?tj=2">收入份额=市场份额，虎嗅想干什</a></p>
+        <p class="atcTitCell_nm"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" target="_blank" href="http://blog.sina.com.cn/u/1609895567" class="SG_linkb"></a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" title="传奇的谢幕，谈岩田聪和他的任天" target="_blank" href="http://blog.sina.com.cn/s/blog_b4474abf0102vqy3.html?tj=2?tj=2">传奇的谢幕，谈岩田聪和他的任天</a></p>
+        <p class="atcTitCell_nm"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" target="_blank" href="http://blog.sina.com.cn/u/3024571071" class="SG_linkb"></a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" title="家常主食轻松做之——培根香葱花" target="_blank" href="http://blog.sina.com.cn/s/blog_500017680102vrck.html?tj=2?tj=2">家常主食轻松做之——培根香葱花</a></p>
+        <p class="atcTitCell_nm"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" target="_blank" href="http://blog.sina.com.cn/u/1342183272" class="SG_linkb"></a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" title="盘点2015最惊艳流行的婚礼蛋" target="_blank" href="http://blog.sina.com.cn/s/blog_73f3af200102vq43.html?tj=2?tj=2">盘点2015最惊艳流行的婚礼蛋</a></p>
+        <p class="atcTitCell_nm"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" target="_blank" href="http://blog.sina.com.cn/u/1945349920" class="SG_linkb"></a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" title="非洲荒漠“精灵怪圈”引发诸多猜" target="_blank" href="http://blog.sina.com.cn/s/blog_69f845650102wbfo.html?tj=2?tj=2">非洲荒漠“精灵怪圈”引发诸多猜</a></p>
+        <p class="atcTitCell_nm"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" target="_blank" href="http://blog.sina.com.cn/u/1777878373" class="SG_linkb"></a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" title="“冬眠”或是目前最好的策略" target="_blank" href="http://blog.sina.com.cn/s/blog_4c7ca1550102xxze.html?tj=2?tj=2">“冬眠”或是目前最好的策略</a></p>
+        <p class="atcTitCell_nm"><a suda-uatrack="key=blog_tjblog&amp;value=h_tjblog" target="_blank" href="http://blog.sina.com.cn/u/1283236181" class="SG_linkb"></a></p>
+		</li>		</ul>
+		<div id="atcPicList"><!--[346,152,91] published at 2019-05-05 14:20:20 from #106 by system-->
+ <script language="javascript">document.domain="sina.com.cn";</script>
+
+<div class="relaPic SG_j_linedot1"> 
+	<ul>
+
+	</ul>
+	<div class="clearfix"></div>
+</div>
+</div>
+	<div class="atcTit_more"><span class="SG_more"><a target="_blank" href="http://blog.sina.com.cn/">查看更多</a>&gt;&gt;</span></div></div></div>
+<div class="SG_connFoot"></div>
+</div>
+        <div class="SG_conn" id="module_47"><div class="SG_connHead">
+                <span class="title" comp_title="谁看过这篇博文">谁看过这篇博文</span>
+                                <span class="edit"></span>
+            </div>
+            <div class="SG_connBody"><ul class="ad_ptlist"><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="那束坡" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/3176024111" target="_blank" title="那束坡">那束坡</a></span><span class="del" style="display: none;" onmouseover="_this.style.display = &#39;&#39;;" onmouseout="_this.style.display = &#39;none&#39;;"><img class="SG_icon SG_icon6" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="删除访问记录" onclick="Lib.deleteVisitByUid(&#39;3176024111&#39;, 1, Core.Function.bind2(Lib.Component.instances[47].reload, Lib.Component.instances[47]),&#39;5396eb530100mtc9&#39;);return false;" align="absmiddle"></span><span class="pt_tms">0分钟前</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="kkkboarder" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/1785339665" target="_blank" title="kkkboarder">kkkboarder</a></span><span class="pt_tms">7月16日</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="大圣" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/3077045084" target="_blank" title="大圣">大圣</a></span><span class="pt_tms">7月9日</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="欧文数学教研学习" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/1210390885" target="_blank" title="欧文数学教研学习">欧文数学…</a></span><span class="pt_tms">6月23日</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="huanglin_008" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/1492715972" target="_blank" title="huanglin_008">huanglin_…</a></span><span class="pt_tms">6月12日</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="差不多先生" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/1811860933" target="_blank" title="差不多先生">差不多先生</a></span><span class="pt_tms">6月10日</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="兰蔻小斌斌" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/1869046182" target="_blank" title="兰蔻小斌斌">兰蔻小斌斌</a></span><span class="pt_tms">6月5日</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="lzhu" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/2301265781" target="_blank" title="lzhu">lzhu</a></span><span class="pt_tms">6月4日</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="小楠TLFE" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/1272061227" target="_blank" title="小楠TLFE">小楠TLFE</a></span><span class="pt_tms">5月27日</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="奇怪" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/1653858140" target="_blank" title="奇怪">奇怪</a></span><span class="pt_tms">5月26日</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="萧客生" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/1845110834" target="_blank" title="萧客生">萧客生</a></span><span class="pt_tms">5月11日</span></li><li onmouseover="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;&#39;;}" onmouseout="if(this.childNodes[2].className==&#39;del&#39;){this.childNodes[2].style.display=&#39;none&#39;;}"><span class="pt_imgs"><img class="SG_icon SG_icon35" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="templar" align="absmiddle"></span><span class="pt_nms"><a suda-uatrack="key=blog_article&amp;value=h_article51" href="http://blog.sina.com.cn/u/1407547274" target="_blank" title="templar">templar</a></span><span class="pt_tms">5月2日</span></li></ul><div class="moreLink" style="padding-top:0;"></div></div>
+            <div class="SG_connFoot"></div>
+                  </div></div>
+	<!--第一列end-->
+	
+	<!--第二列start-->
+	<div id="column_2" class="SG_colW73">	
+<div id="module_920" class="SG_conn">
+	<div class="SG_connHead">
+	    <span comp_title="正文" class="title">正文</span>
+	    <span class="edit"><span id="articleFontManage" class="fontSize">字体大小：<a href="javascript:;" onclick="changeFontSize(2);return false;">大</a> <strong>中</strong> <a href="javascript:;" onclick="changeFontSize(0);return false;">小</a></span></span>
+	</div>
+    <div class="SG_connBody" id="module_920_SG_connBody">
+<!--博文正文 begin -->
+	<div id="articlebody" class="artical" favmd5="{&quot;5396eb530100mtc9&quot;:&quot;885296f1b1b0f70dbae83af671b0439a&quot;}">
+		<div class="articalTitle"> 
+			
+								<h2 id="t_5396eb530100mtc9" class="titName SG_txta">为什么需要多重继承？它的优缺点是什么？</h2>
+			
+					<span class="time SG_txtc">(2010-10-04 22:19:55)</span><div class="turnBoxzz"><a href="javascript:;" class="SG_aBtn SG_aBtn_ico SG_turn" action-type="reblog" action-data="{srcBlog:1, blogId:&#39;5396eb530100mtc9&#39;}"><cite><img class="SG_icon SG_icon111" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" align="absmiddle">转载<em class="arrow">▼</em></cite></a></div>		</div>
+		<div class="articalTag" id="sina_keyword_ad_area">
+			<table>
+				<tbody><tr>
+					<td class="blog_tag">
+					<script>
+					var $tag='it';
+					var $tag_code='e372b83c8c1c8517f56846f87fc04244';
+					var $r_quote_bligid='5396eb530100mtc9';
+					var $worldcup='0';
+					var $worldcupball='0';
+					</script>
+											<span class="SG_txtb">标签：</span>
+																				<h3><a href="http://search.sina.com.cn/?c=blog&amp;q=it&amp;by=tag" target="_blank">it</a></h3>
+																</td>
+					<td class="blog_class">
+											<span class="SG_txtb">分类：</span>
+						<a target="_blank" href="http://blog.sina.com.cn/s/articlelist_1402399571_5_1.html">.Net/教学艺术</a>
+										</td>
+				</tr>
+			</tbody></table>
+		</div>
+						<!-- 正文开始 -->
+		<div id="sina_keyword_ad_area2" class="articalContent   ">
+			解析：<br>
+实际生活中，一些事物往往会拥有两个或两个以上事物的属性，为了解决这个问题，C++引入了多重继承的概念，C++允许为一个派生类指定多个基类，这样的继承结构被称做多重继承。举个例子：<br>
+
+人（Person）可以派生出作者（Author）和程序员（Programmer），然而程序员作者同时拥有作家和程序员的两个属性，即既能编程又能写作，如图9.2所示。
+<table cellspacing="0" cellpadding="0" width="100%">
+<tbody>
+<tr>
+<td>
+<p>Person</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table cellspacing="0" cellpadding="0" width="100%">
+<tbody>
+<tr>
+<td>
+<p>Author</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table cellspacing="0" cellpadding="0" width="100%">
+<tbody>
+<tr>
+<td>
+<p>Programmer</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table cellspacing="0" cellpadding="0" width="100%">
+<tbody>
+<tr>
+<td>
+<p>Programmer_Author</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>图9.2&nbsp;<wbr> 各个类继承关系<br>
+使用多重继承的例子程序如下：<br>
+1&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+#include &lt;iostream&gt;<br>
+2&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+using namespace std;<br>
+3&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr><br>
+
+4&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+class Person<br>
+5&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+{<br>
+6&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+public:<br>
+7&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+void sleep() {cout &lt;&lt; "sleep"
+&lt;&lt; endl;}<br>
+8&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+void eat() {cout &lt;&lt; "eat"
+&lt;&lt; endl;}<br>
+9&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+};<br>
+10&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr><br>
+
+11&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+class Author : public
+Person&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>//Author继承自Person<br>
+
+12&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+{<br>
+13&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+public:<br>
+14&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+void writeBook() {cout &lt;&lt; "write
+Book" &lt;&lt; endl;}<br>
+15&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+};<br>
+16&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr><br>
+
+17&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+class Programmer : public
+Person&nbsp;<wbr>&nbsp;<wbr>
+&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>//Programmer继承自Person<br>
+
+18&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+{<br>
+19&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+public:<br>
+20&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+void writeCode() {cout &lt;&lt; "write
+Code" &lt;&lt; endl;}<br>
+21&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+};<br>
+22&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr><br>
+
+23&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+class Programmer_Author : public Programmer, public
+Author&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+&nbsp;<wbr>//多重继承<br>
+24&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+{<br>
+25&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+};<br>
+26&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr><br>
+
+27&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+int main()<br>
+28&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+{<br>
+29&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+Programmer_Author pa;<br>
+30&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr><br>
+
+31&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+pa.writeBook();&nbsp;<wbr>&nbsp;<wbr>
+//调用基类Author的方法<br>
+32&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+pa.writeCode();&nbsp;<wbr>&nbsp;<wbr>
+//调用基类Programmer的方法<br>
+33&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+pa.eat();&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+//编译错误，eat()定义不明确<br>
+34&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+pa.sleep();&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+//编译错误，sleep()定义不明确<br>
+35&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr><br>
+
+36&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+return 0;<br>
+37&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+}<br>
+多重继承的优点很明显，就是对象可以调用多个基类中的接口，如代码31行与代码32行对象pa分别调用Author类的writeBook()函数和Programmer类的writeCode()函数。<br>
+
+多重继承的缺点是什么呢？如果派生类所继承的多个基类有相同的基类，而派生类对象需要调用这个祖先类的接口方法，就会容易出现二义性。代码33、34行就是因为这个原因而出现编译错误的。因为通过多重继承的Programmer_Author类拥有Author类和Programmer类的一份拷贝，而Author类和Programmer类都分别拥有Person类的一份拷贝，所以Programmer_Author类拥有Person类的两份拷贝，在调用Person类的接口时，编译器会不清楚需要调用哪一份拷贝，从而产生错误。对于这个问题通常有两个解决方案：<br>
+
+（1）加上全局符确定调用哪一份拷贝。比如pa.Author::eat()调用属于Author的拷贝。<br>
+（2）使用虚拟继承，使得多重继承类Programmer_Author只拥有Person类的一份拷贝。比如在11行和17行的继承语句中加入virtual就可以了。<br>
+
+1&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+class Author : virtual public
+Person&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+//Author虚拟继承自Person<br>
+2&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+class Programmer : virtual public
+Person&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>
+//Programmer虚拟继承自Person<br>
+答案：<br>
+实际生活中，一些事物往往会拥有两个或两个以上事物的属性，为了解决这个问题，C++引入了多重继承的概念。<br>
+多重继承的优点是对象可以调用多个基类中的接口。<br>
+多重继承的缺点是容易出现继承向上的二义性。<br></p>							
+		</div>
+						<!-- 正文结束 -->
+		<div id="share" class="shareUp nor">
+        	<div class="share SG_txtb clearfix">
+			<span class="share-title">分享：</span> 
+			<div class="bshare-custom" style="display:inline;margin-left:5px;">
+			<div class="share-pannel clearfix"><a class="bshare-sinaminiblog" target="__blank" title="分享到新浪微博" href="http://service.weibo.com/share/share.php?appkey=&amp;title=%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF%EF%BC%9F%E5%AE%83%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F@%E6%96%B0%E6%B5%AA%E5%8D%9A%E5%AE%A2&amp;url=http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html&amp;pic="></a><a class="bshare-qzone" target="__blank" title="分享到QQ空间" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fblog.sina.com.cn%2Fs%2Fblog_5396eb530100mtc9.html&amp;title=%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF%EF%BC%9F%E5%AE%83%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F@%E6%96%B0%E6%B5%AA%E5%8D%9A%E5%AE%A2&amp;pics=&amp;summary=&amp;desc=%E8%A7%A3%E6%9E%90%EF%BC%9A%20%E5%AE%9E%E9%99%85%E7%94%9F%E6%B4%BB%E4%B8%AD%EF%BC%8C%E4%B8%80%E4%BA%9B%E4%BA%8B%E7%89%A9%E5%BE%80%E5%BE%80%E4%BC%9A%E6%8B%A5%E6%9C%89%E4%B8%A4%E4%B8%AA%E6%88%96%E4%B8%A4%E4%B8%AA%E4%BB%A5%E4%B8%8A%E4%BA%8B%E7%89%A9%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%8C%E4%B8%BA%E4%BA%86%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%8CC++%E5%BC%95%E5%85%A5%E4%BA%86%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%8CC++%E5%85%81%E8%AE%B8%E4%B8%BA...%20%20(%E6%9D%A5%E8%87%AA%20@%E5%A4%B4%E6%9D%A1%E5%8D%9A%E5%AE%A2)"></a><a class="bshare-douban" target="__blank" title="分享到豆瓣" href="https://www.douban.com/share/service?image=&amp;href=http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html&amp;name=%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF%EF%BC%9F%E5%AE%83%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F@%E6%96%B0%E6%B5%AA%E5%8D%9A%E5%AE%A2&amp;text=%E8%A7%A3%E6%9E%90%EF%BC%9A%20%E5%AE%9E%E9%99%85%E7%94%9F%E6%B4%BB%E4%B8%AD%EF%BC%8C%E4%B8%80%E4%BA%9B%E4%BA%8B%E7%89%A9%E5%BE%80%E5%BE%80%E4%BC%9A%E6%8B%A5%E6%9C%89%E4%B8%A4%E4%B8%AA%E6%88%96%E4%B8%A4%E4%B8%AA%E4%BB%A5%E4%B8%8A%E4%BA%8B%E7%89%A9%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%8C%E4%B8%BA%E4%BA%86%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%8CC++%E5%BC%95%E5%85%A5%E4%BA%86%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%8CC++%E5%85%81%E8%AE%B8%E4%B8%BA...%20%20(%E6%9D%A5%E8%87%AA%20@%E5%A4%B4%E6%9D%A1%E5%8D%9A%E5%AE%A2)"></a><a class="bshare-weixin" title="分享到微信" href="javascript:void(0);"><div class="weixin-pannel"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/qr"><div class="txt"><p>打开微信“扫一扫”</p><p>打开网页后点击屏幕</p><p>右上角“分享”按钮</p></div></div></a></div></div>
+			</div>
+            <div class="up">
+	        	<div title="喜欢后让更多人看到" id="dbox_5396eb530100mtc9" class="upBox upBox_click" style="cursor: pointer;">
+	            	<p ti_title="为什么需要多重继承？它的优缺点是什么？" id="dbox2_5396eb530100mtc9" class="count" mnum="9">9</p>
+	                <p class="link"><img width="15" height="15" align="absmiddle" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon34">喜欢</p>
+	            </div>
+<!--
+                <div class="upBox upBox_add">
+                    <p class="count">0</p>
+                    <p class="link"><img width="20" height="16" align="absmiddle" title="推荐" src="http://simg.sinajs.cn/blog7style/images/common/sg_trans.gif" class="SG_icon SG_icon214">赠金笔</p>
+                </div>
+-->
+                                <div class="upBox upBox_add">
+                    <p class="count" id="goldPan-num">1</p>
+                    <p class="link" id="goldPan-give"><img class="SG_icon SG_icon214" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="20" height="16" title="赠金笔" align="absmiddle">赠金笔</p>
+                </div>
+                
+	        </div>
+            <div class="clearit"></div>
+		</div>
+		<div class="articalInfo">
+			<!-- 分享到微博 {$t_blog} -->
+			<div class="IL">
+				阅读<span id="r_5396eb530100mtc9" class="SG_txtb">(2991)</span><em class="SG_txtb">┊</em> 
+				<a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#commonComment">评论</a> <span id="c_5396eb530100mtc9" class="SG_txtb">(3)</span><em class="SG_txtb">┊</em>				<a href="javascript:;" onclick="$articleManage(&#39;5396eb530100mtc9&#39;,5);return false;">收藏</a><span id="f_5396eb530100mtc9" class="SG_txtb">(1)</span>
+				<em class="SG_txtb">┊</em><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" id="quote_set_sign" onclick="return false ;">转载</a><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" id="z_5396eb530100mtc9" onclick="return false ;" class="zznum">(3)</a>				<span id="fn_为什么需要多重继承？它的优缺点是什么？" class="SG_txtb"></span><em class="SG_txtb">┊</em>
+				<a onclick="return false;" href="javascript:;"><cite id="d1_digg_5396eb530100mtc9">喜欢</cite></a><a id="d1_digg_down_5396eb530100mtc9" href="javascript:;"><b>▼</b></a>
+									<em class="SG_txtb">┊</em><a href="http://blog.sina.com.cn/main_v5/ria/print.html?blog_id=blog_5396eb530100mtc9" target="_blank">打印</a><em class="SG_txtb">┊</em><a id="q_5396eb530100mtc9" onclick="report(&#39;5396eb530100mtc9&#39;);return false;" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#">举报</a>
+											</div>
+			<div class="IR">
+				<table>
+					<tbody><tr><!--
+											<th class="SG_txtb" scope="row">已投稿到：</th>
+						<td>
+							<div class="IR_list">
+								<span><img class="SG_icon SG_icon36" src="http://simg.sinajs.cn/blog7style/images/common/sg_trans.gif" width="15" height="15" title="排行榜" align="absmiddle" /> <a href="http://blog.sina.com.cn/lm/114/113/day.html" class="SG_linkb" target="_blank">排行榜</a></span>							</div>
+						</td>
+					-->
+					</tr>
+									</tbody></table>
+			</div>
+		</div>
+		<div class="clearit"></div>
+		<div class="blogzz_zzlist borderc" id="blog_quote" style="display:none"><h3><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" onclick="return false" title="关闭" id="ql_close5396eb530100mtc9" class="blogzz_closepic SG_floatR"></a>转载列表：</h3>                <ul class="ul_zzlist" id="ql_content5396eb530100mtc9">                </ul>				<ul style="display:none"><li id="ql_tip5396eb530100mtc9"></li></ul>                <div class="SG_clearB"></div>                <div class="blogzz_btn">					<a id="btnArticleQuote5396eb530100mtc9" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" onclick="scope.article_quote &amp;&amp; scope.article_quote.check(&#39;5396eb530100mtc9&#39;);return false;" class="SG_aBtn SG_aBtn_ico SG_turn"><cite><img class="SG_icon SG_icon111" id="quoteList_quote5396eb530100mtc9" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" align="absmiddle">转载</cite></a>					<p id="quoteDescription5396eb530100mtc9" class="SG_turntxt" style="display: none;">转载是分享博文的一种常用方式...</p>				</div>				<div id="ql_page5396eb530100mtc9" class="blogzz_paged"></div>				<div class="clearit"></div></div>
+		<div class="articalfrontback SG_j_linedot1 clearfix" id="new_nextprev_5396eb530100mtc9">
+							<div><span class="SG_txtb">前一篇：</span><a href="http://blog.sina.com.cn/s/blog_5396eb530100mm1p.html">关于子类无法访问父类protected属性和方法的问题</a></div>
+										<div><span class="SG_txtb">后一篇：</span><a href="http://blog.sina.com.cn/s/blog_5396eb530100myl5.html">RSA算法详解与举例</a></div>
+					</div>
+		<div class="clearit"></div>
+							
+		<div id="loginFollow"></div>
+				<div class="allComm">
+			<div class="allCommTit">
+				<div class="SG_floatL">
+				    <strong>评论</strong>
+				    <span id="commAd_1" style="display: inline-block;">
+				        <span style="margin-left:15px; width:220px; display:inline-block;"><a target="_blank" href="http://blog.sina.com.cn/lm/8/2009/0325/105340.html">重要提示：警惕虚假中奖信息</a></span>
+				    </span>
+				</div>
+				<div class="SG_floatR"><a class="CP_a_fuc" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#post">[<cite>发评论</cite>]</a></div>
+			</div>
+			<ul id="article_comment_list" class="SG_cmp_revert"><li class="" id="cmt_4CAC0856-7F000001-6B186235-85D-8A0"><div class="SG_revert_Left"><a href="http://blog.sina.com.cn/u/1796760117" target="_blank"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/50"></a></div><div class="SG_revert_Cont"><p><span class="SG_revert_Tit"><a href="http://blog.sina.com.cn/u/1796760117">祛痘高手</a></span></p><div class="SG_revert_Inner SG_txtb" id="body_cmt_4CAC0856-7F000001-6B186235-85D-8A0"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/E___0131ZHTSSIGT.gif" style="margin:1px;" border="0" title="顶"><a href="javascript:void(0);" class="btn_artzk" style="display:none" action-type="comment_more" action-data="%7B%22id%22%3A%224CAC0856-7F000001-6B186235-85D-8A0%22%2C%22commentid%22%3A%224CAC0856-7F000001-6B186235-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%5Bemoticons%3DE___0131ZHTSSIG%5D%E9%A1%B6%5B%2Femoticons%5D%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221796760117%22%2C%22uname%22%3A%22%E7%A5%9B%E7%97%98%E9%AB%98%E6%89%8B%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222010-10-06%2013%3A25%3A42%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1796760117%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1796760117%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1796760117%22%2C%22cms_reply_num%22%3A0%7D"></a></div><p class="myReFrom"><em class="SG_txtc">2010-10-6 &nbsp;13:25</em><span class="SG_revert_Func"><a href="javascript:void(0);" class="SG_a_fuc" action-type="comment_report" action-data="%7B%22id%22%3A%224CAC0856-7F000001-6B186235-85D-8A0%22%2C%22commentid%22%3A%224CAC0856-7F000001-6B186235-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%5Bemoticons%3DE___0131ZHTSSIG%5D%E9%A1%B6%5B%2Femoticons%5D%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221796760117%22%2C%22uname%22%3A%22%E7%A5%9B%E7%97%98%E9%AB%98%E6%89%8B%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222010-10-06%2013%3A25%3A42%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1796760117%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1796760117%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1796760117%22%2C%22cms_reply_num%22%3A0%7D" style="display:"><cite>举报</cite></a><a href="javascript:void(0);" class="SG_a_fuc" action-type="comment_del" action-data="%7B%22id%22%3A%224CAC0856-7F000001-6B186235-85D-8A0%22%2C%22commentid%22%3A%224CAC0856-7F000001-6B186235-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%5Bemoticons%3DE___0131ZHTSSIG%5D%E9%A1%B6%5B%2Femoticons%5D%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221796760117%22%2C%22uname%22%3A%22%E7%A5%9B%E7%97%98%E9%AB%98%E6%89%8B%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222010-10-06%2013%3A25%3A42%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1796760117%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1796760117%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1796760117%22%2C%22cms_reply_num%22%3A0%7D" style="display:none">删除</a><a href="javascript:void(0);" class="SG_a_fuc" action-type="comment_share" action-data="%7B%22id%22%3A%224CAC0856-7F000001-6B186235-85D-8A0%22%2C%22commentid%22%3A%224CAC0856-7F000001-6B186235-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%5Bemoticons%3DE___0131ZHTSSIG%5D%E9%A1%B6%5B%2Femoticons%5D%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221796760117%22%2C%22uname%22%3A%22%E7%A5%9B%E7%97%98%E9%AB%98%E6%89%8B%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222010-10-06%2013%3A25%3A42%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1796760117%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1796760117%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1796760117%22%2C%22cms_reply_num%22%3A0%7D" style="display:"><cite>分享</cite></a><a href="javascript:void(0);" class="SG_a_fucs" action-type="comment_reply" action-data="%7B%22id%22%3A%224CAC0856-7F000001-6B186235-85D-8A0%22%2C%22commentid%22%3A%224CAC0856-7F000001-6B186235-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%5Bemoticons%3DE___0131ZHTSSIG%5D%E9%A1%B6%5B%2Femoticons%5D%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221796760117%22%2C%22uname%22%3A%22%E7%A5%9B%E7%97%98%E9%AB%98%E6%89%8B%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222010-10-06%2013%3A25%3A42%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1796760117%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1796760117%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1796760117%22%2C%22cms_reply_num%22%3A0%7D" style="display:"><cite>回复(0)</cite></a></span></p><div class="SG_reply" id="comment_4CAC0856-7F000001-6B186235-85D-8A0" style="display:none;"></div></div></li><li class="SG_j_linedot1" id="cmt_4E79F0A0-7F000001-631CF83F-85D-8A0"><div class="SG_revert_Left"><a href="http://blog.sina.com.cn/u/1662842943" target="_blank"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/50(1)"></a></div><div class="SG_revert_Cont"><p><span class="SG_revert_Tit"><a href="http://blog.sina.com.cn/u/1662842943">小色</a></span></p><div class="SG_revert_Inner SG_txtb" id="body_cmt_4E79F0A0-7F000001-631CF83F-85D-8A0">好文章，简明易懂<a href="javascript:void(0);" class="btn_artzk" style="display:none" action-type="comment_more" action-data="%7B%22id%22%3A%224E79F0A0-7F000001-631CF83F-85D-8A0%22%2C%22commentid%22%3A%224E79F0A0-7F000001-631CF83F-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%E5%A5%BD%E6%96%87%E7%AB%A0%EF%BC%8C%E7%AE%80%E6%98%8E%E6%98%93%E6%87%82%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221662842943%22%2C%22uname%22%3A%22%E5%B0%8F%E8%89%B2%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222011-09-21%2022%3A11%3A44%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1662842943%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1662842943%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1662842943%22%2C%22cms_reply_num%22%3A0%7D"></a></div><p class="myReFrom"><em class="SG_txtc">2011-9-21 &nbsp;22:11</em><span class="SG_revert_Func"><a href="javascript:void(0);" class="SG_a_fuc" action-type="comment_report" action-data="%7B%22id%22%3A%224E79F0A0-7F000001-631CF83F-85D-8A0%22%2C%22commentid%22%3A%224E79F0A0-7F000001-631CF83F-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%E5%A5%BD%E6%96%87%E7%AB%A0%EF%BC%8C%E7%AE%80%E6%98%8E%E6%98%93%E6%87%82%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221662842943%22%2C%22uname%22%3A%22%E5%B0%8F%E8%89%B2%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222011-09-21%2022%3A11%3A44%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1662842943%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1662842943%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1662842943%22%2C%22cms_reply_num%22%3A0%7D" style="display:"><cite>举报</cite></a><a href="javascript:void(0);" class="SG_a_fuc" action-type="comment_del" action-data="%7B%22id%22%3A%224E79F0A0-7F000001-631CF83F-85D-8A0%22%2C%22commentid%22%3A%224E79F0A0-7F000001-631CF83F-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%E5%A5%BD%E6%96%87%E7%AB%A0%EF%BC%8C%E7%AE%80%E6%98%8E%E6%98%93%E6%87%82%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221662842943%22%2C%22uname%22%3A%22%E5%B0%8F%E8%89%B2%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222011-09-21%2022%3A11%3A44%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1662842943%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1662842943%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1662842943%22%2C%22cms_reply_num%22%3A0%7D" style="display:none">删除</a><a href="javascript:void(0);" class="SG_a_fuc" action-type="comment_share" action-data="%7B%22id%22%3A%224E79F0A0-7F000001-631CF83F-85D-8A0%22%2C%22commentid%22%3A%224E79F0A0-7F000001-631CF83F-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%E5%A5%BD%E6%96%87%E7%AB%A0%EF%BC%8C%E7%AE%80%E6%98%8E%E6%98%93%E6%87%82%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221662842943%22%2C%22uname%22%3A%22%E5%B0%8F%E8%89%B2%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222011-09-21%2022%3A11%3A44%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1662842943%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1662842943%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1662842943%22%2C%22cms_reply_num%22%3A0%7D" style="display:"><cite>分享</cite></a><a href="javascript:void(0);" class="SG_a_fucs" action-type="comment_reply" action-data="%7B%22id%22%3A%224E79F0A0-7F000001-631CF83F-85D-8A0%22%2C%22commentid%22%3A%224E79F0A0-7F000001-631CF83F-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%E5%A5%BD%E6%96%87%E7%AB%A0%EF%BC%8C%E7%AE%80%E6%98%8E%E6%98%93%E6%87%82%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221662842943%22%2C%22uname%22%3A%22%E5%B0%8F%E8%89%B2%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222011-09-21%2022%3A11%3A44%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1662842943%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1662842943%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1662842943%22%2C%22cms_reply_num%22%3A0%7D" style="display:"><cite>回复(0)</cite></a></span></p><div class="SG_reply" id="comment_4E79F0A0-7F000001-631CF83F-85D-8A0" style="display:none;"></div></div></li><li class="SG_j_linedot1" id="cmt_5370E7C8-7F000001-6850FA1D-85D-8A0"><div class="SG_revert_Left"><a href="http://blog.sina.com.cn/u/1750137373" target="_blank"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/50(2)"></a></div><div class="SG_revert_Cont"><p><span class="SG_revert_Tit"><a href="http://blog.sina.com.cn/u/1750137373">翎玲珑香</a></span></p><div class="SG_revert_Inner SG_txtb" id="body_cmt_5370E7C8-7F000001-6850FA1D-85D-8A0"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/E___0480ZH00SIGT.gif" style="margin:1px;" border="0" title="赞"><a href="javascript:void(0);" class="btn_artzk" style="display:none" action-type="comment_more" action-data="%7B%22id%22%3A%225370E7C8-7F000001-6850FA1D-85D-8A0%22%2C%22commentid%22%3A%225370E7C8-7F000001-6850FA1D-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%5Bemoticons%3DE___0480ZH00SIG%5D%E8%B5%9E%5B%2Femoticons%5D%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221750137373%22%2C%22uname%22%3A%22%E7%BF%8E%E7%8E%B2%E7%8F%91%E9%A6%99%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222014-05-12%2023%3A24%3A56%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1750137373%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1750137373%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1750137373%22%2C%22cms_reply_num%22%3A0%7D"></a></div><p class="myReFrom"><em class="SG_txtc">2014-5-12 &nbsp;23:24</em><span class="SG_revert_Func"><a href="javascript:void(0);" class="SG_a_fuc" action-type="comment_report" action-data="%7B%22id%22%3A%225370E7C8-7F000001-6850FA1D-85D-8A0%22%2C%22commentid%22%3A%225370E7C8-7F000001-6850FA1D-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%5Bemoticons%3DE___0480ZH00SIG%5D%E8%B5%9E%5B%2Femoticons%5D%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221750137373%22%2C%22uname%22%3A%22%E7%BF%8E%E7%8E%B2%E7%8F%91%E9%A6%99%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222014-05-12%2023%3A24%3A56%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1750137373%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1750137373%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1750137373%22%2C%22cms_reply_num%22%3A0%7D" style="display:"><cite>举报</cite></a><a href="javascript:void(0);" class="SG_a_fuc" action-type="comment_del" action-data="%7B%22id%22%3A%225370E7C8-7F000001-6850FA1D-85D-8A0%22%2C%22commentid%22%3A%225370E7C8-7F000001-6850FA1D-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%5Bemoticons%3DE___0480ZH00SIG%5D%E8%B5%9E%5B%2Femoticons%5D%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221750137373%22%2C%22uname%22%3A%22%E7%BF%8E%E7%8E%B2%E7%8F%91%E9%A6%99%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222014-05-12%2023%3A24%3A56%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1750137373%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1750137373%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1750137373%22%2C%22cms_reply_num%22%3A0%7D" style="display:none">删除</a><a href="javascript:void(0);" class="SG_a_fuc" action-type="comment_share" action-data="%7B%22id%22%3A%225370E7C8-7F000001-6850FA1D-85D-8A0%22%2C%22commentid%22%3A%225370E7C8-7F000001-6850FA1D-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%5Bemoticons%3DE___0480ZH00SIG%5D%E8%B5%9E%5B%2Femoticons%5D%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221750137373%22%2C%22uname%22%3A%22%E7%BF%8E%E7%8E%B2%E7%8F%91%E9%A6%99%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222014-05-12%2023%3A24%3A56%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1750137373%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1750137373%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1750137373%22%2C%22cms_reply_num%22%3A0%7D" style="display:"><cite>分享</cite></a><a href="javascript:void(0);" class="SG_a_fucs" action-type="comment_reply" action-data="%7B%22id%22%3A%225370E7C8-7F000001-6850FA1D-85D-8A0%22%2C%22commentid%22%3A%225370E7C8-7F000001-6850FA1D-85D-8A0%22%2C%22articleid%22%3A%225396eb530100mtc9%22%2C%22cms_body%22%3A%22%5Bemoticons%3DE___0480ZH00SIG%5D%E8%B5%9E%5B%2Femoticons%5D%22%2C%22fromProduct%22%3A%22blog%22%2C%22comm_uid%22%3A%221750137373%22%2C%22uname%22%3A%22%E7%BF%8E%E7%8E%B2%E7%8F%91%E9%A6%99%22%2C%22src_uid%22%3A%221402399571%22%2C%22cms_pubdate%22%3A%222014-05-12%2023%3A24%3A56%22%2C%22ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1750137373%22%2C%22user_image%22%3A%22http%3A%2F%2Fportrait3.sinaimg.cn%2F1750137373%2Fblog%2F50%22%2C%22source_ria_index_url%22%3A%22http%3A%2F%2Fblog.sina.com.cn%2Fu%2F1750137373%22%2C%22cms_reply_num%22%3A0%7D" style="display:"><cite>回复(0)</cite></a></span></p><div class="SG_reply" id="comment_5370E7C8-7F000001-6850FA1D-85D-8A0" style="display:none;"></div></div></li></ul>
+			<div class="clearit"></div>
+			<div class="myCommPages SG_j_linedot1" style="display: none;">
+				<div class="SG_page" id="commentPaging" style="display: none; text-align: center;"><a href="javascript:void(0);" style="">点击加载更多</a></div>
+				<div class="clearit"></div>
+			</div>
+			<a name="post"></a>
+			<div class="writeComm">
+				<div class="allCommTit">
+					<div class="SG_floatL">
+					    <strong>发评论</strong>
+					    <span></span>
+					</div>
+					<div class="SG_floatR"></div>
+				</div>
+				<div class="wrCommTit">
+					<div class="SG_floatL" id="commentNick" style="">那束坡&nbsp;:</div>
+				</div>
+				<div class="formTextarea">
+					<div style="float:left;" id="commonComment">
+					<iframe id="postCommentIframe" frameborder="0" style="border:1px solid #C7C7C7;
+		height:158px;width:448px;maring-top:1px;background-color:white;" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/blank2.html"></iframe>
+					<textarea id="commentArea" tabindex="1" style="display:none;"></textarea>
+					</div>
+					<div id="mobileComment" style="float:left;display:none;">
+						<textarea id="mbCommentTa" style="width:438px;height:150px;border:1px solid #C7C7C7;line-height:18px;padding:5px;"></textarea>
+					</div>
+					<div class="faceblk" id="faceWrap">
+						<div id="smilesSortShow" class="faceline1">
+						<div class="facestyle" id="recomm_1557038920292"><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" key="302"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/302-25.gif" alt="小新小浪" title="小新小浪"></a><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" key="308"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/308-25.gif" alt="炮炮兵" title="炮炮兵"></a><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" key="315"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/315-25.gif" alt="张富贵" title="张富贵"></a><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" key="316"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/316-25.gif" alt="旺狗" title="旺狗"></a><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" key="331"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/331-25.gif" alt="悠嘻猴" title="悠嘻猴"></a><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" key="351"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/351-25.gif" alt="酷巴熊" title="酷巴熊"></a></div><span class="SG_more"><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#">更多&gt;&gt;</a></span><div class="clearit"></div></div>
+						<ul id="smilesRecommended" class="faceline01"><li><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/E___0321EN00SIGT.gif" alt="就不买你" title="就不买你" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/E___0320EN00SIGT.gif" alt="股市" title="股市" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/E___0319EN00SIGT.gif" alt="发霉" title="发霉" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/E___0318EN00SIGT.gif" alt="陈水边" title="陈水边" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/E___0317EN00SIGT.gif" alt="裁员" title="裁员" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/E___0316EN00SIGT.gif" alt="音乐" title="音乐" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/E___0315EN00SIGT.gif" alt="贴你" title="贴你" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/E___0314EN00SIGT.gif" alt="抢车位" title="抢车位" height="50" width="50"></a></li></ul>
+					</div>
+					<div class="clearit"></div>
+				</div>
+				<div class="formLogin">
+					<div class="SG_floatL"> 
+					<p id="commentlogin" style="display:none;"><span>登录名：</span><input type="text" style="width: 115px;" id="login_name" tabindex="2">   <span>密码：</span><input type="password" style="width: 115px;" id="login_pass" tabindex="3">   <a href="https://login.sina.com.cn/getpass.html" target="_blank">找回密码</a>   <a href="https://login.sina.com.cn/signup/signup.php?entry=blog&amp;src=blogicp&amp;srcuid=1402399571" target="_blank">注册</a>	<input type="checkbox" id="login_remember"><label for="login_remember" style="display:inline-block;" title="建议在网吧/公用电脑上取消该选项">记住登录状态</label></p><p id="commentloginM" style="display:none;"><span>昵&nbsp;&nbsp;&nbsp;称：</span><input type="text" style="width: 115px;" id="comment_anonyous" value="新浪网友" tabindex="2" disabled=""></p><p id="quote_comment_p"><!--<input type="checkbox" id="bb"> <label for="bb"><img height="18" align="absmiddle" width="18" title="" src="http://simg.sinajs.cn/blog7style/images/common/sg_trans.gif" class="SG_icon SG_icon110">分享到微博 <img height="15" align="absmiddle" width="15" title="新" src="http://simg.sinajs.cn/blog7style/images/common/sg_trans.gif" class="SG_icon SG_icon11"></label>&nbsp;&nbsp;&nbsp;--><input type="checkbox" id="cbCommentQuote"><label for="cbCommentQuote">评论并转载此博文</label><img class="SG_icon SG_icon11" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" width="15" height="15" title="新" align="absmiddle"></p>
+					<p id="geetest-box"></p>
+					</div>
+
+					<span style="display: none; color: rgb(153, 153, 153); margin-left: 10px;" id="login_remember_caution"></span>
+
+											<!--<div class="SG_floatR" id="anonymity_cont"><input type="checkbox" id="anonymity"/><label for="anonymity">匿名评论</label></div>-->
+									</div>
+				<div class="formBtn">
+					<a href="javascript:;" onclick="return false;" class="SG_aBtn" tabindex="5"><cite id="postcommentid">发评论</cite></a>
+					<p class="SG_txtc">以上网友发言只代表其个人观点，不代表新浪网的观点或立场。</p>
+				</div>
+			</div>
+		</div>
+				<div class="clearit"></div>
+		
+				<div class="articalfrontback articalfrontback2 clearfix">
+						  <div class="SG_floatL"><span class="SG_txtb">&lt;&nbsp;前一篇</span><a href="http://blog.sina.com.cn/s/blog_5396eb530100mm1p.html">关于子类无法访问父类protected属性和方法的问题</a></div>
+									  <div class="SG_floatR"><span class="SG_txtb">后一篇&nbsp;&gt;</span><a href="http://blog.sina.com.cn/s/blog_5396eb530100myl5.html">RSA算法详解与举例</a></div>
+					</div>
+		<div class="clearit"></div>
+				
+	</div>
+	<!--博文正文 end -->
+		<script type="text/javascript">
+			var voteid="";
+		</script>
+
+            </div>       
+            <div class="SG_connFoot"></div>
+          </div>
+</div>
+	<!--第二列start-->
+	
+	<!--第三列start-->
+	<div id="column_3" class="SG_colWnone"><div style="width:0px;height:0.1px;margin:0px;">&nbsp;&nbsp;</div></div>
+	<!--第三列end-->
+
+	
+    </div>
+   <!--主题内容结束 -->
+  
+
+	<div id="diggerFla" style="position:absolute;left:0px;top:0px;width:0px"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" src="http://sjs.sinajs.cn/blog7swf/digger.swf" width="1" height="1" style="undefined" id="digger" name="digger" bgcolor="#00ff00" quality="high" wmode="transparent" allowscriptaccess="always"></div>
+    <div class="sinablogfooter" id="sinablogfooter" style="position:relative;">
+      
+      <p class="SG_linka"><a href="http://help.sina.com.cn/" target="_blank">新浪BLOG意见反馈留言板</a>　电话：4006900000 提示音后按1键（按当地市话标准计费）　欢迎批评指正</p>
+   
+      <p class="SG_linka"><a href="http://corp.sina.com.cn/chn/" target="_blank">新浪简介</a> | <a href="http://corp.sina.com.cn/eng/" target="_blank">About Sina</a> | <a href="http://emarketing.sina.com.cn/" target="_blank">广告服务</a> | <a href="http://www.sina.com.cn/contactus.html" target="_blank">联系我们</a> | <a href="http://corp.sina.com.cn/chn/sina_job.html" target="_blank">招聘信息</a> | <a href="http://www.sina.com.cn/intro/lawfirm.shtml" target="_blank">网站律师</a> | <a href="http://english.sina.com/" target="_blank">SINA English</a> | <a href="http://members.sina.com.cn/apply/" target="_blank">会员注册</a> | <a href="http://help.sina.com.cn/" target="_blank">产品答疑</a> </p>
+      <p class="copyright SG_linka"> Copyright © 1996 - 2018 SINA Corporation,  All Rights Reserved</p>
+      <p class="SG_linka"> 新浪公司 <a href="http://www.sina.com.cn/intro/copyright.shtml" target="_blank">版权所有</a></p>
+	  <a href="http://www.bj.cyberpolice.cn/index.jsp" target="_blank" class="gab_link"></a>
+    </div>
+  </div>
+</div>
+<div id="swfbox"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" src="http://sjs.sinajs.cn/blog7swf/voteCookie.swf" width="1" height="1" style="undefined" id="swfId" name="swfId" bgcolor="#00ff00" quality="high" allowscriptaccess="always" flashvars="readyFun=readyFun&amp;realfull=1&amp;moz=1&quot;/"></div>
+<script id="PVCOUNTER_FORIE" type="text/javascript"></script>
+
+<script type="text/javascript">
+var scope = {
+    $newTray : 1,
+    $setDomain : true,
+    $uid : "1402399571",
+    $PRODUCT_NAME : "blog7",      //blog7photo,blog7icp
+    $pageid : "article",
+    $key :  "0b3604a9859cf2fbe283ac623fad5bd3",
+    $uhost : "simoniu",
+    $ownerWTtype :"",
+    $private: {"cms":0,"hidecms":0,"blogsize":0,"ad":0,"sms":0,"adver":0,"tj":0,"p4p":0,"spamcms":0,"pageset":0,"invitationset":0,"top":0,"active":"4","t_sina":"1402399571","oauth_token":1,"oauth_token_secret":1,"uname":"","p_push_t":"1","p_get_t":"1","articleclass":"113"},
+    $summary: "...  (来自 @头条博客)",
+    $is_photo_vip:0,
+		 $nClass:0,
+		 $articleid:"5396eb530100mtc9",
+		 $sort_id:113,
+		 $cate_id:"",
+		 $isCommentAllow:0,
+		 $album_pic:"",
+		 $pn_x_rank:0,
+		 $x_quote_c:"3",
+		 $flag2008:"",
+		     component_lists:{"2":{"size":730,"list":[920]},"1":{"size":210,"list":[901,903,904,47]}},
+    formatInfo:1,
+    UserPic:[{"pid":"","repeat":"repeat-x","align-h":"center","align-v":"top","apply":"0"},{"pid":"","repeat":"repeat-x","align-h":"center","align-v":"top","apply":"0"},{"pid":"","repeat":"repeat-x","align-h":"center","align-v":"top","apply":"0"}],
+    UserBabyPic:{"photoX":0,"photoY":0,"photoURL":null,"angle":0,"zoom":0,"maskX":0,"maskY":0,"maskURL":null,"frameURL":null},
+    UserColor:1,
+    backgroundcolor:"#ebebeb",
+    $shareData:{"title":"\u4e3a\u4ec0\u4e48\u9700\u8981\u591a\u91cd\u7ee7\u627f\uff1f\u5b83\u7684\u4f18\u7f3a\u70b9\u662f\u4ec0\u4e48\uff1f@\u65b0\u6d6a\u535a\u5ba2","content":"\u89e3\u6790\uff1a \u5b9e\u9645\u751f\u6d3b\u4e2d\uff0c\u4e00\u4e9b\u4e8b\u7269\u5f80\u5f80\u4f1a\u62e5\u6709\u4e24\u4e2a\u6216\u4e24\u4e2a\u4ee5\u4e0a\u4e8b\u7269\u7684\u5c5e\u6027\uff0c\u4e3a\u4e86\u89e3\u51b3\u8fd9\u4e2a\u95ee\u9898\uff0cC++\u5f15\u5165\u4e86\u591a\u91cd\u7ee7\u627f\u7684\u6982\u5ff5\uff0cC++\u5141\u8bb8\u4e3a...  (\u6765\u81ea @\u5934\u6761\u535a\u5ba2)","url":"http:\/\/blog.sina.com.cn\/s\/blog_5396eb530100mtc9.html","pic":""},
+    tpl:"1_13",
+    reclist:0    };
+var $encrypt_code = "85d647c7d26ec8975faf4be647dea94a";
+</script>
+
+<script type="text/javascript" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/boot.js.下载"></script>
+<script type="text/javascript">__load_js();</script>
+<script type="text/javascript">__render_page();</script>
+
+
+<!--
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=b436f96b-ce3c-469f-93ca-9c0c406fcf10&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+<script type="text/javascript" charset="utf-8">
+        bShare.addEntry({pic: "", title:"分享自simoniu  《为什么需要多重继承？它的优缺点是什么？》", summary:"...  (来自 @头条博客)"});
+     </script>-->
+
+<script type="text/javascript" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/blog680-min.js.下载"></script>
+<script type="text/javascript">
+        var slotArr = ['atcTitLi_SLOT_41', 'atcTitLi_SLOT_42','loginBarActivity']; //广告位id
+        var sourceArr = ['SLOT_41','SLOT_42','SLOT_43,SLOT_47,SLOT_48'];  //广告资源id
+        SinaBlog680.staticBox(slotArr, sourceArr);
+</script>
+
+<div id="_7331557038919485_panel" class="mCatSearch" style="position: absolute; display: none; z-index: 512;"><ul><li action-type="tray-search" onclick="v7sendLog(&#39;40_01_43&#39;)" action-data="article" class="current">含“<span id="_7331557038919485_article"></span>”的博文</li><li action-type="tray-search" onclick="v7sendLog(&#39;40_01_43&#39;)" action-data="bloger">含“<span id="_7331557038919485_bloger"></span>”的博主</li><li action-type="tray-search" onclick="v7sendLog(&#39;40_01_43&#39;)" action-data="music">含“<span id="_7331557038919485_music"></span>”的音乐</li><li action-type="tray-search" onclick="v7sendLog(&#39;40_01_43&#39;)" action-data="video">含“<span id="_7331557038919485_video"></span>”的视频</li></ul></div><iframe style="border: none; z-index: -1; opacity: 0; position: absolute; width: 0px; height: 0px;" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/saved_resource(3).html"></iframe><div id="sinaads_pdps54771"> <ins class="sinaads sinaads-done" data-ad-pdps="PDPS000000054771" data-ad-status="done"></ins>  </div><div class="tb_layer_Y tb_layer_w3" style="z-index: 511; position: absolute; display: none; width: 160px;"><div class="tb_layer_arrow"></div><div class="tb_layer_Y_main tip_ps" style="width: auto;"><a style="margin-top: 5px;" title="关闭" class="tb_friend_inputDel" href="javascript:void(0)"></a>							<div style="text-align:left;color:#999999">最近喜欢了的博主：</div>							<div style="white-space: nowrap;"><div style="text-align:center;"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/loading.gif">加载中…</div></div></div></div><div id="reblog_1557038919553" class="turnList" style="display:none;position:absolute;z-index:20;"><ul class=""><li><a suda-uatrack="key=blog_article&amp;value=h_article17" action-type="click_reblog" action-data="{action:&#39;toBlog&#39;}" href="javascript:void(0);" title="转载到博客"><img width="18" height="18" align="absmiddle" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon141">博客</a></li><li style="display:none;"><a suda-uatrack="key=blog_article&amp;value=h_article17" action-type="click_reblog" action-data="{action:&#39;toBlog&#39;}" href="javascript:void(0);" title="转载原文"><img width="18" height="18" align="absmiddle" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon141">转载原文</a></li><li><a suda-uatrack="key=blog_article&amp;value=h_article17" action-type="click_reblog" action-data="{action:&#39;cwb&#39;}" href="javascript:;" title="发布长微博"><img width="18" height="18" align="absmiddle" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon143">长微博</a></li></ul></div><iframe id="sinaads-ck-iframe" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/sinaads_ck.html" style="display: none;"></iframe><div style="position: fixed; width: 1349px; height: 618px; left: 0px; top: 0px; z-index: 1024; background-color: black; opacity: 0.4; display: none;"></div><table class="CP_w" id="_581557038919573_panel" style="z-index: 5000; position: fixed; display: none; left: 348.5px; top: 83px;"><thead><tr><th class="tLeft"><span></span></th><th class="tMid"><div class="bLyTop"><strong>赠金笔</strong><cite><a node-data="btn-close" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" class="CP_w_shut" title="关闭">关闭</a></cite></div></th><th class="tRight"><span></span></th></tr></thead><tfoot><tr><td class="tLeft"><span></span></td><td class="tMid"><span></span></td><td class="tRight"><span></span></td></tr></tfoot><tbody><tr><td class="tLeft"><span></span></td><td class="tMid"><div class="CP_layercon3 jiben"><div class="SG_tag tag_h"><ul><li class="current"><span><strong><a node-data="gold-exchange" href="javascript:void(0)">金笔兑换</a></strong></span><span class="tagR"></span></li><li><span><strong><a node-data="tyrant-standings" href="javascript:void(0)">今日土豪榜</a></strong></span><span class="tagR"></span></li><li><span><strong><a node-data="nomination-list" href="javascript:void(0)">今日提名榜</a></strong></span><span class="tagR"></span></li></ul></div><div name="jiben_tab" class="jiben_tab"><ul class="denPicRow denPicRow01 clearfix" name="radioAll"><li><span class="a">兑换服务：</span><span class="b">金笔道具</span></li><li><span class="a"><span class="CP_w_star"></span>赠送数量：</span><span class="b rlist"><input name="num" value="1" type="radio" id="jb1"><label for="jb1">1支</label><input name="num" value="10" type="radio" id="jb2"><label for="jb2">10支</label><input name="num" value="20" type="radio" id="jb3"><label for="jb3">20支</label><input name="num" value="50" type="radio" id="jb4"><label for="jb4">50支</label><input name="num" value="100" type="radio" id="jb5"><label for="jb5">100支</label><br><input name="num" value="0" type="radio" id="jb5"><label for="jb6">其他</label><input type="text" maxlength="4" class="SG_input" id="jb6" node-data="other-num" value="请输入整数"></span></li><li><span class="a cold">现有金笔：</span><span class="b cold" node-data="own-num">0支</span></li><li><span class="a cold">还需兑换：</span><span class="b cold" node-data="need-num">1支 x 1=1(积分)</span></li></ul><div id="hidden"></div><div class="butt01" id="button01"><a node-data="btn-ok" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" class="SG_aBtn SG_aBtnB "><cite>确认</cite></a><a target="_blank" href="http://blog.sina.com.cn/s/blog_4b0f52990102v0dd.html" class="jf_rule">点击了解更多规则</a></div></div><div class="clearit"></div></div></td><td class="tRight"><span></span></td></tr></tbody></table><iframe style="border: none; z-index: 4999; opacity: 0; position: fixed; width: 0px; height: 0px; left: 348.5px; top: 83px;" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/saved_resource(4).html"></iframe><div id="sharePhoto" style="display:none;width:120px;position:absolute;"><div class="picShareFlt"><div class="share SG_txtb" style="margin-top:5px;"><span>分享到新浪微博</span></div></div></div><div style="position: absolute; top: -1000px; left: -1000px;"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" src="http://sjs.sinajs.cn/blog7swf/blogMessageReminding.swf" width="1px" height="1px" style="undefined" id="__msgTipsPlayer" name="__msgTipsPlayer" bgcolor="#00ff00" quality="high" wmode="transparent" allowscriptaccess="always" freetime="27000"></div><div class="messageTips" id="_961557038919705_panel" style="left: 1148px; top: 39px; position: fixed; display: none; z-index: 500;"><div class="cor"></div><div class="bd"><a href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" id="j-unread-msg-close" class="close" title="关闭">×</a><ul id="j-unre-list"></ul></div></div><iframe style="border: none; z-index: -1; opacity: 0; position: fixed; width: 0px; height: 0px; left: 1148px; top: 39px; display: none;" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/saved_resource(5).html"></iframe><ins class="sinaads sinaads-done" data-ad-pdps="PDPS000000054727" style="display:block;" data-ad-status="done"></ins><div id="_9541557038920184_panel" style="z-index: 512; width: 200px; position: absolute; display: none;" class="tb_layer_Y tb_layer_w5"><div class="tb_layer_Y_main tip_layer_main"><div class="tip_ps" style="width:auto;float:right"><a id="closeBindEmail" title="关闭提示" class="tb_friend_inputDel" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" onclick="return false"></a></div><div style="padding:6px">为了您的账号安全，请<a id="linkBindEmail" href="http://blog.sina.com.cn/s/blog_5396eb530100mtc9.html#" target="_blank">绑定邮箱</a></div></div><div class="tb_layer_arrow tip_arrow"></div></div><iframe style="border: none; z-index: 511; opacity: 0; position: absolute; width: 0px; height: 0px;" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/saved_resource(6).html"></iframe><div id="selectionShare" style="display: none; position: absolute; cursor: pointer;"><img src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/share.gif" title="将选中内容分享到新浪微博"></div><div style="border: 2px dashed rgb(188, 196, 208); position: absolute; display: none; background-color: transparent; left: 0px; top: 0px;"></div><div id="_5471557038920536_panel" style="background-color: black; left: 0px; top: 0px; z-index: 5000; position: fixed; width: 1349px; height: 618px; opacity: 0.4; display: none;"></div><ins class="sinaads sinaads-fail" data-ad-pdps="PDPS000000051781" style="display: none;" data-ad-status="done"></ins><div style="left: -1000px; top: -1000px;position:absolute;" class="picSlideBtn" action-type="show-slide" action-data="http%3A%2F%2Fww4.sinaimg.cn%2Flarge%2F697db644jw1dw1s1zljvaj.jpg"><a href="javascript:void(0);">幻灯播放</a></div><div id="ramdomVisitDiv" style="position: absolute; width: 140px; z-index: 101; top: 120px; right: 0px;"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" src="http://sjs.sinajs.cn/blog7swf/lookViewSpring.swf?2" width="140" height="87" style="undefined" id="map" name="map" bgcolor="#000" quality="high" scale="noscale" allowscriptaccess="always" wmode="transparent" flashvars="url=http://blog.sina.com.cn/lm/top/mil/day.html&amp;realfull=1&amp;moz=1&quot;/"></div><div style="overflow: hidden; height: 210px; position: absolute;"><div class="blogreco" id="_6071557038920941_panel" uniqueid="moz__id79_1557038920952" style="left: 1089px; top: 408px; z-index: 100; position: fixed; margin-top: 0px;"><div id="_6071557038920941_frame"><div class="TB" id="_6071557038920941_titleBar"><a id="blogNorAd_Cls" class="btnClose" style="position:absolute;left:240px;" href="javascript:">&nbsp;</a><a class="btnMin" style="position:absolute;left:220px;" id="_6071557038920941_btnMin" href="javascript:">&nbsp;</a></div><div id="_6071557038920941_content"><iframe frameborder="0" scrolling="no" class="IF" src="./为什么需要多重继承？它的优缺点是什么？_simoniu_新浪博客_files/01.html"></iframe></div></div></div></div><ins class="sinaads sinaads-done" data-ad-pdps="PDPS000000052950" style="display:block;" data-ad-status="done"></ins></body></html>
